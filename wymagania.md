@@ -13,8 +13,6 @@ Portal ma umożliwić transakcje między użytkownikami.
     * mieście
     * kategorii
 
-
-
 6) Wyświetlanie danych kontaktowych sprzedającego.
 
 
