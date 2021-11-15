@@ -28,6 +28,9 @@ Portal ma umożliwić transakcje między użytkownikami.
 # Klasy
 
 * Person
+    * atrybuty:
+        - Name
+        - Surname
 * User(dziedziczy po Person)
 * Administrator(dziedziczy po Person)
 * Product
