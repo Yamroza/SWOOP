@@ -1,11 +1,11 @@
 # Portal do wymiany przedmiotów
 
-Portal ma umożliwić wymianę przedmiotami pomiędzy użytkownikami.
+Portal ma umożliwić transakcje między użytkownikami.
 
 # Wymagania
 
 1) Tworzenie konta.
-2) Wystawianie ofert wymiany.
+2) Wystawianie ofert wymiany/sprzedaży/kupna.
 3) Akceptownie wymiany.
 4) Przeglądarka ofert.
 5) Wyszukiwarka ofert po:
@@ -32,3 +32,9 @@ Portal ma umożliwić wymianę przedmiotami pomiędzy użytkownikami.
 * Administrator(dziedziczy po Person)
 * Product
 * Transaction
+
+# Dodatkowe wymagania
+
+* Komentarze pod ofertami
+* Chat między użytkownikami
+* Grupy użytkowników, na przykład z jednego akademika
