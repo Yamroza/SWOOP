@@ -3,7 +3,7 @@
 Aplikacja desktopowa ma za zadanie umożliwić dokonywanie transakcji (wymiana lub sprzedaż przedmiotów) między użytkownikami. Aby zapewnić optymalne działanie i użytkowanie aplikacji powinna ona posiadać:
 - możliwość utworzenia konta użytkownika,
 - wygodny i intuicyjny interfejs graficzny,
-- połączenie z bazą danych, przechowującej informacje o użytkownikach, oferowanych towarach, odbytych transakcjach, etc.
+- połączenie z bazą danych, przechowującą informacje o użytkownikach, oferowanych towarach, odbytych transakcjach, etc.
 
 Funkcjonalność konta użytkownika obejmować powinna:
 - możliwość edycji danych użytkownika,
