@@ -5,6 +5,6 @@
 **Grupa:** 104, piątek 10:15-12:00  
 **Członkowie zespołu:**
 - Aleksandra Jamróz, 310708
-- Aleksandra Majewska
+- Aleksandra Majewska, 310832
 - Gabriela Topczewska, 310961
 - Radosław Kostrzewski
