@@ -1,4 +1,4 @@
-package edu.iipw.pap;
+package GUI;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
