@@ -7,4 +7,4 @@
 - Aleksandra Jamróz, 310708
 - Aleksandra Majewska, 310832
 - Gabriela Topczewska, 310961
-- Radosław Kostrzewski
+- Radosław Kostrzewski, 310757
