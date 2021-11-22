@@ -16,6 +16,7 @@ public class App extends Application {
 
     static Scene scene;
     static ArrayList<User> users = new ArrayList<>();
+    static User loggedUser;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -46,8 +47,12 @@ public class App extends Application {
         users.add(new User(login, password));
     }
 
-    public static String getUser() {
-        return users.get(0).getUsername();
+    public static void setLoggedUser(User user) {
+       loggedUser = user;
+    }
+
+    public static User getLoggedUser() {
+        return loggedUser;
     }
 
     public static void main(String[] args) {

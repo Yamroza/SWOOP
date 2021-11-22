@@ -31,6 +31,7 @@ public class LoginScreenController {
         }
         else {
             if (Objects.equals(user.getPassword(), password.getText())) {
+                App.setLoggedUser(user);
                 App.setRoot("loginTest");
             }
             else {
