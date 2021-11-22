@@ -1,10 +1,10 @@
 module ItemExchangePortal {
-   requires javafx.controls;
-   requires javafx.fxml;
+    requires javafx.controls;
+    requires javafx.fxml;
 
-   opens GUI;
-   exports GUI;
-   exports Classes;
+    opens GUI;
+    exports GUI;
+    exports Classes;
 }
 
 

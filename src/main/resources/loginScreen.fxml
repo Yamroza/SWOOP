@@ -37,44 +37,44 @@
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginScreenController">
-  <MenuBar VBox.vgrow="NEVER">
-    <Menu mnemonicParsing="false" text="File">
-      <MenuItem mnemonicParsing="false" text="New" />
-      <MenuItem mnemonicParsing="false" text="Open…" />
-      <Menu mnemonicParsing="false" text="Open Recent" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" text="Close" />
-      <MenuItem mnemonicParsing="false" text="Save" />
-      <MenuItem mnemonicParsing="false" text="Save As…" />
-      <MenuItem mnemonicParsing="false" text="Revert" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" text="Preferences…" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" text="Quit" />
-    </Menu>
-    <Menu mnemonicParsing="false" text="Edit">
-      <MenuItem mnemonicParsing="false" text="Undo" />
-      <MenuItem mnemonicParsing="false" text="Redo" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" text="Cut" />
-      <MenuItem mnemonicParsing="false" text="Copy" />
-      <MenuItem mnemonicParsing="false" text="Paste" />
-      <MenuItem mnemonicParsing="false" text="Delete" />
-      <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" text="Select All" />
-      <MenuItem mnemonicParsing="false" text="Unselect All" />
-    </Menu>
-    <Menu mnemonicParsing="false" text="Help">
-      <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-    </Menu>
-  </MenuBar>
-  <AnchorPane VBox.vgrow="ALWAYS">
-    <TextField fx:id="login" layoutX="235.0" layoutY="134.0" />
-    <PasswordField fx:id="password" layoutX="235.0" layoutY="189.0" />
-    <Text layoutX="235.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-    <Text layoutX="235.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
-    <Button layoutX="235.0" layoutY="228.0" mnemonicParsing="false" onAction="#LoginClick" text="Login" />
-    <Button layoutX="328.0" layoutY="228.0" mnemonicParsing="false" onAction="#RegisterClick" text="Regitster" />
-    <Text fx:id="incorrectCredentials" fill="RED" layoutX="235.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-  </AnchorPane>
+    <MenuBar VBox.vgrow="NEVER">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+        </Menu>
+    </MenuBar>
+    <AnchorPane VBox.vgrow="ALWAYS">
+        <TextField fx:id="login" layoutX="235.0" layoutY="134.0" />
+        <PasswordField fx:id="password" layoutX="235.0" layoutY="189.0" />
+        <Text layoutX="235.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+        <Text layoutX="235.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
+        <Button layoutX="235.0" layoutY="228.0" mnemonicParsing="false" onAction="#LoginClick" text="Login" />
+        <Button layoutX="328.0" layoutY="228.0" mnemonicParsing="false" onAction="#RegisterClick" text="Regitster" />
+        <Text fx:id="incorrectCredentials" fill="RED" layoutX="235.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+    </AnchorPane>
 </VBox>
