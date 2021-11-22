@@ -1,6 +1,7 @@
 package GUI;
 
 import Classes.User;
+import Database.Users;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
@@ -15,7 +16,7 @@ public class LoginCompleteController {
 
     @FXML
     private void initialize() {
-        User loggedUser = App.getLoggedUser();
+        User loggedUser = Users.getLoggedUser();
         String username = loggedUser.getUsername();
         String dateOfAccountCreation = loggedUser.getAccountCreationTime().format(
                 DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.forLanguageTag("pl"))

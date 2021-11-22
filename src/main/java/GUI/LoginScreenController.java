@@ -2,6 +2,7 @@ package GUI;
 
 import Classes.*;
 
+import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -24,14 +25,14 @@ public class LoginScreenController {
 
     @FXML
     private void LoginClick(ActionEvent event) throws IOException {
-        User user = App.checkIfUserIsInBase(login.getText());
+        User user = Users.checkIfUserIsInBase(login.getText());
         if (user == null) {
             password.setText("");
             incorrectCredentials.setText("Username with that username doesn't exist.");
         }
         else {
             if (Objects.equals(user.getPassword(), password.getText())) {
-                App.setLoggedUser(user);
+                Users.setLoggedUser(user);
                 App.setRoot("loginTest");
             }
             else {

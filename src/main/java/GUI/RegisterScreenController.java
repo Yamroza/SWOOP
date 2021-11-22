@@ -1,5 +1,6 @@
 package GUI;
 
+import Database.Users;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -30,7 +31,7 @@ public class RegisterScreenController {
         if (Objects.equals(loginText, "")) {
             errorMsg.setText("Login can't be empty.");
         }
-        else if (App.checkIfUserIsInBase(loginText) != null) {
+        else if (Users.checkIfUserIsInBase(loginText) != null) {
             errorMsg.setText("User with that login exist.");
         }
         else if (Objects.equals(passwordText, "")) {
@@ -40,7 +41,7 @@ public class RegisterScreenController {
             errorMsg.setText("Passwords aren't the same.");
         }
         else {
-            App.addUser(loginText, passwordText);
+            Users.addUser(loginText, passwordText);
             App.setRoot("loginScreen");
         }
     }
