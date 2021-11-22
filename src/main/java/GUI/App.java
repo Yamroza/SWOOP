@@ -42,6 +42,10 @@ public class App extends Application {
         return null;
     }
 
+    public static void addUser(String login, String password) {
+        users.add(new User(login, password));
+    }
+
     public static String getUser() {
         return users.get(0).getUsername();
     }
