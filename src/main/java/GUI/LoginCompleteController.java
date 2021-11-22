@@ -10,7 +10,7 @@ public class LoginCompleteController {
 
     @FXML
     private void initialize(){
-        loginMsg.setText(App.getUser());
+        loginMsg.setText("You're logged in!");
     }
 
 }
