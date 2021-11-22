@@ -12,13 +12,22 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    private static String testString;
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("sample"), 640, 480);
+        scene = new Scene(loadFXML("loginScreen"), 640, 480);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static String getTestString() {
+        return testString;
+    }
+
+    static void setText(String testValue) {
+       testString = testValue;
     }
 
     static void setRoot(String fxml) throws IOException {

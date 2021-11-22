@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -42,42 +43,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="GUI.LoginScreenController">
   <MenuBar VBox.vgrow="NEVER">
     <Menu mnemonicParsing="false" text="File">
-      <MenuItem mnemonicParsing="false" text="New"/>
-      <MenuItem mnemonicParsing="false" text="Open…"/>
-      <Menu mnemonicParsing="false" text="Open Recent"/>
-      <SeparatorMenuItem mnemonicParsing="false"/>
-      <MenuItem mnemonicParsing="false" text="Close"/>
-      <MenuItem mnemonicParsing="false" text="Save"/>
-      <MenuItem mnemonicParsing="false" text="Save As…"/>
-      <MenuItem mnemonicParsing="false" text="Revert"/>
-      <SeparatorMenuItem mnemonicParsing="false"/>
-      <MenuItem mnemonicParsing="false" text="Preferences…"/>
-      <SeparatorMenuItem mnemonicParsing="false"/>
-      <MenuItem mnemonicParsing="false" text="Quit"/>
+      <MenuItem mnemonicParsing="false" text="New" />
+      <MenuItem mnemonicParsing="false" text="Open…" />
+      <Menu mnemonicParsing="false" text="Open Recent" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem mnemonicParsing="false" text="Close" />
+      <MenuItem mnemonicParsing="false" text="Save" />
+      <MenuItem mnemonicParsing="false" text="Save As…" />
+      <MenuItem mnemonicParsing="false" text="Revert" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem mnemonicParsing="false" text="Preferences…" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem mnemonicParsing="false" text="Quit" />
     </Menu>
     <Menu mnemonicParsing="false" text="Edit">
-      <MenuItem mnemonicParsing="false" text="Undo"/>
-      <MenuItem mnemonicParsing="false" text="Redo"/>
-      <SeparatorMenuItem mnemonicParsing="false"/>
-      <MenuItem mnemonicParsing="false" text="Cut"/>
-      <MenuItem mnemonicParsing="false" text="Copy"/>
-      <MenuItem mnemonicParsing="false" text="Paste"/>
-      <MenuItem mnemonicParsing="false" text="Delete"/>
-      <SeparatorMenuItem mnemonicParsing="false"/>
-      <MenuItem mnemonicParsing="false" text="Select All"/>
-      <MenuItem mnemonicParsing="false" text="Unselect All"/>
+      <MenuItem mnemonicParsing="false" text="Undo" />
+      <MenuItem mnemonicParsing="false" text="Redo" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem mnemonicParsing="false" text="Cut" />
+      <MenuItem mnemonicParsing="false" text="Copy" />
+      <MenuItem mnemonicParsing="false" text="Paste" />
+      <MenuItem mnemonicParsing="false" text="Delete" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem mnemonicParsing="false" text="Select All" />
+      <MenuItem mnemonicParsing="false" text="Unselect All" />
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
-      <MenuItem mnemonicParsing="false" text="About MyHelloApp"/>
+      <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
     </Menu>
   </MenuBar>
   <AnchorPane VBox.vgrow="ALWAYS">
-    <TextField layoutX="235.0" layoutY="147.0"/>
-    <PasswordField layoutX="235.0" layoutY="218.0"/>
-    <Text layoutX="235.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:"/>
-    <Text layoutX="235.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:"/>
+    <TextField id="login" fx:id="login" layoutX="235.0" layoutY="134.0" />
+    <PasswordField layoutX="235.0" layoutY="189.0" />
+    <Text layoutX="235.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+    <Text layoutX="235.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
+      <Button layoutX="235.0" layoutY="228.0" mnemonicParsing="false" onAction="#LoginClick" text="Login" />
+      <Button layoutX="328.0" layoutY="228.0" mnemonicParsing="false" onAction="#RegisterClick" text="Regitster" />
   </AnchorPane>
 </VBox>
