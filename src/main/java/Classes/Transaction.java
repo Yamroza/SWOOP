@@ -1,9 +1,13 @@
 package Classes;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Transaction {
     User seller;
+    User buyer;
     Item sellersItem;
-    Boolean isItemForExchange;
     Item buyersItem;
-    Float price;
+    LocalDate transactionDate;
+
 }
