@@ -32,19 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="GUI.LoginScreenController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginScreenController">
   <MenuBar VBox.vgrow="NEVER">
     <Menu mnemonicParsing="false" text="File">
       <MenuItem mnemonicParsing="false" text="New" />
@@ -77,11 +69,12 @@
     </Menu>
   </MenuBar>
   <AnchorPane VBox.vgrow="ALWAYS">
-    <TextField id="login" fx:id="login" layoutX="235.0" layoutY="134.0" />
-    <PasswordField layoutX="235.0" layoutY="189.0" />
+    <TextField fx:id="login" layoutX="235.0" layoutY="134.0" />
+    <PasswordField fx:id="password" layoutX="235.0" layoutY="189.0" />
     <Text layoutX="235.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
     <Text layoutX="235.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
-      <Button layoutX="235.0" layoutY="228.0" mnemonicParsing="false" onAction="#LoginClick" text="Login" />
-      <Button layoutX="328.0" layoutY="228.0" mnemonicParsing="false" onAction="#RegisterClick" text="Regitster" />
+    <Button layoutX="235.0" layoutY="228.0" mnemonicParsing="false" onAction="#LoginClick" text="Login" />
+    <Button layoutX="328.0" layoutY="228.0" mnemonicParsing="false" onAction="#RegisterClick" text="Regitster" />
+    <Text fx:id="incorrectCredentials" fill="RED" layoutX="235.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" />
   </AnchorPane>
 </VBox>

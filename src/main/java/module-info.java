@@ -4,6 +4,7 @@ module ItemExchangePortal {
 
    opens GUI;
    exports GUI;
+   exports Classes;
 }
 
 

@@ -3,8 +3,6 @@ package GUI;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
-
 public class LoginCompleteController {
 
     @FXML
@@ -12,7 +10,7 @@ public class LoginCompleteController {
 
     @FXML
     private void initialize(){
-        loginMsg.setText(App.getTestString());
+        loginMsg.setText(App.getUser());
     }
 
 }
