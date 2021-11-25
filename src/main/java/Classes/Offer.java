@@ -1,6 +1,6 @@
 package Classes;
 
-public class Item {
+public class Offer {
     String itemName;
     String itemDescription;
     String itemCategory;
@@ -8,10 +8,8 @@ public class Item {
     Float price;
     User seller;
     // foto
-    // enum od stanu transakcji
 
-
-    public Item(String itemName, String itemDescription, String itemCategory) {
+    public Offer(String itemName, String itemDescription, String itemCategory) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;
