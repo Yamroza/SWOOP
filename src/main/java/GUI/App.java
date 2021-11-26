@@ -15,14 +15,16 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    static Stage myStage;
     static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginScreen"));
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        myStage = stage;
+        myStage.setScene(scene);
+        //stage.setResizable(false);
+        myStage.show();
     }
 
     static void setRoot(String fxml) throws IOException {

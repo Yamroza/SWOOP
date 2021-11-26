@@ -12,16 +12,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Objects;
 
-public class loginScreen {
+public class LoginScreen {
 
-    @FXML
-    private TextField login;
 
-    @FXML
-    private Text incorrectCredentials;
-
-    @FXML
-    private PasswordField password;
 //
 //    @FXML
 //    private void LoginClick(ActionEvent event) throws IOException {
@@ -49,12 +42,20 @@ public class loginScreen {
 
     @FXML
     private void LoginClicked(ActionEvent e) throws IOException {
-        App.setRoot("registrationScreen");
+        App.setRoot("mainScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
+    }
+
+    @FXML
+    private void RegisterClicked(ActionEvent e) throws IOException {
+        App.setRoot("mainScreen");
     }
 
     @FXML
     private void CancelClicked(ActionEvent e) throws IOException {
         App.setRoot("loginScreen");
     }
+
 }
 
