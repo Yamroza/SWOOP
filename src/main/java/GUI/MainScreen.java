@@ -11,8 +11,15 @@ import java.util.Objects;
 public class MainScreen {
 
     @FXML
-    private void ButtonClicked(ActionEvent e) throws IOException{
-        App.setRoot("loginScreen");
+    private void NewOfferClicked(ActionEvent e) throws IOException{
+        App.setRoot("offerScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
+    }
+
+    @FXML
+    private void MyAccountClicked(ActionEvent e) throws IOException{
+        App.setRoot("accountScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }

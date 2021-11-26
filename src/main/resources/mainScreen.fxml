@@ -22,7 +22,7 @@
       </ScrollPane>
       <AnchorPane prefHeight="100.0" prefWidth="940.0">
          <children>
-            <Button layoutX="816.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
+            <Button layoutX="816.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" onAction="#MyAccountClicked" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Segoe UI Light" size="15.0" />
                </font>
@@ -32,7 +32,7 @@
                   <Font name="Segoe UI Light" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="571.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="+">
+            <Button layoutX="571.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="+" onAction="#NewOfferClicked">
                <font>
                   <Font name="Segoe UI Light" size="23.0" />
                </font>

@@ -45,6 +45,8 @@ public class LoginScreen {
         App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
+        App.myStage.setX(320);
+        App.myStage.setY(50);
     }
 
     @FXML
