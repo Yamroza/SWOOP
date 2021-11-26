@@ -1,10 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen" fx:id="mainScreenPane">
+<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
    <children>
-      <Button layoutX="428.0" layoutY="337.0" mnemonicParsing="false" onAction="#ButtonClicked" text="dupa" />
+      <ScrollPane layoutX="165.0" layoutY="100.0" prefHeight="600.0" prefWidth="775.0">
+         <content>
+            <VBox prefHeight="600.0" prefWidth="760.0" />
+         </content>
+      </ScrollPane>
+      <AnchorPane prefHeight="100.0" prefWidth="940.0">
+         <children>
+            <Button layoutX="816.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Light" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="695.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Ogłoszenia" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Light" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="571.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="+">
+               <font>
+                  <Font name="Segoe UI Light" size="23.0" />
+               </font>
+            </Button>
+            <TextField layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </TextField>
+            <ComboBox layoutX="421.0" layoutY="34.0" prefHeight="32.0" prefWidth="120.0" promptText="w..." />
+            <Text layoutX="569.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
+               <font>
+                  <Font name="Segoe UI Light" size="10.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWOOP" wrappingWidth="138.39999999999998">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="36.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <AnchorPane layoutY="100.0" prefHeight="603.0" prefWidth="164.0">
+         <children>
+            <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <CheckBox layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="138.0" text="wymiana">
+               <font>
+                  <Font name="Segoe UI Light" size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="14.0" layoutY="84.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="138.0" text="sprzedaż">
+               <font>
+                  <Font name="Segoe UI Light" size="16.0" />
+               </font>
+            </CheckBox>
+            <Line endX="870.3999633789062" endY="7.62939453125E-6" layoutX="76.0" startX="-76.00001525878906" startY="7.62939453125E-6" />
+            <Line endX="-37.9000244140625" endY="481.60003662109375" layoutX="203.0" layoutY="120.0" startX="-37.9000244140625" startY="-119.1999740600586" />
+            <Line endX="50.5999755859375" layoutX="114.0" layoutY="123.0" opacity="0.2" startX="-115.0" />
+            <Text layoutX="-1.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zakres cen:" textAlignment="CENTER" wrappingWidth="165.60000000000008">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <Slider layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="500.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
+            <Line endX="50.5999755859375" layoutX="115.0" layoutY="257.0" opacity="0.2" startX="-115.0" />
+            <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="od:">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="do:">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </TextField>
+            <Text layoutX="79.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria:" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <CheckBox layoutX="13.0" layoutY="300.0" mnemonicParsing="false" text="CheckBox" />
+            <CheckBox layoutX="13.0" layoutY="320.0" mnemonicParsing="false" text="CheckBox" />
+            <CheckBox layoutX="13.0" layoutY="340.0" mnemonicParsing="false" text="CheckBox" />
+            <CheckBox layoutX="13.0" layoutY="360.0" mnemonicParsing="false" text="CheckBox" />
+            <CheckBox layoutX="13.0" layoutY="380.0" mnemonicParsing="false" text="CheckBox" />
+            <Button layoutX="37.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
+            <Line endX="50.5999755859375" layoutX="115.0" layoutY="448.0" opacity="0.5" startX="-115.0" />
+            <Text layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie:" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <RadioButton layoutX="13.0" layoutY="486.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="140.0" text="alfabetycznie">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="13.0" layoutY="506.0" mnemonicParsing="false" text="według cen - rosnąco">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="13.0" layoutY="526.0" mnemonicParsing="false" text="według cen - malejąco">
+               <font>
+                  <Font name="Segoe UI Light" size="12.0" />
+               </font>
+            </RadioButton>
+            <Button layoutX="35.0" layoutY="562.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
