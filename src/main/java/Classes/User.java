@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -10,13 +12,15 @@ public class User {
     String surname;
     LocalDate birthDate;
     // profile pic
-    // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item
+    // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item'
+    List<Offer> offers;
     LocalDateTime accountCreationTime;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.accountCreationTime = LocalDateTime.now();
+        this.offers = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -37,5 +41,10 @@ public class User {
 
     public LocalDateTime getAccountCreationTime() {
         return accountCreationTime;
+    }
+
+    public void addOffer(String name, String description, String itemCategory, Boolean isForExchange, Boolean isForSale) {
+        Offer newOffer = new Offer(name, description, itemCategory, isForExchange, isForSale);
+        offers.add(newOffer);
     }
 }

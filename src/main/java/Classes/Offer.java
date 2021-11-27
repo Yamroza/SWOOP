@@ -4,7 +4,8 @@ public class Offer {
     private String name;
     private String description;
     private String category;
-    public Boolean isItemForExchange;
+    public Boolean isForExchange;
+    public Boolean isForSale;
     public Boolean isMoney;
     private Float price;
     private User seller;
@@ -26,12 +27,13 @@ public class Offer {
     }
 
     // if offer is item
-    public Offer(String name, String description, String itemCategory) {
+    public Offer(String name, String description, String itemCategory, Boolean isForExchange, Boolean isForSale) {
         this.name = name;
         this.description = description;
         this.category = itemCategory;
         this.isMoney = false;
-        this.isItemForExchange = true;
+        this.isForExchange = isForExchange;
+        this.isForSale = isForSale;
         this.offerStatus = Status.active;
     }
 
@@ -55,7 +57,6 @@ public class Offer {
     }
 
     public void hideOffer() {
-        this.isItemForExchange = false;
         this.offerStatus = Status.inactive;
     }
 }
