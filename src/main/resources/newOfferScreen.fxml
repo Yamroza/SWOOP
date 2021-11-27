@@ -20,7 +20,7 @@
                   <Font name="Segoe UI Light" size="30.0" />
                </font>
             </Text>
-            <Button layoutX="635.0" layoutY="14.0" mnemonicParsing="false" text="Anuluj">
+            <Button layoutX="635.0" layoutY="14.0" mnemonicParsing="false" text="Anuluj" onAction="#CancelClicked">
                <font>
                   <Font name="Segoe UI Light" size="12.0" />
                </font>
@@ -31,7 +31,7 @@
       <AnchorPane layoutY="90.0" prefHeight="410.0" prefWidth="700.0">
          <children>
             <TextArea layoutX="116.0" layoutY="68.0" prefHeight="110.0" prefWidth="358.0" wrapText="true" />
-            <Button layoutX="300.0" layoutY="369.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Zapisz" />
+            <Button layoutX="300.0" layoutY="369.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Zapisz" onAction="#SaveClicked"/>
             <ComboBox layoutX="116.0" layoutY="291.0" prefHeight="26.0" prefWidth="247.0" />
             <TextField layoutX="116.0" layoutY="29.0" prefHeight="26.0" prefWidth="555.0" />
             <Text layoutX="29.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tytuł:">

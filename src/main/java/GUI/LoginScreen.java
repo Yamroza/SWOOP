@@ -52,11 +52,15 @@ public class LoginScreen {
     @FXML
     private void RegisterClicked(ActionEvent e) throws IOException {
         App.setRoot("mainScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
     }
 
     @FXML
     private void CancelClicked(ActionEvent e) throws IOException {
         App.setRoot("loginScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
     }
 
 }
