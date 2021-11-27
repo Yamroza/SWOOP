@@ -9,11 +9,11 @@ public class Offer {
     private Float price;
     private User seller;
 
-    public enum status {
+    private enum Status {
         active, inactive
     }
 
-    public status offerStatus;
+    private Status offerStatus;
 
 
     // photo
@@ -22,7 +22,7 @@ public class Offer {
     public Offer(float price) {
         this.isMoney = true;
         this.price = price;
-        this.offerStatus = status.active;
+        this.offerStatus = Status.active;
     }
 
     // if offer is item
@@ -32,7 +32,7 @@ public class Offer {
         this.category = itemCategory;
         this.isMoney = false;
         this.isItemForExchange = true;
-        this.offerStatus = status.active;
+        this.offerStatus = Status.active;
     }
 
     public String getName() {
@@ -56,5 +56,6 @@ public class Offer {
 
     public void hideOffer() {
         this.isItemForExchange = false;
+        this.offerStatus = Status.inactive;
     }
 }

@@ -9,8 +9,14 @@ public class Transaction {
     private LocalDate startTransactionDate;
     private LocalDate endTransactionDate;
 
-    public User buyer;
-    public Offer buyersOffer;
+    private User buyer;
+    private Offer buyersOffer;
+
+    private enum Status {
+        completed, in_progress, failed
+    }
+
+    private Status transactionStatus;
 
 
     public Transaction(User seller, Offer sellerOffer, User buyer, Offer buyersOffer,  LocalDate startDate) {
@@ -19,6 +25,38 @@ public class Transaction {
         this.buyer = buyer;
         this.buyersOffer = buyersOffer;
         this.startTransactionDate = startDate;
+        this.transactionStatus = Status.in_progress;
     }
 
+    public User getSeller() {
+        return seller;
+    }
+
+    public Offer getSellersOffer() {
+        return sellersOffer;
+    }
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public Offer getBuyersOffer() {
+        return buyersOffer;
+    }
+
+    public LocalDate getStartTransactionDate() {
+        return startTransactionDate;
+    }
+
+    public LocalDate getEndTransactionDate() {
+        return endTransactionDate;
+    }
+
+    public void accept() {
+        this.transactionStatus = Status.completed;
+    }
+
+    public void decline() {
+        this.transactionStatus = Status.failed;
+    }
 }
