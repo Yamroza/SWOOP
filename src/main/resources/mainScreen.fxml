@@ -22,17 +22,12 @@
       </ScrollPane>
       <AnchorPane prefHeight="100.0" prefWidth="940.0">
          <children>
-            <Button layoutX="816.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" onAction="#MyAccountClicked" textAlignment="CENTER" wrapText="true">
+            <Button layoutX="816.0" layoutY="22.0" mnemonicParsing="false" onAction="#MyAccountClicked" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Segoe UI Light" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="695.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="Moje Ogłoszenia" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Segoe UI Light" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="571.0" layoutY="22.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" text="+" onAction="#NewOfferClicked">
+            <Button layoutX="693.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
                <font>
                   <Font name="Segoe UI Light" size="23.0" />
                </font>
@@ -43,7 +38,7 @@
                </font>
             </TextField>
             <ComboBox layoutX="421.0" layoutY="34.0" prefHeight="32.0" prefWidth="120.0" promptText="w..." />
-            <Text layoutX="569.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
+            <Text layoutX="691.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
                <font>
                   <Font name="Segoe UI Light" size="10.0" />
                </font>
