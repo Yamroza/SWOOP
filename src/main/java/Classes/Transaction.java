@@ -12,16 +12,13 @@ public class Transaction {
     public User buyer;
     public Offer buyersOffer;
 
-    public enum status {
-        active, inactive
+
+    public Transaction(User seller, Offer sellerOffer, User buyer, Offer buyersOffer,  LocalDate startDate) {
+        this.seller = seller;
+        this.sellersOffer = sellerOffer;
+        this.buyer = buyer;
+        this.buyersOffer = buyersOffer;
+        this.startTransactionDate = startDate;
     }
-
-    public Transaction(User startSeller, Offer startOffer, LocalDate startDate) {
-        seller = startSeller;
-        sellersOffer = startOffer;
-        startTransactionDate = startDate;
-    }
-
-
 
 }
