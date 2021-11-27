@@ -16,7 +16,7 @@ public class AccountScreen {
 
     @FXML
     private void SaveChangesClicked(ActionEvent e) throws IOException {
-        App.setRoot("offerScreen");
+        App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
