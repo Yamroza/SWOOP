@@ -6,7 +6,6 @@ public class Transaction {
     private User seller;
     private Offer sellersOffer;
     private LocalDate transactionDate;
-
     public User buyer;
     public Offer buyersOffer;
 
@@ -14,9 +13,11 @@ public class Transaction {
         transactionDate = LocalDate.now();
     }
 
-    public Transaction(User startSeller, Offer startOffer) {
-        seller = startSeller;
-        sellersOffer = startOffer;
+    public Transaction(User seller, Offer offer, User buyer, Offer buyersOffer) {
+        this.seller = seller;
+        this.sellersOffer = offer;
+        this.buyer = buyer;
+        this.buyersOffer = buyersOffer;
         transactionDate = LocalDate.now();
     }
 

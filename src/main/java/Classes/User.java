@@ -16,6 +16,14 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+    
+    public User(String username, String password, String name, String surname, LocalDate birthDate) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
         this.accountCreationTime = LocalDateTime.now();
     }
 
