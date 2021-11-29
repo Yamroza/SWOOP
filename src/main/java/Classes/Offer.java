@@ -4,17 +4,22 @@ public class Offer {
     String itemName;
     String itemDescription;
     String itemCategory;
-    Boolean isItemForExchange;
+    Boolean isForExchange;
+    Boolean isForSale;
     Float price;
     User seller;
     // photo
 
     public Offer() {}
 
-    public Offer(String itemName, String itemDescription, String itemCategory, User seller) {
+    public Offer(String itemName, String itemDescription, String itemCategory,
+                 Boolean isForExchange, Boolean isForSale, Float price, User seller) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;
+        this.isForExchange = isForExchange;
+        this.isForSale = isForSale;
+        this.price = price;
         this.seller = seller;
     }
 
@@ -43,11 +48,19 @@ public class Offer {
     }
 
     public Boolean getItemForExchange() {
-        return isItemForExchange;
+        return isForExchange;
     }
 
-    public void setItemForExchange(Boolean itemForExchange) {
-        isItemForExchange = itemForExchange;
+    public void setItemForExchange(Boolean isForExchange) {
+        this.isForExchange = isForExchange;
+    }
+
+    public Boolean getIsForSale() {
+        return this.isForSale;
+    }
+
+    public void setIsForSale(Boolean isForSale) {
+        this.isForSale = isForSale;
     }
 
     public Float getPrice() {
