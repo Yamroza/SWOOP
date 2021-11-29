@@ -9,6 +9,11 @@ public class Transaction {
     public User buyer;
     public Offer buyersOffer;
 
+    private enum Status {
+        completed, in_progress, failed
+    }
+
+
     public Transaction() {
         transactionDate = LocalDate.now();
     }
