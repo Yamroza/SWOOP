@@ -1,9 +1,12 @@
 package Database;
+import Classes.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 
 
 public class Connecting {
@@ -30,10 +33,6 @@ public class Connecting {
         return conn;
     }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
     public void close() {
         if (conn != null) {
             try {
@@ -45,5 +44,28 @@ public class Connecting {
             conn = null;
         }
     }
+
+    /*public void addAccount(int id, String username, String password, LocalDate creation_time){
+
+
+        }*/
+    public void addTable() throws SQLException {
+        Statement stmt = null;
+        try {
+            stmt = conn.createStatement();
+            stmt.execute("Drop TABLE TRANSACTIONS");
+            log.info("Droping table");
+        } catch (SQLException e) {
+            log.error("Unable to drop the database table", e);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
 }
+
 
