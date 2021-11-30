@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -38,8 +39,12 @@ public class App extends Application {
             return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Users.addUser("admin", "admin");
+        /* System.out.println("Connecting to magical database...");
+        Connecting DB = new Connecting("z27", "9wdzsz");
+        System.out.println("Closed magical database...");
+        DB.close(); */
         launch();
     }
 
