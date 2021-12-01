@@ -1,6 +1,7 @@
 package GUI;
 
 import Classes.User;
+import Database.Connecting;
 import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,13 +10,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class AccountScreen {
 
     public Button saveChangesButton;
     @FXML
-    TextField usernameInput;
+    TextField loginName;
 
     @FXML
     TextField nameInput;
@@ -36,10 +38,11 @@ public class AccountScreen {
     }
 
     @FXML
-    private void SaveChangesClicked(ActionEvent e) throws IOException {
-        App.setRoot("mainScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
+    private void SaveChangesClicked(ActionEvent e) throws IOException, SQLException {
+        User loggedUser = Users.getLoggedUser();
+        loggedUser.setName(nameInput.getText());
+        loggedUser.setSurname(surnameInput.getText());
+        loggedUser.updateDatabase();
     }
 
     @FXML
@@ -50,8 +53,10 @@ public class AccountScreen {
     }
 
     @FXML
-    private void initialize()
-    {
-
+    private void initialize() throws SQLException {
+        User loggedUser = Users.getLoggedUser();
+        loginName.setText(loggedUser.getLogin());
+        nameInput.setText(loggedUser.getName());
+        surnameInput.setText(loggedUser.getSurname());
     }
 }
