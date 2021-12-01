@@ -13,10 +13,10 @@ public class Offers {
         offerList.add(newOffer);
     }
 
-    public static void addOffer(String itemName, String itemDescription, String itemCategory,
+    public static void addOffer(int offer_id, String itemName, String itemDescription, String itemCategory,
                                 Boolean isForExchange, Boolean isForSale, Float price, User seller) {
 
-        Offer newOffer = new Offer(itemName, itemDescription, itemCategory, isForExchange, isForSale, price, seller);
+        Offer newOffer = new Offer(offer_id, itemName, itemDescription, itemCategory, isForExchange, isForSale, price, seller);
         offerList.add(newOffer);
     }
 
