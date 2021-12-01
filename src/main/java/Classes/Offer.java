@@ -16,7 +16,8 @@ public class Offer {
     User seller;
     // photo
 
-    public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange, Boolean isForSale, Float price, User seller) {}
+    public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
+                 Boolean isForSale, Float price, User seller) {}
 
     public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
                  Boolean isForExchange, Boolean isForSale, Float price, User seller) {
