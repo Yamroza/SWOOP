@@ -18,7 +18,8 @@ public class Users {
 
 
 
-    public static boolean isUserInDatabase(Connecting DB, String username) throws SQLException {
+    public static boolean isUserInDatabase(String username) throws SQLException {
+        Connecting DB = new Connecting();
         boolean success = false;
         Connection conn = DB.getConn();
         if (conn != null) {
@@ -48,12 +49,14 @@ public class Users {
                 }
             }
         }
+        DB.close();
         return success;
     }
 
 
-    public static boolean loginCheck (Connecting DB, String username, String password) throws SQLException {
+    public static boolean loginCheck (String username, String password) throws SQLException {
         boolean success = false;
+        Connecting DB = new Connecting();
         Connection conn = DB.getConn();
         if (conn != null) {
             Statement stmt;
@@ -84,8 +87,11 @@ public class Users {
                 }
             }
         }
+        DB.close();
         return success;
     }
+
+
 
     public static ArrayList<User> getUsersList() {
         return usersList;
