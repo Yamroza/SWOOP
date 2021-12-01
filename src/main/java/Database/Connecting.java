@@ -120,10 +120,5 @@ public class Connecting {
         }
         return users;
     }
-
-    /*public void addAccount(int id, String login, String password, LocalDate creation_time){
-        Connecting.altertable
-    }
-    */
 }
 
