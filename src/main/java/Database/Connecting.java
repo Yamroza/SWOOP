@@ -2,11 +2,11 @@ package Database;
 import Classes.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Connecting {
@@ -62,6 +62,32 @@ public class Connecting {
                 }
             }
         }
+    }
+
+    public List<Category> getCategories() {
+        List<Category>categories = new ArrayList<Category>();
+        if (conn != null) {
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM categories");
+                while (rs.next()) {
+                    Category category = new Category();
+                    category.setCategory_id(rs.getInt("id"));
+                    category.setName(rs.getString("name"));
+                    categories.add(category);
+                    }
+                } catch (SQLException e) {
+                log.error("Unable to get categories", e);
+                } finally {
+                if (stmt != null) {
+                    try { stmt.close();
+                        } catch (SQLException e) {
+                        }
+                    }
+                }
+            }
+        return categories;
     }
 
     /*public void addAccount(int id, String username, String password, LocalDate creation_time){
