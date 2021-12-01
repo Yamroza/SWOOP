@@ -53,10 +53,9 @@ public class LoginScreen {
 
     @FXML
     private void LoginClicked(ActionEvent e) throws IOException, SQLException {
-        Connecting DB = new Connecting();
         String login = loginInput.getText();
         String password = passwordInput.getText();
-        if (Users.loginCheck(DB ,login, password))
+        if (Users.loginCheck(login, password))
         {
             App.setRoot("mainScreen");
             App.myStage.setScene(App.scene);
@@ -64,22 +63,15 @@ public class LoginScreen {
             App.myStage.setX(320);
             App.myStage.setY(50);
         }
-        DB.close();
     }
 
     @FXML
     private void RegisterClicked(ActionEvent e) throws IOException {
-        App.setRoot("reg-chngpassScreen");
+        App.setRoot("registerScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
 
-    @FXML
-    private void CancelClicked(ActionEvent e) throws IOException {
-        App.setRoot("loginScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
-    }
 
 }
 
