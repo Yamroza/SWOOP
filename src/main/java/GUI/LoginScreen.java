@@ -2,6 +2,7 @@ package GUI;
 
 import Classes.*;
 
+import Database.Connecting;
 import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginScreen {
@@ -50,12 +52,19 @@ public class LoginScreen {
     PasswordField passwordInput;
 
     @FXML
-    private void LoginClicked(ActionEvent e) throws IOException {
-        App.setRoot("mainScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
-        App.myStage.setX(320);
-        App.myStage.setY(50);
+    private void LoginClicked(ActionEvent e) throws IOException, SQLException {
+        Connecting DB = new Connecting();
+        String login = loginInput.getText();
+        String password = passwordInput.getText();
+        if (Users.loginCheck(DB ,login, password))
+        {
+            App.setRoot("mainScreen");
+            App.myStage.setScene(App.scene);
+            App.myStage.sizeToScene();
+            App.myStage.setX(320);
+            App.myStage.setY(50);
+        }
+        DB.close();
     }
 
     @FXML

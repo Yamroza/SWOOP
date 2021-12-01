@@ -39,10 +39,11 @@ public class App extends Application {
             return fxmlLoader.load();
     }
 
-    public static void main(String[] args) throws SQLException{
-        Connecting DB = new Connecting();
-        DB.alterTable("INSERT into categories values (1, 'piwo')");
-        DB.close();
+
+    public static void main(String[] args) {
+        // DB.alterTable("INSERT into categories values (1, 'piwo')");
+        // Connecting DB = new Connecting();
+        // DB.close();
         /* System.out.println("Connecting to magical database...");
         Connecting DB = new Connecting("z27", "9wdzsz");
         System.out.println("Closed magical database...");
