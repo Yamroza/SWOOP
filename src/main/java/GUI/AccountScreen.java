@@ -47,7 +47,7 @@ public class AccountScreen {
 
     @FXML
     private void ChangePassClicked(ActionEvent e) throws IOException {
-        App.setRoot("reg-chngpassScreen");
+        App.setRoot("changePasswordScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }

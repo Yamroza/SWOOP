@@ -55,7 +55,7 @@
    <TextField fx:id="nameInput" layoutX="129.0" layoutY="146.0" prefHeight="26.0" prefWidth="238.0" />
    <TextField fx:id="surnameInput" layoutX="131.0" layoutY="187.0" prefHeight="26.0" prefWidth="238.0" />
    <TextField fx:id="loginName" layoutX="206.0" layoutY="242.0" prefHeight="26.0" prefWidth="164.0" />
-   <Button layoutX="177.0" layoutY="289.0" mnemonicParsing="false" onAction="#ChangePassClicked" prefHeight="26.0" prefWidth="102.0" text="zmień hasło" />
+   <Button fx:id="changePasswordButton" layoutX="177.0" layoutY="289.0" mnemonicParsing="false" onAction="#ChangePassClicked" prefHeight="26.0" prefWidth="102.0" text="zmień hasło" />
    <Button layoutX="447.0" layoutY="380.0" mnemonicParsing="false" text="zmień profilowe" />
    <Button layoutX="568.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitClicked" text="Wyjdź">
       <font>
