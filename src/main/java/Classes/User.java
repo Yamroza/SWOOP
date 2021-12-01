@@ -94,7 +94,7 @@ public class User {
     }
 
     public String generate_update(){
-        return ("UPDATE users SET name = '" + name + "', surname = '" + surname +"' " +
+        return ("UPDATE users SET password = '" + password +"',name = '" + name + "', surname = '" + surname +"' " +
                 "WHERE login = '" + login + "'");
     }
 
