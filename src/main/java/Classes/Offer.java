@@ -1,6 +1,12 @@
 package Classes;
 
+import Database.Connecting;
+
+import java.sql.SQLException;
+
 public class Offer {
+
+    int offer_id;
     String itemName;
     String itemDescription;
     String itemCategory;
@@ -12,8 +18,9 @@ public class Offer {
 
     public Offer() {}
 
-    public Offer(String itemName, String itemDescription, String itemCategory,
+    public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
                  Boolean isForExchange, Boolean isForSale, Float price, User seller) {
+        this.offer_id = offer_id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;
@@ -21,6 +28,13 @@ public class Offer {
         this.isForSale = isForSale;
         this.price = price;
         this.seller = seller;
+    }
+    public int getOffer_id() {
+        return offer_id;
+    }
+
+    public void setOffer_id(int offer_id) {
+        this.offer_id = offer_id;
     }
 
     public String getItemName() {
@@ -77,5 +91,27 @@ public class Offer {
 
     public void setSeller(User seller) {
         this.seller = seller;
+    }
+
+    public int isForExchangeInt() {
+        if (isForExchange) {return 1;}
+        else {return 0;}
+    }
+
+    public int isForSaleInt() {
+        if (isForSale) {return 1;}
+        else {return 0;}
+    }
+
+    public String generate_insert(){
+        return ("INSERT INTO NEW_OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
+                "VALUES (" + offer_id + " , '" + itemName  + "' , '" + itemDescription + "' , '" + itemCategory + "' , " +
+                this.isForExchangeInt() + " , "  + this.isForSaleInt() + " , " + price + " , '" + seller.getName() + "'" + ")");
+    }
+
+    public void addToDatabase() throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(this.generate_insert());
+        DB.close();
     }
 }
