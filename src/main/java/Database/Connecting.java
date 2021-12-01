@@ -104,8 +104,10 @@ public class Connecting {
                     user.setPassword(rs.getString("password"));
                     user.setName(rs.getString("name"));
                     user.setSurname(rs.getString("surname"));
-                    //user.setBirthDate(LocalDate.parse(rs.getString("birthdate")));
-                    //user.setAccountCreationDate(LocalDate.parse(rs.getString("accountcreationdate")));
+                    if(rs.getDate("birthdate") != null){
+                        user.setBirthDate(rs.getDate("birthdate").toLocalDate());}
+                    if(rs.getDate("birthdate") != null){
+                        user.setAccountCreationDate(rs.getDate("accountcreationdate").toLocalDate());}
                     users.add(user);
                 }
             } catch (SQLException e) {
@@ -120,5 +122,30 @@ public class Connecting {
         }
         return users;
     }
+
+   /* public List<Transaction> getTransactions() {
+        List<Transaction>transactions = new ArrayList<Transaction>();
+        if (conn != null) {
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM TRANSACTIONS");
+                while (rs.next()) {
+                    Transaction transaction = new Transaction();
+                    ....
+                    users.add(user);
+                }
+            } catch (SQLException e) {
+                log.error("Unable to get transactions", e);
+            } finally {
+                if (stmt != null) {
+                    try { stmt.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+        }
+        return transactions;
+    }*/
 }
 
