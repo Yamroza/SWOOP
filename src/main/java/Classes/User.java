@@ -3,9 +3,11 @@ package Classes;
 import Database.Connecting;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 
 public class User {
     String login;
@@ -72,6 +74,10 @@ public class User {
         return birthDate;
     }
 
+    public String dateToString(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    }
+
     public LocalDate getAccountCreationDate() {
         return accountCreationDate;
     }
@@ -89,8 +95,9 @@ public class User {
     }
 
     public String generate_insert(){
-        return ("INSERT INTO USERS (login, password, name, surname) VALUES " +
-                "('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
+        return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate) VALUES " +
+                "('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "' , '" +
+                this.dateToString(birthDate) + "' , '" + this.dateToString(accountCreationDate) + "'" + ")");
     }
 
     public String generate_update(){

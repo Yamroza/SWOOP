@@ -4,6 +4,7 @@ import Database.Connecting;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
     private User seller;
@@ -69,10 +70,14 @@ public class Transaction {
         this.buyersOffer = buyersOffer;
     }
 
+    public String dateToString(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    }
+
     public String generate_insert(){
-        return ("INSERT INTO TRANSACTIONS (seller, seller_offer, buyer, buyers_offer) " +
-                "VALUES ('" + seller.getName() + "' , '" + sellersOffer.getItemName() + "' , '"
-                + buyer.getName() + "' , '" + buyersOffer.getItemName() + "'" + ")");
+        return ("INSERT INTO TRANSACTIONS (seller, seller_offer, buyer, buyers_offer, transaction_date) " +
+                "VALUES ('" + seller.getName() + "' , '" + sellersOffer.getItemName() + "' , '" + buyer.getName() +
+                "' , '" + buyersOffer.getItemName() + "' , '" + this.dateToString(transactionDate) + "'" + ")");
     }
 
     public void addToDatabase() throws SQLException {
