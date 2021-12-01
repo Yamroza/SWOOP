@@ -11,20 +11,24 @@ public class User {
     LocalDate birthDate;
     // profile pic
     // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item
-    LocalDateTime accountCreationTime;
+    LocalDate accountCreationTime;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.name = "";
+        this.surname = "";
+        this.birthDate = LocalDate.now();
+        this.accountCreationTime = LocalDate.now();
     }
-    
-    public User(String username, String password, String name, String surname, LocalDate birthDate) {
+
+    public User(String username, String password, String name, String surname, LocalDate birthDate, LocalDate accountCreationTime) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        this.accountCreationTime = LocalDateTime.now();
+        this.accountCreationTime = accountCreationTime;
     }
 
     public String getUsername() {
@@ -43,7 +47,31 @@ public class User {
         this.password = password;
     }
 
-    public LocalDateTime getAccountCreationTime() {
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public LocalDate getAccountCreationTime() {
         return accountCreationTime;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }

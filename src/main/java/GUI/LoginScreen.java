@@ -5,6 +5,7 @@ import Classes.*;
 import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginScreen {
+    public Button loginButton;
+    public Button registerButton;
 
 
 //
@@ -41,6 +44,12 @@ public class LoginScreen {
 //    }
 
     @FXML
+    TextField loginInput;
+
+    @FXML
+    PasswordField passwordInput;
+
+    @FXML
     private void LoginClicked(ActionEvent e) throws IOException {
         App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
@@ -51,7 +60,7 @@ public class LoginScreen {
 
     @FXML
     private void RegisterClicked(ActionEvent e) throws IOException {
-        App.setRoot("mainScreen");
+        App.setRoot("reg-chngpassScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }

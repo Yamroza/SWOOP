@@ -39,8 +39,7 @@ public class App extends Application {
             return fxmlLoader.load();
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Users.addUser("admin", "admin");
+    public static void main(String[] args) throws SQLException{
         Connecting DB = new Connecting();
         DB.alterTable("SELECT * FROM categories");
         DB.close();
