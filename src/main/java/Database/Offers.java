@@ -33,7 +33,7 @@ public class Offers {
     public ArrayList<Offer> getOffersByUsername(String sellerUsername) {
         ArrayList<Offer> sellersOffers = new ArrayList<>();
         for (Offer offer : offerList) {
-            if (Objects.equals(offer.getSeller().getUsername(), sellerUsername)) {
+            if (Objects.equals(offer.getSeller().getLogin(), sellerUsername)) {
                 sellersOffers.add(offer);
             }
         }
