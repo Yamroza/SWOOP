@@ -52,6 +52,9 @@ public class LoginScreen {
     PasswordField passwordInput;
 
     @FXML
+    Text errorMessage;
+
+    @FXML
     private void LoginClicked(ActionEvent e) throws IOException, SQLException {
         String login = loginInput.getText();
         String password = passwordInput.getText();
@@ -63,6 +66,7 @@ public class LoginScreen {
             App.myStage.setX(320);
             App.myStage.setY(50);
         }
+        errorMessage.setText("Login or password is incorrect.");
     }
 
     @FXML

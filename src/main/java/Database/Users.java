@@ -17,7 +17,6 @@ public class Users {
     static User loggedUser;
 
 
-
     public static boolean isUserInDatabase(String username) throws SQLException {
         Connecting DB = new Connecting();
         boolean success = false;

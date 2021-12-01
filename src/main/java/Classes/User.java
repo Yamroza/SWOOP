@@ -89,12 +89,25 @@ public class User {
     }
 
     public String generate_insert(){
-        return ("INSERT INTO USERS (login, password, name, surname) VALUES ('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
+        return ("INSERT INTO USERS (login, password, name, surname) VALUES " +
+                "('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
+    }
+
+    public String generate_update(){
+        return ("UPDATE users SET name = '" + name + "', surname = '" + surname +"' " +
+                "WHERE login = '" + login + "'");
     }
 
     public void addToDatabase() throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(this.generate_insert());
+        DB.close();
+    }
+
+    public void updateDatabase() throws SQLException
+    {
+        Connecting DB = new Connecting();
+        DB.alterTable(this.generate_update());
         DB.close();
     }
 }
