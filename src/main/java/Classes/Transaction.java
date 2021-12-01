@@ -1,5 +1,8 @@
 package Classes;
 
+import Database.Connecting;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Transaction {
@@ -66,5 +69,16 @@ public class Transaction {
         this.buyersOffer = buyersOffer;
     }
 
+    public String generate_insert(){
+        return ("INSERT INTO TRANSACTIONS (seller, seller_offer, buyer, buyers_offer) " +
+                "VALUES ('" + seller.getName() + "' , '" + sellersOffer.getItemName() + "' , '"
+                + buyer.getName() + "' , '" + buyersOffer.getItemName() + "'" + ")");
+    }
+
+    public void addToDatabase() throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(this.generate_insert());
+        DB.close();
+    }
 
 }
