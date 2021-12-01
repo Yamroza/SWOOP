@@ -11,6 +11,7 @@ W ramach funkcjonalności prototypu dostępne są funkcje:
 - stworzenie konta użytkownika (rejestracja),
 - zalogowanie się na swoje konto (ze sprawdzeniem, czy konto istnieje w bazie danych),
 - zmiana danych użytkownika (wraz z zaktualizowaniem bazy),
+- dodanie ogłoszenia (niepodpięte jeszcze do GUI, ale dostępne z poziomu kodu),
 - przejrzenie ekranów i okien z GUI.
 
-Cały prototyp został napisany w ustalony wcześniej środowisku, z użyciem Gita oraz Mavena.
+Cały prototyp został napisany w ustalonym wcześniej środowisku, z użyciem Gita oraz Mavena.
