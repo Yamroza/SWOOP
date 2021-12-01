@@ -4,39 +4,48 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class User {
-    String username;
+    String login;
     String password;
     String name;
     String surname;
     LocalDate birthDate;
     // profile pic
     // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item
-    LocalDate accountCreationTime;
+    LocalDate accountCreationDate;
 
-    public User(String username, String password) {
-        this.username = username;
+    public User(String login, String password) {
+        this.login = login;
         this.password = password;
         this.name = "";
         this.surname = "";
         this.birthDate = LocalDate.now();
-        this.accountCreationTime = LocalDate.now();
+        this.accountCreationDate = LocalDate.now();
     }
 
-    public User(String username, String password, String name, String surname, LocalDate birthDate, LocalDate accountCreationTime) {
-        this.username = username;
+    public void setAccountCreationDate(LocalDate accountCreationDate) {
+        this.accountCreationDate = accountCreationDate;
+    }
+
+    public User(String login, String password, String name, String surname, LocalDate birthDate, LocalDate accountCreationDate) {
+        this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        this.accountCreationTime = accountCreationTime;
+        this.accountCreationDate = accountCreationDate;
     }
 
-    public String getUsername() {
-        return username;
+    public User() {
+        this.birthDate = LocalDate.now();
+        this.accountCreationDate = LocalDate.now();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String Login) {
+        this.login = Login;
     }
 
     public String getPassword() {
@@ -59,8 +68,8 @@ public class User {
         return birthDate;
     }
 
-    public LocalDate getAccountCreationTime() {
-        return accountCreationTime;
+    public LocalDate getAccountCreationDate() {
+        return accountCreationDate;
     }
 
     public void setName(String name) {

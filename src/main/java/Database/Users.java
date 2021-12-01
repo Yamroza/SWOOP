@@ -16,7 +16,7 @@ public class Users {
 
     public static User checkIfUserIsInBase(String givenUsername) {
         for (User user : usersList) {
-            if (Objects.equals(user.getUsername(), givenUsername)) {
+            if (Objects.equals(user.getLogin(), givenUsername)) {
                 return user;
             }
         }
