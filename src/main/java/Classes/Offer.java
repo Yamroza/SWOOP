@@ -104,7 +104,7 @@ public class Offer {
     }
 
     public String generate_insert(){
-        return ("INSERT INTO NEW_OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
+        return ("INSERT INTO OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
                 "VALUES (" + offer_id + " , '" + itemName  + "' , '" + itemDescription + "' , '" + itemCategory + "' , " +
                 this.isForExchangeInt() + " , "  + this.isForSaleInt() + " , " + price + " , '" + seller.getName() + "'" + ")");
     }
