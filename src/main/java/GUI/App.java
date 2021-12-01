@@ -41,7 +41,7 @@ public class App extends Application {
 
     public static void main(String[] args) throws SQLException{
         Connecting DB = new Connecting();
-        DB.alterTable("SELECT * FROM categories");
+        DB.alterTable("INSERT into categories values (1, 'piwo')");
         DB.close();
         /* System.out.println("Connecting to magical database...");
         Connecting DB = new Connecting("z27", "9wdzsz");
