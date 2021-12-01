@@ -2,6 +2,7 @@ package Classes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.text.DateFormat;
 
 public class User {
     String login;
@@ -82,5 +83,10 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String generate_insert(){
+        String insert = ("INSERT INTO USERS (login, password, name, surname) VALUES ('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
+        return insert;
     }
 }
