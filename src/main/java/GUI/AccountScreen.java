@@ -1,11 +1,32 @@
 package GUI;
 
+import Classes.User;
+import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class AccountScreen {
+
+    public Button saveChangesButton;
+    @FXML
+    TextField usernameInput;
+
+    @FXML
+    TextField nameInput;
+
+    @FXML
+    TextField surnameInput;
+
+    @FXML
+    DatePicker dateInput;
+
+
 
     @FXML
     private void ExitClicked(ActionEvent e) throws IOException {
@@ -26,5 +47,11 @@ public class AccountScreen {
         App.setRoot("reg-chngpassScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
+    }
+
+    @FXML
+    private void initialize()
+    {
+
     }
 }
