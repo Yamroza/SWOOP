@@ -70,23 +70,23 @@ public class Connecting {
             Statement stmt = null;
             try {
                 stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM categories");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM CATEGORIES");
                 while (rs.next()) {
                     Category category = new Category();
-                    category.setCategory_id(rs.getInt("id"));
+                    category.setCategory_id(rs.getInt("category_id"));
                     category.setName(rs.getString("name"));
                     categories.add(category);
-                    }
-                } catch (SQLException e) {
+                }
+            } catch (SQLException e) {
                 log.error("Unable to get categories", e);
-                } finally {
+            } finally {
                 if (stmt != null) {
                     try { stmt.close();
-                        } catch (SQLException e) {
-                        }
+                    } catch (SQLException e) {
                     }
                 }
             }
+        }
         return categories;
     }
 
@@ -95,5 +95,4 @@ public class Connecting {
     }
     */
 }
-
 
