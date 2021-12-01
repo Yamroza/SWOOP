@@ -8,3 +8,5 @@
 - Aleksandra Majewska, 310832
 - Gabriela Topczewska, 310961
 - Radosław Kostrzewski, 310757
+
+## **UWAGA** Działający prototyp na etap 2 projektu znajduje się na branchu class_development!
