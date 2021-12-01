@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,8 +17,9 @@ import java.time.LocalDate;
 public class AccountScreen {
 
     public Button saveChangesButton;
+
     @FXML
-    TextField loginName;
+    Text loginName;
 
     @FXML
     TextField nameInput;
@@ -58,5 +60,6 @@ public class AccountScreen {
         loginName.setText(loggedUser.getLogin());
         nameInput.setText(loggedUser.getName());
         surnameInput.setText(loggedUser.getSurname());
+
     }
 }
