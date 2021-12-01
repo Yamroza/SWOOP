@@ -1,5 +1,8 @@
 package Classes;
 
+import Database.Connecting;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.text.DateFormat;
@@ -86,7 +89,12 @@ public class User {
     }
 
     public String generate_insert(){
-        String insert = ("INSERT INTO USERS (login, password, name, surname) VALUES ('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
-        return insert;
+        return ("INSERT INTO USERS (login, password, name, surname) VALUES ('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "'" + ")");
+    }
+
+    public void addToDatabase() throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(this.generate_insert());
+        DB.close();
     }
 }
