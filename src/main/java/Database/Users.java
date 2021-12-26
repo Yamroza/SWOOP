@@ -1,6 +1,5 @@
 package Database;
 
-import Classes.Category;
 import Classes.User;
 
 import java.sql.Connection;
@@ -8,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.time.format.DateTimeFormatter;
 
 public class Users {
 
@@ -70,7 +71,12 @@ public class Users {
                     user.setPassword(rs.getString("password"));
                     user.setName(rs.getString("name"));
                     user.setSurname(rs.getString("surname"));
-                    //user.setBirthDate(LocalDate.parse(rs.getString("birthdate")));
+                    if(rs.getString("birthdate") != null) {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        LocalDateTime tmpDate = LocalDateTime.parse(rs.getString("birthdate"), formatter);
+                        LocalDate birthDate = tmpDate.toLocalDate();
+                        user.setBirthDate(birthDate);
+                    }
                     //user.setAccountCreationTime(LocalDate.parse(rs.getString("accountcreationdate")));
                     setLoggedUser(user);
                 }

@@ -44,6 +44,7 @@ public class AccountScreen {
         User loggedUser = Users.getLoggedUser();
         loggedUser.setName(nameInput.getText());
         loggedUser.setSurname(surnameInput.getText());
+        loggedUser.setBirthDate(dateInput.getValue());
         loggedUser.updateDatabase();
     }
 
@@ -60,6 +61,6 @@ public class AccountScreen {
         loginName.setText(loggedUser.getLogin());
         nameInput.setText(loggedUser.getName());
         surnameInput.setText(loggedUser.getSurname());
-
+        dateInput.setValue(loggedUser.getBirthDate());
     }
 }

@@ -75,7 +75,5 @@ public class LoginScreen {
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
-
-
 }
 

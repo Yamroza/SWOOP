@@ -41,7 +41,6 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
-        // DB.alterTable("INSERT into categories values (1, 'piwo')");
         // Connecting DB = new Connecting();
         // DB.close();
         /* System.out.println("Connecting to magical database...");

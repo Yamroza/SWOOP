@@ -75,7 +75,7 @@ public class User {
     }
 
     public String dateToString(LocalDate date) {
-        return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public LocalDate getAccountCreationDate() {
@@ -101,7 +101,8 @@ public class User {
     }
 
     public String generate_update(){
-        return ("UPDATE users SET password = '" + password +"',name = '" + name + "', surname = '" + surname +"' " +
+        return ("UPDATE users SET password = '" + password +"', name = '" + name + "', surname = '" + surname +"' " +
+                ", birthdate = TO_DATE('" + this.dateToString(birthDate) + "', 'YYYY-MM-DD') " +
                 "WHERE login = '" + login + "'");
     }
 
