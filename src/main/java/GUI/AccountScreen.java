@@ -1,9 +1,7 @@
 package GUI;
 
 import Classes.User;
-import Database.Connecting;
 import Database.Users;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -12,7 +10,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class AccountScreen {
 
@@ -33,30 +30,30 @@ public class AccountScreen {
 
 
     @FXML
-    private void ExitClicked(ActionEvent e) throws IOException {
+    private void ExitClicked() throws IOException {
         App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
 
     @FXML
-    private void SaveChangesClicked(ActionEvent e) throws IOException, SQLException {
+    private void SaveChangesClicked() throws SQLException {
         User loggedUser = Users.getLoggedUser();
         loggedUser.setName(nameInput.getText());
         loggedUser.setSurname(surnameInput.getText());
         loggedUser.setBirthDate(dateInput.getValue());
-        loggedUser.updateDatabase();
+        Users.updateUserInDatabase();
     }
 
     @FXML
-    private void ChangePassClicked(ActionEvent e) throws IOException {
+    private void ChangePassClicked() throws IOException {
         App.setRoot("changePasswordScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() {
         User loggedUser = Users.getLoggedUser();
         loginName.setText(loggedUser.getLogin());
         nameInput.setText(loggedUser.getName());

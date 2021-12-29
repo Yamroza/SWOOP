@@ -49,7 +49,7 @@ public class RegisterScreen {
             return;
         }
         User newUser = new User(login, password);
-        newUser.addToDatabase();
+        Users.addUserToDatabase(newUser);
         App.setRoot("loginScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();

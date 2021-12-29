@@ -8,18 +8,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
 
 public class Users {
 
     static User loggedUser;
 
-    private static LocalDate parseDate(String date)
+    private static LocalDate parseStringToDate(String date)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime resultDate = LocalDateTime.parse(date, formatter);
         return resultDate.toLocalDate();
+    }
+
+    public static String parseDateToString(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     private static User returnUser(ResultSet rs) throws SQLException{
@@ -30,12 +33,12 @@ public class Users {
         user.setSurname(rs.getString("surname"));
         String birthDate = rs.getString("birthdate");
         if(birthDate != null) {
-            user.setBirthDate(parseDate(birthDate));
+            user.setBirthDate(parseStringToDate(birthDate));
         }
         String accountCreationDate = rs.getString("accountcreationdate");
         if(accountCreationDate != null)
         {
-            user.setAccountCreationDate(parseDate(accountCreationDate));
+            user.setAccountCreationDate(parseStringToDate(accountCreationDate));
         }
         return user;
     }
@@ -100,6 +103,32 @@ public class Users {
         return success;
     }
 
+    private static String generateInsert(User user){
+        return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate) VALUES " +
+                "('" + user.getLogin() + "' , '" + user.getPassword()  + "' , '" + user.getName() + "' , '" +
+                user.getSurname() + "' , TO_DATE('" + parseDateToString(user.getBirthDate()) + "', 'YYYY-MM-DD'), " +
+                "TO_DATE('" + parseDateToString(user.getAccountCreationDate()) + "', 'YYYY-MM-DD') )");
+    }
+
+    private static String generateUpdate(){
+        return ("UPDATE users SET password = '" + loggedUser.getPassword() +"', name = '" + loggedUser.getName() +
+                "', surname = '" + loggedUser.getSurname() +"' " +
+                ", birthdate = TO_DATE('" + parseDateToString(loggedUser.getBirthDate()) + "', 'YYYY-MM-DD') " +
+                "WHERE login = '" + loggedUser.getLogin() + "'");
+    }
+
+    public static void addUserToDatabase(User user) throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(generateInsert(user));
+        DB.close();
+    }
+
+    public static void updateUserInDatabase() throws SQLException
+    {
+        Connecting DB = new Connecting();
+        DB.alterTable(generateUpdate());
+        DB.close();
+    }
 
     public static void setLoggedUser(User user) {
         loggedUser = user;

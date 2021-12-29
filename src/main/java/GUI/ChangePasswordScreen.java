@@ -41,7 +41,7 @@ public class ChangePasswordScreen {
         }
         User loggedUser = Users.getLoggedUser();
         loggedUser.setPassword(password);
-        loggedUser.updateDatabase();
+        Users.updateUserInDatabase();
         App.setRoot("accountScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();

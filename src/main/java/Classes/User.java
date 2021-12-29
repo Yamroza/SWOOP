@@ -1,13 +1,6 @@
 package Classes;
 
-import Database.Connecting;
-
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
 
 public class User {
     String login;
@@ -74,10 +67,6 @@ public class User {
         return birthDate;
     }
 
-    public String dateToString(LocalDate date) {
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    }
-
     public LocalDate getAccountCreationDate() {
         return accountCreationDate;
     }
@@ -94,28 +83,4 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public String generate_insert(){
-        return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate) VALUES " +
-                "('" + login + "' , '" + password  + "' , '" + name + "' , '" + surname + "' , '" +
-                this.dateToString(birthDate) + "' , '" + this.dateToString(accountCreationDate) + "'" + ")");
-    }
-
-    public String generate_update(){
-        return ("UPDATE users SET password = '" + password +"', name = '" + name + "', surname = '" + surname +"' " +
-                ", birthdate = TO_DATE('" + this.dateToString(birthDate) + "', 'YYYY-MM-DD') " +
-                "WHERE login = '" + login + "'");
-    }
-
-    public void addToDatabase() throws SQLException {
-        Connecting DB = new Connecting();
-        DB.alterTable(this.generate_insert());
-        DB.close();
-    }
-
-    public void updateDatabase() throws SQLException
-    {
-        Connecting DB = new Connecting();
-        DB.alterTable(this.generate_update());
-        DB.close();
-    }
 }
