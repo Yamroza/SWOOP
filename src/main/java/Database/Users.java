@@ -103,6 +103,34 @@ public class Users {
         return success;
     }
 
+    public static User getUserFromDatabase(String username) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        User user = new User();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Users WHERE Login LIKE '" + username);
+                while (rs.next()) {
+                    user = returnUser(rs);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return user;
+    }
+
     private static String generateInsert(User user){
         return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate) VALUES " +
                 "('" + user.getLogin() + "' , '" + user.getPassword()  + "' , '" + user.getName() + "' , '" +

@@ -30,11 +30,23 @@ public class Offer {
         this.price = price;
         this.seller = seller;
     }
-    public int getOffer_id() {
+
+    public Offer()
+    {
+        this.offer_id = -1;
+        this.itemName = null;
+        this.itemDescription = null;
+        this.itemCategory = null;
+        this.isForExchange = null;
+        this.isForSale = null;
+        this.price = null;
+        this.seller = null;
+    }
+    public int getOfferId() {
         return offer_id;
     }
 
-    public void setOffer_id(int offer_id) {
+    public void setOfferId(int offer_id) {
         this.offer_id = offer_id;
     }
 
@@ -62,11 +74,11 @@ public class Offer {
         this.itemCategory = itemCategory;
     }
 
-    public Boolean getItemForExchange() {
+    public Boolean getIsForExchange() {
         return isForExchange;
     }
 
-    public void setItemForExchange(Boolean isForExchange) {
+    public void setIsForExchange(Boolean isForExchange) {
         this.isForExchange = isForExchange;
     }
 

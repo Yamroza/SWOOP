@@ -1,5 +1,9 @@
 package Database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -59,5 +63,66 @@ public class Offers {
             }
         }
         return sellersOffers;
+    }
+
+    private static Offer returnOffer(ResultSet rs) throws SQLException {
+        Offer offer = new Offer();
+        offer.setOfferId(rs.getInt("offer_id"));
+        offer.setItemName(rs.getString("name"));
+        offer.setItemDescription(rs.getString("description"));
+        offer.setItemCategory(rs.getString("category"));
+        boolean isForExchange = (rs.getInt("for_exchange") == 1);
+        offer.setIsForExchange(isForExchange);
+        boolean isForSale = (rs.getInt("for_sale") == 1);
+        offer.setIsForSale(isForSale);
+        if(isForSale)
+        {
+            offer.setPrice(rs.getFloat("price"));
+        }
+        offer.setSeller(Users.getUserFromDatabase(rs.getString("seller")));
+        return offer;
+    }
+
+    private static String generateInsert(Offer offer){
+        int isForSale = offer.getIsForSale() ? 1 : 0;
+        int isForExchange = offer.getIsForExchange() ? 1 : 0;
+        return ("INSERT INTO OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
+                "VALUES ('" + offer.getOfferId() + "' , '" + offer.getItemName()  + "' , '" + offer.getItemDescription()
+                + "' , '" + offer.getItemCategory() + "' , '" + isForExchange + "' , '" + isForSale + "' , '" +
+                offer.getPrice() + "' , '" + offer.getSeller().getLogin() + "')");
+    }
+
+    public static int getNewOfferId() throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        int newID = -1;
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("Select Max(OFFER_ID) as max from OFFERS");
+                while (rs.next()) {
+                    newID = rs.getInt("max");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return newID + 1;
+    }
+
+    public static void addOfferToDatabase(Offer offer) throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(generateInsert(offer));
+        DB.close();
     }
 }
