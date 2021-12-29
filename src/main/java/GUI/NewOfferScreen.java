@@ -2,6 +2,7 @@ package GUI;
 
 import Classes.*;
 
+import Database.Categories;
 import Database.Offers;
 import Database.Users;
 import javafx.fxml.FXML;
@@ -75,12 +76,8 @@ public class NewOfferScreen {
     }
 
     @FXML
-    private void initialize()
-    {
-        category.getItems().addAll(
-                "Sport",
-                "Piwo",
-                "Edukacja"
-        );
+    private void initialize() throws SQLException {
+        category.setItems(Categories.getCategories());
+        category.getSelectionModel().selectFirst();
     }
 }
