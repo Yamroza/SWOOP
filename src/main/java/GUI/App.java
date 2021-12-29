@@ -17,9 +17,9 @@ import java.io.IOException;
 public class App extends Application {
 
     static Stage myStage;
-    static Stage secondStage;
+    //static Stage secondStage;
     static Scene scene;
-    static Scene secondScene;
+    //static Scene secondScene;
 
     @Override
     public void start(Stage stage) throws IOException {

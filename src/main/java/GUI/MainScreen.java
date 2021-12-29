@@ -21,7 +21,14 @@ public class MainScreen {
     public TextField toTextField;
 
     @FXML
-    private void NewOfferClicked(ActionEvent e) throws IOException {
+    private void ButtonClicked(ActionEvent e) throws IOException{
+        App.setRoot("offerScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
+    }
+
+    @FXML
+    private void NewOfferClicked(ActionEvent e) throws IOException{
         App.setRoot("newOfferScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
