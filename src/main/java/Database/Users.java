@@ -9,13 +9,36 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.time.format.DateTimeFormatter;
 
 public class Users {
 
-    static ArrayList<User> usersList = new ArrayList<>();
     static User loggedUser;
+
+    private static LocalDate parseDate(String date)
+    {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime resultDate = LocalDateTime.parse(date, formatter);
+        return resultDate.toLocalDate();
+    }
+
+    private static User returnUser(ResultSet rs) throws SQLException{
+        User user = new User();
+        user.setLogin(rs.getString("login"));
+        user.setPassword(rs.getString("password"));
+        user.setName(rs.getString("name"));
+        user.setSurname(rs.getString("surname"));
+        String birthDate = rs.getString("birthdate");
+        if(birthDate != null) {
+            user.setBirthDate(parseDate(birthDate));
+        }
+        String accountCreationDate = rs.getString("accountcreationdate");
+        if(accountCreationDate != null)
+        {
+            user.setAccountCreationDate(parseDate(accountCreationDate));
+        }
+        return user;
+    }
 
 
     public static boolean isUserInDatabase(String username) throws SQLException {
@@ -29,13 +52,6 @@ public class Users {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM Users WHERE Login LIKE '" + username + "'");
                 while (rs.next()) {
                     success = true;
-                    User user = new User();
-                    user.setLogin(rs.getString("login"));
-                    user.setPassword(rs.getString("password"));
-                    user.setName(rs.getString("name"));
-                    user.setSurname(rs.getString("surname"));
-                    //user.setBirthDate(LocalDate.parse(rs.getString("birthdate")));
-                    //user.setAccountCreationTime(LocalDate.parse(rs.getString("accountcreationdate")));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -66,19 +82,7 @@ public class Users {
                 + "AND Password LIKE '" + password + "'");
                 while (rs.next()) {
                     success = true;
-                    User user = new User();
-                    user.setLogin(rs.getString("login"));
-                    user.setPassword(rs.getString("password"));
-                    user.setName(rs.getString("name"));
-                    user.setSurname(rs.getString("surname"));
-                    if(rs.getString("birthdate") != null) {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        LocalDateTime tmpDate = LocalDateTime.parse(rs.getString("birthdate"), formatter);
-                        LocalDate birthDate = tmpDate.toLocalDate();
-                        user.setBirthDate(birthDate);
-                    }
-                    //user.setAccountCreationTime(LocalDate.parse(rs.getString("accountcreationdate")));
-                    setLoggedUser(user);
+                    setLoggedUser(returnUser(rs));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -96,24 +100,6 @@ public class Users {
         return success;
     }
 
-
-
-    public static ArrayList<User> getUsersList() {
-        return usersList;
-    }
-
-    public static User checkIfUserIsInBase(String givenUsername) {
-        for (User user : usersList) {
-            if (Objects.equals(user.getLogin(), givenUsername)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    public static void addUser(String login, String password) {
-        usersList.add(new User(login, password));
-    }
 
     public static void setLoggedUser(User user) {
         loggedUser = user;
