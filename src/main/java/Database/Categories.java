@@ -10,6 +10,15 @@ import java.sql.Statement;
 
 public class Categories {
 
+    static ObservableList<String> categoriesList = null;
+
+    public static ObservableList<String> getCategoriesList() throws SQLException {
+        if (categoriesList == null){
+            categoriesList = getCategories();
+        }
+        return categoriesList;
+    }
+
     public static ObservableList<String> getCategories() throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();

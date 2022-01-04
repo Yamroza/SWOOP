@@ -66,7 +66,7 @@ public class NewOfferScreen {
                     isForExchange.isSelected(),
                     isForSale.isSelected(),
                     itemPrice,
-                    loggedUser.getName()
+                    loggedUser.getLogin()
             );
             Offers.addOfferToDatabase(newOffer);
             App.setRoot("mainScreen");
@@ -77,7 +77,7 @@ public class NewOfferScreen {
 
     @FXML
     private void initialize() throws SQLException {
-        category.setItems(Categories.getCategories());
+        category.setItems(Categories.getCategoriesList());
         category.getSelectionModel().selectFirst();
     }
 }
