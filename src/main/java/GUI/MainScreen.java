@@ -60,7 +60,6 @@ public class MainScreen {
     @FXML
     private void initialize() throws SQLException {
         ObservableList<String> categories = Categories.getCategoriesList();
-        categories.add(0, "-");
         category.setItems(categories);
         category.getSelectionModel().selectFirst();
         offerList.setItems(Offers.getNextTenOffers());
