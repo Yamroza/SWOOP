@@ -13,14 +13,11 @@ public class Offer {
     Boolean isForExchange;
     Boolean isForSale;
     Float price;
-    User seller;
+    String seller;
     // photo
 
-    public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
-                 Boolean isForSale, Float price, User seller) {}
-
     public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
-                 Boolean isForExchange, Boolean isForSale, Float price, User seller) {
+                 Boolean isForExchange, Boolean isForSale, Float price, String seller) {
         this.offer_id = offer_id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -42,6 +39,7 @@ public class Offer {
         this.price = null;
         this.seller = null;
     }
+
     public int getOfferId() {
         return offer_id;
     }
@@ -98,11 +96,11 @@ public class Offer {
         this.price = price;
     }
 
-    public User getSeller() {
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(User seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
@@ -119,7 +117,7 @@ public class Offer {
     public String generate_insert(){
         return ("INSERT INTO OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
                 "VALUES (" + offer_id + " , '" + itemName  + "' , '" + itemDescription + "' , '" + itemCategory + "' , " +
-                this.isForExchangeInt() + " , "  + this.isForSaleInt() + " , " + price + " , '" + seller.getName() + "'" + ")");
+                this.isForExchangeInt() + " , "  + this.isForSaleInt() + " , " + price + " , '" + seller + "'" + ")");
     }
 
     public void addToDatabase() throws SQLException {

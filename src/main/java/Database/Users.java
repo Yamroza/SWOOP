@@ -111,7 +111,7 @@ public class Users {
             Statement stmt;
             stmt = conn.createStatement();
             try {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Users WHERE Login LIKE '" + username);
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Users WHERE Login LIKE '" + username + "'");
                 while (rs.next()) {
                     user = returnUser(rs);
                 }

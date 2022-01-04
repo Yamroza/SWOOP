@@ -66,7 +66,7 @@ public class NewOfferScreen {
                     isForExchange.isSelected(),
                     isForSale.isSelected(),
                     itemPrice,
-                    loggedUser
+                    loggedUser.getName()
             );
             Offers.addOfferToDatabase(newOffer);
             App.setRoot("mainScreen");
