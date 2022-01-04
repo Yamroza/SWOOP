@@ -50,22 +50,5 @@ public class LoginScreen {
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
     }
-
-    private void loadOffers(int num)
-    {
-        int x = 0;
-        int y = 0;
-
-        VBox offers = new VBox();
-
-        for(int i=0; i<num; i++)
-        {
-            AnchorPane a = new AnchorPane();
-            Button b = new Button("Button");
-            //b.setOnAction(loadMain());
-            a.getChildren().addAll(b);
-            offers.getChildren().add(a);
-        }
-    }
 }
 
