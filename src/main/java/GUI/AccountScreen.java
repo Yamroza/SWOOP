@@ -1,10 +1,14 @@
 package GUI;
 
+import Classes.Offer;
 import Classes.User;
+import Database.Offers;
 import Database.Users;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -26,6 +30,12 @@ public class AccountScreen {
 
     @FXML
     DatePicker dateInput;
+
+    @FXML
+    ListView<Offer> userOfferList;
+
+    @FXML
+    ListView<Offer> transactionList;
 
 
 
@@ -53,11 +63,16 @@ public class AccountScreen {
     }
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
         User loggedUser = Users.getLoggedUser();
         loginName.setText(loggedUser.getLogin());
         nameInput.setText(loggedUser.getName());
         surnameInput.setText(loggedUser.getSurname());
         dateInput.setValue(loggedUser.getBirthDate());
+        ObservableList<Offer> offers = Offers.getNextTenUserOffers(loggedUser.getLogin());
+        userOfferList.setItems(offers);
+        userOfferList.setCellFactory(offerListView -> new OfferListElement());
+        transactionList.setItems(offers);
+        transactionList.setCellFactory(offerListView -> new OfferListElement());
     }
 }

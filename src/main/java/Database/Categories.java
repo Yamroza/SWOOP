@@ -15,7 +15,6 @@ public class Categories {
     public static ObservableList<String> getCategoriesList() throws SQLException {
         if (categoriesList == null){
             categoriesList = getCategories();
-            categoriesList.add(0, "-");
         }
         return categoriesList;
     }
@@ -44,6 +43,7 @@ public class Categories {
                 }
             }
         }
+        DB.close();
         return categories;
     }
 }

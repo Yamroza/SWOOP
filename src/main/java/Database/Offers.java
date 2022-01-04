@@ -81,7 +81,6 @@ public class Offers {
         Connection conn = DB.getConn();
         Offer nextOffer;
         ObservableList<Offer> offers = FXCollections.observableArrayList();
-        int newID = -1;
         if (conn != null) {
             Statement stmt;
             stmt = conn.createStatement();
@@ -106,6 +105,39 @@ public class Offers {
         DB.close();
         return offers;
     }
+
+    public static ObservableList<Offer> getNextTenUserOffers(String login) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        Offer nextOffer;
+        ObservableList<Offer> offers = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery(
+                        "select * from offers where SELLER like '" + login + "' order by " +
+                                "OFFER_ID desc fetch first 10 rows only");
+                while (rs.next()) {
+                    nextOffer = returnOffer(rs);
+                    offers.add(nextOffer);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return offers;
+    }
+
 
     public static void addOfferToDatabase(Offer offer) throws SQLException {
         Connecting DB = new Connecting();

@@ -116,6 +116,6 @@
          </font>
       </RadioButton>
       <Button layoutX="35.0" layoutY="562.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
-      <ListView fx:id="offerList" layoutX="166.0" layoutY="-1.0" prefHeight="602.0" prefWidth="781.0" />
+      <ListView fx:id="offerList" layoutX="166.0" layoutY="-1.0" onMouseClicked="#OfferClicked" prefHeight="602.0" prefWidth="781.0" />
    </AnchorPane>
 </AnchorPane>
