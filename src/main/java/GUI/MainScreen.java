@@ -59,8 +59,7 @@ public class MainScreen {
 
     @FXML
     private void initialize() throws SQLException {
-        ObservableList<String> categories = Categories.getCategoriesList();
-        category.setItems(categories);
+        category.setItems(Categories.getCategoriesList());
         category.getSelectionModel().selectFirst();
         offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());

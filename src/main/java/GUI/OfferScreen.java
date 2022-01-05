@@ -1,13 +1,21 @@
 package GUI;
 
+import Classes.Comment;
 import Classes.Offer;
+import Database.Comments;
 import Database.Offers;
+import Database.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class OfferScreen {
 
@@ -29,6 +37,15 @@ public class OfferScreen {
     @FXML
     TextArea description;
 
+    @FXML
+    ListView<Comment> commentList;
+
+    @FXML
+    TextField commentTextField;
+
+    @FXML
+    Button addCommentButton;
+
 
     @FXML
     private void ExitClicked(ActionEvent e) throws IOException {
@@ -38,7 +55,21 @@ public class OfferScreen {
     }
 
     @FXML
-    private void initialize() {
+    private void addCommentClicked() throws SQLException {
+        String commentText = commentTextField.getText();
+        if(!Objects.equals(commentText, ""))
+        {
+            int offerID = Offers.getSelectedOffer().getOfferId();
+            String commenterLogin = Users.getLoggedUser().getLogin();
+            Comment comment = new Comment(offerID, commenterLogin, commentText);
+            Comments.insertComment(comment);
+            commentTextField.setText("");
+            commentList.getItems().add(comment);
+        }
+    }
+
+    @FXML
+    private void initialize() throws SQLException {
         Offer currentOffer = Offers.getSelectedOffer();
         itemName.setText(currentOffer.getItemName());
         itemPrice.setText(String.valueOf(currentOffer.getPrice()));
@@ -46,5 +77,7 @@ public class OfferScreen {
         category.setText(currentOffer.getItemCategory());
         seller.setText(currentOffer.getSeller());
         description.setText(currentOffer.getItemDescription());
+        commentList.setItems(Comments.getComments(Offers.getSelectedOffer().getOfferId()));
+        commentList.setCellFactory(commentListView -> new CommentListElement());
     }
 }

@@ -3,14 +3,14 @@ package Classes;
 import java.time.LocalDate;
 
 public class User {
-    String login;
-    String password;
-    String name;
-    String surname;
-    LocalDate birthDate;
+    private String login;
+    private String password;
+    private String name;
+    private String surname;
+    private LocalDate birthDate;
     // profile pic
     // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item
-    LocalDate accountCreationDate;
+    private LocalDate accountCreationDate;
 
     public User(String login, String password) {
         this.login = login;
