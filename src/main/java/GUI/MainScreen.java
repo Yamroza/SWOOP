@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.controlsfx.control.CheckComboBox;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,14 +21,15 @@ import java.sql.SQLException;
 public class MainScreen {
 
     @FXML
-    ComboBox<String> category;
+    ListView<Offer> offerList;
 
     @FXML
-    ListView<Offer> offerList;
+    CheckComboBox<String> categories;
 
     public AnchorPane mainScreenPane;
     public TextField fromTextField;
     public TextField toTextField;
+
 
     @FXML
     private void ButtonClicked(ActionEvent e) throws IOException{
@@ -59,8 +62,6 @@ public class MainScreen {
 
     @FXML
     private void initialize() throws SQLException {
-        category.setItems(Categories.getCategoriesList());
-        category.getSelectionModel().selectFirst();
         offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
     }

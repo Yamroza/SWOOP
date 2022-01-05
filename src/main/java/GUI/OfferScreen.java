@@ -5,6 +5,7 @@ import Classes.Offer;
 import Database.Comments;
 import Database.Offers;
 import Database.Users;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,6 +47,7 @@ public class OfferScreen {
     @FXML
     Button addCommentButton;
 
+    ObservableList<Comment> comments;
 
     @FXML
     private void ExitClicked(ActionEvent e) throws IOException {
@@ -64,7 +66,8 @@ public class OfferScreen {
             Comment comment = new Comment(offerID, commenterLogin, commentText);
             Comments.insertComment(comment);
             commentTextField.setText("");
-            commentList.getItems().add(comment);
+            comments.add(0, comment);
+            commentList.setItems(comments);
         }
     }
 
@@ -77,7 +80,8 @@ public class OfferScreen {
         category.setText(currentOffer.getItemCategory());
         seller.setText(currentOffer.getSeller());
         description.setText(currentOffer.getItemDescription());
-        commentList.setItems(Comments.getComments(Offers.getSelectedOffer().getOfferId()));
+        comments = Comments.getComments(Offers.getSelectedOffer().getOfferId());
+        commentList.setItems(comments);
         commentList.setCellFactory(commentListView -> new CommentListElement());
     }
 }
