@@ -19,7 +19,7 @@ public class Categories {
         return categoriesList;
     }
 
-    public static ObservableList<String> getCategories() throws SQLException {
+    private static ObservableList<String> getCategories() throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
         ObservableList<String> categories = FXCollections.observableArrayList();
