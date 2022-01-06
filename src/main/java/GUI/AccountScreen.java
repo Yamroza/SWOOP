@@ -1,8 +1,10 @@
 package GUI;
 
 import Classes.Offer;
+import Classes.Transaction;
 import Classes.User;
 import Database.Offers;
+import Database.Transactions;
 import Database.Users;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,7 +37,7 @@ public class AccountScreen {
     ListView<Offer> userOfferList;
 
     @FXML
-    ListView<Offer> transactionList;
+    ListView<Transaction> transactionList;
 
 
 
@@ -70,9 +72,10 @@ public class AccountScreen {
         surnameInput.setText(loggedUser.getSurname());
         dateInput.setValue(loggedUser.getBirthDate());
         ObservableList<Offer> offers = Offers.getNextTenUserOffers(loggedUser.getLogin());
+        ObservableList<Transaction> transactions = Transactions.getUserTransactions(loggedUser.getLogin());
         userOfferList.setItems(offers);
         userOfferList.setCellFactory(offerListView -> new OfferListElement());
-        transactionList.setItems(offers);
-        transactionList.setCellFactory(offerListView -> new OfferListElement());
+        transactionList.setItems(transactions);
+        transactionList.setCellFactory(offerListView -> new TransactionListElement());
     }
 }

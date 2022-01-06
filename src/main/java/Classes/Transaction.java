@@ -7,83 +7,59 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-    private User seller;
-    private Offer sellersOffer;
-    private LocalDate transactionDate;
-    public User buyer;
-    public Offer buyersOffer;
-
-    private enum Status {
-        completed, in_progress, failed
-    }
+    private int sellersOfferID;
+    private String sellersItem;
+    private String buyer;
+    private String buyersOffer;
+    private int status;
 
 
-    public Transaction() {
-        transactionDate = LocalDate.now();
-    }
 
-    public Transaction(User seller, Offer offer, User buyer, Offer buyersOffer) {
-        this.seller = seller;
-        this.sellersOffer = offer;
+
+    public Transaction(int offerID, String buyer, String buyersOffer) {
+        this.sellersOfferID = offerID;
         this.buyer = buyer;
         this.buyersOffer = buyersOffer;
-        transactionDate = LocalDate.now();
+        this.status = 0;
     }
 
-    public User getSeller() {
-        return seller;
+    public Transaction(int offerID, String buyer, String buyersOffer, int status, String sellersItem) {
+        this.sellersOfferID = offerID;
+        this.sellersItem = sellersItem;
+        this.buyer = buyer;
+        this.buyersOffer = buyersOffer;
+        this.status = status;
     }
 
-    public void setSeller(User seller) {
-        this.seller = seller;
+    public int getSellersOfferID() {
+        return sellersOfferID;
     }
 
-    public Offer getSellersOffer() {
-        return sellersOffer;
+    public void setSellersOfferID(int sellersOffer) {
+        this.sellersOfferID = sellersOffer;
     }
 
-    public void setSellersOffer(Offer sellersOffer) {
-        this.sellersOffer = sellersOffer;
-    }
-
-    public LocalDate getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(LocalDate startTransactionDate) {
-        this.transactionDate = startTransactionDate;
-    }
-
-    public User getBuyer() {
+    public String getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(User buyer) {
+    public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
 
-    public Offer getBuyersOffer() {
+    public String getBuyersOffer() {
         return buyersOffer;
     }
 
-    public void setBuyersOffer(Offer buyersOffer) {
+    public void setBuyersOffer(String buyersOffer) {
         this.buyersOffer = buyersOffer;
     }
 
-    public String dateToString(LocalDate date) {
-        return date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    public String getSellersItem() {
+        return sellersItem;
     }
 
-    public String generate_insert(){
-        return ("INSERT INTO TRANSACTIONS (seller, seller_offer, buyer, buyers_offer, transaction_date) " +
-                "VALUES ('" + seller.getName() + "' , '" + sellersOffer.getItemName() + "' , '" + buyer.getName() +
-                "' , '" + buyersOffer.getItemName() + "' , '" + this.dateToString(transactionDate) + "'" + ")");
+    public int getStatus() {
+        return status;
     }
-
-    public void addToDatabase() throws SQLException {
-        Connecting DB = new Connecting();
-        DB.alterTable(this.generate_insert());
-        DB.close();
-    }
-
 }

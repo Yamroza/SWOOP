@@ -48,6 +48,13 @@ public class NewOfferScreen {
     }
 
     @FXML
+    private void isForSaleClicked()
+    {
+        price.setEditable(isForSale.isSelected());
+        price.setText("");
+    }
+
+    @FXML
     private void SaveClicked() throws IOException, SQLException {
         User loggedUser = Users.getLoggedUser();
         String name = offerName.getText();

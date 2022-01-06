@@ -12,10 +12,10 @@ import java.io.IOException;
 public class UserOfferListElement extends ListCell<Offer> {
 
     @FXML
-    Text itemName;
+    Text userOfferName;
 
     @FXML
-    AnchorPane itemCell;
+    AnchorPane userOfferCell;
 
     private FXMLLoader loader;
 
@@ -40,11 +40,11 @@ public class UserOfferListElement extends ListCell<Offer> {
                     e.printStackTrace();
                 }
             }
-            itemName.setText(offer.getItemName());
+            userOfferName.setText(offer.getItemName());
         }
 
         setText(null);
-        setGraphic(itemCell);
+        setGraphic(userOfferCell);
     }
 
 }
