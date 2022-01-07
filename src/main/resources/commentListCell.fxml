@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="commentCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane prefHeight="192.0" prefWidth="590.0">
+    <GridPane prefHeight="125.0" prefWidth="590.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="287.75297172097316" minWidth="10.0" prefWidth="79.30216605691066" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="541.0855484726821" minWidth="10.0" prefWidth="510.16703422097316" />
@@ -21,17 +23,29 @@
         <Pane prefHeight="200.0" prefWidth="200.0">
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="59.0" layoutX="13.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
         </Pane>
-        <Pane prefHeight="140.0" prefWidth="511.0" GridPane.columnIndex="1">
-            <Text fx:id="commenterName" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <Text fx:id="commenterName" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Text">
                 <font>
-                    <Font size="24.0" />
+                    <Font size="24.0"/>
                 </font>
             </Text>
-            <Text fx:id="commentText" layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="484.5285835266113">
+            <Text fx:id="commentText" layoutX="16.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"
+                  wrappingWidth="418.0">
                 <font>
-                    <Font size="19.0" />
+                    <Font size="19.0"/>
                 </font>
             </Text>
+            <TextArea fx:id="commentEditor" disable="true" layoutX="16.0" layoutY="47.0" prefHeight="59.0"
+                      prefWidth="418.0" visible="false"/>
+            <Button fx:id="editCommentButton" disable="true" layoutX="441.0" layoutY="16.0" mnemonicParsing="false"
+                    text="Edytuj" visible="false"/>
+            <Button fx:id="deleteCommentButton" disable="true" layoutX="441.0" layoutY="50.0" mnemonicParsing="false"
+                    prefHeight="24.0" prefWidth="59.0" text="Usuń" visible="false"/>
+            <Button fx:id="updateCommentButton" disable="true" layoutX="441.0" layoutY="50.0" mnemonicParsing="false"
+                    prefHeight="24.0" prefWidth="59.0" text="Wyślij" visible="false"/>
+            <Button fx:id="undoChangesButton" disable="true" layoutX="441.0" layoutY="16.0" mnemonicParsing="false"
+                    prefHeight="24.0" prefWidth="59.0" text="Cofnij" visible="false"/>
         </Pane>
     </GridPane>
 </AnchorPane>

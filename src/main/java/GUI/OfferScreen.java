@@ -74,7 +74,7 @@ public class OfferScreen {
             Comment comment = new Comment(offerID, commenterLogin, commentText);
             Comments.insertComment(comment);
             commentTextField.setText("");
-            comments.add(0, comment);
+            comments = Comments.getComments(Offers.getSelectedOffer().getOfferId());
             commentList.setItems(comments);
         }
     }
