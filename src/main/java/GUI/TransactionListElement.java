@@ -80,6 +80,13 @@ public class TransactionListElement extends ListCell<Transaction> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                try {
+                    App.setRoot("accountScreen");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                App.myStage.setScene(App.scene);
+                App.myStage.sizeToScene();
             });
             declineButton.setOnAction(arg0 -> {
                 try {
@@ -88,6 +95,13 @@ public class TransactionListElement extends ListCell<Transaction> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                try {
+                    App.setRoot("accountScreen");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                App.myStage.setScene(App.scene);
+                App.myStage.sizeToScene();
             });
         }
 
