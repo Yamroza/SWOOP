@@ -24,6 +24,7 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/app.css").toExternalForm());
         myStage = stage;
         myStage.getIcons().add(new Image(App.class.getResourceAsStream("/pudzian.jpg")));
+        myStage.setTitle("Swoop");
         myStage.setScene(scene);
         myStage.show();
     }
