@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -16,6 +17,9 @@ public class UserOfferListElement extends ListCell<Offer> {
 
     @FXML
     AnchorPane userOfferCell;
+
+    @FXML
+    Text userOfferBuyer;
 
     private FXMLLoader loader;
 
@@ -32,7 +36,7 @@ public class UserOfferListElement extends ListCell<Offer> {
         {
             if(loader == null)
             {
-                loader = new FXMLLoader(App.class.getResource("/userOfferListElement.fxml"));
+                loader = new FXMLLoader(App.class.getResource("/userOfferListCell.fxml"));
                 loader.setController(this);
                 try {
                     loader.load();
@@ -40,7 +44,17 @@ public class UserOfferListElement extends ListCell<Offer> {
                     e.printStackTrace();
                 }
             }
-            userOfferName.setText(offer.getItemName());
+            if(getItem().getStatus() == 0)
+            {
+                userOfferName.setText(offer.getItemName());
+            }
+            else if(getItem().getStatus() == 1)
+            {
+                userOfferName.setText(offer.getItemName());
+                userOfferName.setFill(Color.LIMEGREEN);
+                userOfferBuyer.setText("Kupił: " + offer.getBuyer());
+                userOfferBuyer.setFill(Color.LIMEGREEN);
+            }
         }
 
         setText(null);

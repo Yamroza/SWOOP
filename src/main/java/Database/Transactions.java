@@ -20,7 +20,7 @@ public class Transactions {
         String seller = rs.getString("seller");
         String sellersItem = rs.getString("item_name");
         int status = rs.getInt("status");
-        return new Transaction(offerID, buyer, buyersOffer, transactionID, seller, sellersItem, status);
+        return new Transaction(offerID, buyer, buyersOffer, status, transactionID, seller, sellersItem);
     }
 
     public static ObservableList<Transaction> getTransactions(String userLogin) throws SQLException {

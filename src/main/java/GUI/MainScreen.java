@@ -65,7 +65,7 @@ public class MainScreen {
     }
 
     @FXML
-    private void SearchClicked(ActionEvent e) throws IOException, SQLException {
+    private void SearchClicked(ActionEvent e) throws SQLException {
         String text = searchTextField.getText();
         if(!text.isEmpty()) {
             offerList.getItems().clear();
@@ -77,7 +77,7 @@ public class MainScreen {
     }
 
     @FXML
-    private void CategoryApplyClicked(ActionEvent e) throws IOException, SQLException {
+    private void CategoryApplyClicked(ActionEvent e) throws SQLException {
         ObservableList <String> SelectedCategories = categories.getCheckModel().getCheckedItems();
         offerList.getItems().clear();
         if (SelectedCategories.size() == 0) {
@@ -97,7 +97,7 @@ public class MainScreen {
     @FXML
     private void initialize() throws SQLException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        //offerList.setItems(Offers.getNextTenOffers());
+        offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
     }
 

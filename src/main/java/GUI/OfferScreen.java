@@ -7,9 +7,7 @@ import Database.Comments;
 import Database.Offers;
 import Database.Transactions;
 import Database.Users;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -59,7 +57,7 @@ public class OfferScreen {
     ObservableList<Comment> comments;
 
     @FXML
-    private void ExitClicked(ActionEvent e) throws IOException {
+    private void ExitClicked() throws IOException {
         Offers.setSelectedOffer(null);
         App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
@@ -82,18 +80,24 @@ public class OfferScreen {
     }
 
     @FXML
-    private void submitTransactionClicked() throws SQLException {
+    private void submitTransactionClicked() throws SQLException, IOException {
+        Offer selectedOffer = Offers.getSelectedOffer();
+        int offerID = selectedOffer.getOfferId();
+        String buyer = Users.getLoggedUser().getLogin();
         if(exchangeButton.isSelected())
         {
-            int offerID = Offers.getSelectedOffer().getOfferId();
-            String buyer = Users.getLoggedUser().getLogin();
             String buyersOffer = exchangeOffer.getText();
-            Transaction transaction = new Transaction(offerID, buyer, buyersOffer);
+            Transaction transaction = new Transaction(offerID, buyer, buyersOffer, 0);
             Transactions.addTransactionToDatabase(transaction);
+            this.ExitClicked();
         }
         else if(buyButton.isSelected())
         {
-            System.out.println("kupno");
+            String buyersOffer = selectedOffer.getPrice() + " PLN";
+            Transaction transaction = new Transaction(offerID, buyer, buyersOffer, 1);
+            Transactions.addTransactionToDatabase(transaction);
+            Offers.setOfferStatus(Offers.getSelectedOffer().getOfferId(), 1);
+            this.ExitClicked();
         }
     }
 
@@ -109,7 +113,6 @@ public class OfferScreen {
         comments = Comments.getComments(Offers.getSelectedOffer().getOfferId());
         commentList.setItems(comments);
         commentList.setCellFactory(commentListView -> new CommentListElement());
-        ObservableList<String> offerType = FXCollections.observableArrayList();
         if(currentOffer.getIsForSale())
         {
             buyButton.setDisable(false);
