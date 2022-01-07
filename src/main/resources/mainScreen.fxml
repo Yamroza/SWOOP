@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.controlsfx.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.CheckComboBox?>
 
-<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
-   <AnchorPane prefHeight="100.0" prefWidth="940.0">
+<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
+   <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
       <TextField layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
@@ -29,12 +39,12 @@
             <Font name="Segoe UI Light" size="10.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWOOP" wrappingWidth="138.39999999999998">
-         <font>
-            <Font name="Segoe UI Bold Italic" size="36.0" />
-         </font>
-      </Text>
       <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
+         <image>
+            <Image url="@pudzian.jpg" />
+         </image>
+      </ImageView>
    </AnchorPane>
    <AnchorPane layoutY="100.0" prefHeight="603.0" prefWidth="164.0">
       <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
