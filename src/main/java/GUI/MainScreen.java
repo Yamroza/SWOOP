@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
+import org.controlsfx.control.RangeSlider;
 import javafx.fxml.FXML;
 import org.controlsfx.control.CheckComboBox;
 

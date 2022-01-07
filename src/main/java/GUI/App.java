@@ -1,16 +1,10 @@
 package GUI;
 
-import Classes.*;
-import Database.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Objects;
 
 import java.io.IOException;
 
@@ -24,9 +18,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginScreen"));
+//        String css = this.getClass().getResource("app.css").toExternalForm();
+//        scene.getStylesheets().add(css);
+        scene.getStylesheets().add(getClass().getResource("/app.css").toExternalForm());
         myStage = stage;
         myStage.setScene(scene);
-        //stage.setResizable(false);
         myStage.show();
     }
 

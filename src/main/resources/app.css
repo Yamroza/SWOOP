@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: #6089bd;
+}
+
+#loginInput{
+    -fx-background-color: lightgreen;
+}
+
+#passwordInput{
+    -fx-background-color: orange;
+}
+
+#loginButton{
+    -fx-background-color: #ff4a4a;
+    -fx-background-radius: 100;
+}
+
+#registerButton{
+    -fx-background-color: #2957ea;
+}
+
+#welcomeLabel{
+    -fx-font-style: oblique;
+    -fx-font-weight: bold;
+    -fx-fill: #f619f6;
+}
