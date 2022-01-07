@@ -77,7 +77,7 @@ public class AccountScreen {
         dateInput.setValue(loggedUser.getBirthDate());
         ObservableList<Offer> offers = Offers.getNextTenUserOffers(loggedUser.getLogin());
         userOfferList.setItems(offers);
-        userOfferList.setCellFactory(offerListView -> new OfferListElement());
+        userOfferList.setCellFactory(offerListView -> new UserOfferListElement());
         ObservableList<Transaction> transactions = Transactions.getTransactions(loggedUser.getLogin());
         transactionList.setItems(transactions);
         transactionList.setCellFactory(offerListView -> new TransactionListElement());

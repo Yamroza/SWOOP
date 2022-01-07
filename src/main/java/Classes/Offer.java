@@ -14,10 +14,12 @@ public class Offer {
     Boolean isForSale;
     Float price;
     String seller;
+    String buyer;
+    int status;
     // photo
 
     public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
-                 Boolean isForExchange, Boolean isForSale, Float price, String seller) {
+                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status) {
         this.offer_id = offer_id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -26,8 +28,23 @@ public class Offer {
         this.isForSale = isForSale;
         this.price = price;
         this.seller = seller;
+        this.status = status;
     }
 
+    public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
+                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status,
+                 String buyer) {
+        this.offer_id = offer_id;
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.itemCategory = itemCategory;
+        this.isForExchange = isForExchange;
+        this.isForSale = isForSale;
+        this.price = price;
+        this.seller = seller;
+        this.status = status;
+        this.buyer = buyer;
+    }
     public Offer()
     {
         this.offer_id = -1;
@@ -104,25 +121,19 @@ public class Offer {
         this.seller = seller;
     }
 
-    public int isForExchangeInt() {
-        if (isForExchange) {return 1;}
-        else {return 0;}
+    public int getStatus() {
+        return status;
     }
 
-    public int isForSaleInt() {
-        if (isForSale) {return 1;}
-        else {return 0;}
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String generate_insert(){
-        return ("INSERT INTO OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
-                "VALUES (" + offer_id + " , '" + itemName  + "' , '" + itemDescription + "' , '" + itemCategory + "' , " +
-                this.isForExchangeInt() + " , "  + this.isForSaleInt() + " , " + price + " , '" + seller + "'" + ")");
+    public String getBuyer() {
+        return buyer;
     }
 
-    public void addToDatabase() throws SQLException {
-        Connecting DB = new Connecting();
-        DB.alterTable(this.generate_insert());
-        DB.close();
+    public void setBuyer(String buyer) {
+        this.buyer = buyer;
     }
 }

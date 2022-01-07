@@ -13,20 +13,20 @@ public class Transaction {
     private String sellersItem;
     private String buyer;
     private String buyersOffer;
-    private int status;
+    private final int status;
 
 
 
 
-    public Transaction(int offerID, String buyer, String buyersOffer) {
+    public Transaction(int offerID, String buyer, String buyersOffer, int status) {
         this.sellersOfferID = offerID;
         this.buyer = buyer;
         this.buyersOffer = buyersOffer;
-        this.status = 0;
+        this.status = status;
     }
 
-    public Transaction(int offerID, String buyer, String buyersOffer, int transactionID, String seller,
-                       String sellersItem, int status) {
+    public Transaction(int offerID, String buyer, String buyersOffer, int status, int transactionID, String seller,
+                       String sellersItem) {
         this.transactionID = transactionID;
         this.sellersOfferID = offerID;
         this.seller = seller;

@@ -2,6 +2,7 @@ package GUI;
 
 import Classes.Offer;
 import Classes.Transaction;
+import Database.Offers;
 import Database.Transactions;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,8 +76,9 @@ public class TransactionListElement extends ListCell<Transaction> {
             acceptButton.setOnAction(arg0 -> {
                 try {
                     Transactions.setTransactionAccepted(getItem());
-                    int offerId = getItem().getSellersOfferID();
-                    getListView().getItems().removeIf(transaction1 -> transaction1.getSellersOfferID() == offerId);
+                    int offerID = getItem().getSellersOfferID();
+                    getListView().getItems().removeIf(transaction1 -> transaction1.getSellersOfferID() == offerID);
+                    Offers.setOfferStatus(offerID, 1);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
