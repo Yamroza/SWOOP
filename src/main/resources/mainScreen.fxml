@@ -9,8 +9,6 @@
 
 <AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
    <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
-      <TextField layoutX="165.0" layoutY="34.0" onKeyPressed="#searchEnter" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
-   <AnchorPane prefHeight="100.0" prefWidth="940.0">
       <TextField fx:id="searchTextField" layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
