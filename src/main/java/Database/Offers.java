@@ -106,6 +106,66 @@ public class Offers {
         return offers;
     }
 
+    public static ObservableList<Offer> getOffersByCategory(String category) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        Offer nextOffer;
+        ObservableList<Offer> offers = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("select * from offers where category like '" + category + "' order by OFFER_ID desc");
+                while (rs.next()) {
+                    nextOffer = returnOffer(rs);
+                    offers.add(nextOffer);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return offers;
+    }
+
+    public static ObservableList<Offer> getOffersByName(String text) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        Offer nextOffer;
+        ObservableList<Offer> offers = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("select * from offers where name like '" + text + "' order by OFFER_ID desc");
+                while (rs.next()) {
+                    nextOffer = returnOffer(rs);
+                    offers.add(nextOffer);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return offers;
+    }
+
     public static ObservableList<Offer> getNextTenUserOffers(String login) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();

@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
    <AnchorPane prefHeight="100.0" prefWidth="940.0">
-      <TextField layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
+      <TextField fx:id="searchTextField" layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font name="Segoe UI Bold Italic" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" onAction="#SearchClicked" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
    </AnchorPane>
    <AnchorPane layoutY="100.0" prefHeight="603.0" prefWidth="164.0">
       <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
@@ -82,7 +82,7 @@
             <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="37.0" layoutY="338.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
+      <Button layoutX="37.0" layoutY="338.0" mnemonicParsing="false" onAction="#CategoryApplyClicked" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
       <Line endX="50.5999755859375" layoutX="114.0" layoutY="383.0" opacity="0.5" startX="-115.0" />
       <Text layoutX="-1.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie:" textAlignment="CENTER" wrappingWidth="165.59999999999997">
          <font>

@@ -1,5 +1,6 @@
 package GUI;
 
+import Classes.Comment;
 import Classes.Offer;
 import Database.Categories;
 import Database.Offers;
@@ -27,10 +28,12 @@ public class MainScreen {
     @FXML
     CheckComboBox<String> categories;
 
+    @FXML
+    TextField searchTextField;
+
     public AnchorPane mainScreenPane;
     public TextField fromTextField;
     public TextField toTextField;
-
 
     @FXML
     private void ButtonClicked(ActionEvent e) throws IOException{
@@ -62,9 +65,39 @@ public class MainScreen {
     }
 
     @FXML
+    private void SearchClicked(ActionEvent e) throws IOException, SQLException {
+        String text = searchTextField.getText();
+        if(!text.isEmpty()) {
+            offerList.getItems().clear();
+            offerList.setItems(Offers.getOffersByName(text));
+        }
+        else{
+            offerList.setItems(Offers.getNextTenOffers());
+        }
+    }
+
+    @FXML
+    private void CategoryApplyClicked(ActionEvent e) throws IOException, SQLException {
+        ObservableList <String> SelectedCategories = categories.getCheckModel().getCheckedItems();
+        offerList.getItems().clear();
+        if (SelectedCategories.size() == 0) {
+            offerList.setItems(Offers.getNextTenOffers());
+        }
+        SelectedCategories.forEach((category) -> {
+            if(!category.isEmpty()) {
+                try {
+                    offerList.getItems().addAll(Offers.getOffersByCategory(category));
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @FXML
     private void initialize() throws SQLException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        offerList.setItems(Offers.getNextTenOffers());
+        //offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
     }
 
