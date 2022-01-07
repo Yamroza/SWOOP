@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -49,6 +51,13 @@ public class LoginScreen {
         App.setRoot("registerScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
+    }
+
+    @FXML
+    private void EnterClicked(KeyEvent e) throws IOException, SQLException{
+        if(e.getCode() == KeyCode.ENTER) {
+            LoginClicked();
+        }
     }
 }
 

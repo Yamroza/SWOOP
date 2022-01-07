@@ -35,7 +35,7 @@ public class NewOfferScreen {
     TextField price;
 
     @FXML
-    ComboBox<String> category;
+    ComboBox<String> categoryDrop;
 
     @FXML
     Text errorMessage;
@@ -69,7 +69,7 @@ public class NewOfferScreen {
                     Offers.getNewOfferId(),
                     name,
                     offerDesc.getText(),
-                    category.getValue(),
+                    categoryDrop.getValue(),
                     isForExchange.isSelected(),
                     isForSale.isSelected(),
                     itemPrice,
@@ -85,7 +85,7 @@ public class NewOfferScreen {
 
     @FXML
     private void initialize() throws SQLException {
-        category.setItems(Categories.getCategoriesList());
-        category.getSelectionModel().selectFirst();
+        categoryDrop.setItems(Categories.getCategoriesList());
+        categoryDrop.getSelectionModel().selectFirst();
     }
 }

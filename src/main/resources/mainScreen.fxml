@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
 <AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
-   <AnchorPane prefHeight="100.0" prefWidth="940.0">
+   <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
       <TextField fx:id="searchTextField" layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="category" layoutX="421.0" layoutY="34.0" prefHeight="32.0" prefWidth="120.0" promptText="w..." />
+      <ComboBox fx:id="location" layoutX="421.0" layoutY="34.0" prefHeight="32.0" prefWidth="120.0" promptText="w..." />
       <Button fx:id="addButton" layoutX="693.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
          <font>
             <Font name="Segoe UI Light" size="23.0" />
@@ -29,15 +30,15 @@
             <Font name="Segoe UI Light" size="10.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SWOOP" wrappingWidth="138.39999999999998">
-         <font>
-            <Font name="Segoe UI Bold Italic" size="36.0" />
-         </font>
-      </Text>
-      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" onAction="#SearchClicked" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
+         <image>
+            <Image url="@pudzian.jpg" />
+         </image>
+      </ImageView>
    </AnchorPane>
    <AnchorPane layoutY="100.0" prefHeight="603.0" prefWidth="164.0">
-      <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
+      <Text layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font>
@@ -52,22 +53,20 @@
             <Font name="Segoe UI Light" size="16.0" />
          </font>
       </CheckBox>
-      <Line endX="870.3999633789062" endY="7.62939453125E-6" layoutX="76.0" startX="-76.00001525878906" startY="7.62939453125E-6" />
-      <Line endX="-37.9000244140625" endY="481.60003662109375" layoutX="203.0" layoutY="120.0" startX="-37.9000244140625" startY="-119.1999740600586" />
       <Line endX="50.5999755859375" layoutX="114.0" layoutY="123.0" opacity="0.2" startX="-115.0" />
-      <Text layoutX="-1.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zakres cen:" textAlignment="CENTER" wrappingWidth="165.60000000000008">
+      <Text layoutX="-1.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zakres cen" textAlignment="CENTER" wrappingWidth="165.60000000000008">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Text>
-      <Slider layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="500.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
+      <RangeSlider fx:id="range" layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="1000.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
       <Line endX="50.5999755859375" layoutX="115.0" layoutY="257.0" opacity="0.2" startX="-115.0" />
-      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="od:">
+      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="do:">
+      <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" onKeyPressed="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="do:">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
@@ -77,14 +76,14 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria:" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+      <Text layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria" textAlignment="CENTER" wrappingWidth="165.59999999999997">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Text>
       <Button layoutX="37.0" layoutY="338.0" mnemonicParsing="false" onAction="#CategoryApplyClicked" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
       <Line endX="50.5999755859375" layoutX="114.0" layoutY="383.0" opacity="0.5" startX="-115.0" />
-      <Text layoutX="-1.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie:" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+      <Text layoutX="-1.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie" textAlignment="CENTER" wrappingWidth="165.59999999999997">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font>
