@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
    <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
-      <TextField layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
+      <TextField layoutX="165.0" layoutY="34.0" onKeyPressed="#searchEnter" prefHeight="32.0" prefWidth="256.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
@@ -59,14 +59,14 @@
             <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Text>
-      <Slider layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="500.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
+      <RangeSlider fx:id="range" layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="1000.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
       <Line endX="50.5999755859375" layoutX="115.0" layoutY="257.0" opacity="0.2" startX="-115.0" />
-      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="od:">
+      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" prefHeight="26.0" prefWidth="60.0" promptText="do:">
+      <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" onKeyPressed="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="do:">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
