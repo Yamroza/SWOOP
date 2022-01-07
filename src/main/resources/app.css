@@ -1,8 +1,9 @@
 .root{
-    -fx-background-color:
-            #c3c4c4,
-            linear-gradient(#88afd3 70%, #639ccb 100%),
-            radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 60%);
+    -fx-background-image: url("https://s3.viva.pl/newsy/mariusz-pudzianowski-518720-GALLERY_BIG.jpg");
+    /*-fx-background-color:*/
+    /*        #c3c4c4,*/
+    /*        linear-gradient(#88afd3 70%, #639ccb 100%),*/
+    /*        radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 60%);*/
 }
 
 .button{
