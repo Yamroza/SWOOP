@@ -1,26 +1,111 @@
 .root{
-    -fx-background-color: #6089bd;
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#88afd3 70%, #639ccb 100%),
+            radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 60%);
 }
 
-#loginInput{
-    -fx-background-color: lightgreen;
+.button{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#6da5ff 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+/* mainScreen */
+
+#searchButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-#passwordInput{
-    -fx-background-color: orange;
+#addButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-#loginButton{
-    -fx-background-color: #ff4a4a;
-    -fx-background-radius: 100;
+#accountButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-#registerButton{
-    -fx-background-color: #2957ea;
+/* newOfferScreen */
+#addPhotoButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-#welcomeLabel{
-    -fx-font-style: oblique;
-    -fx-font-weight: bold;
-    -fx-fill: #f619f6;
+#cancelNOButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#ff7676 50%, #ff4848 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+/* accountScreen */
+
+#returnAButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#ff7676 50%, #ff4848 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#changePasswordButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+/* offerScreen */
+
+#returnOButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#ff7676 50%, #ff4848 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
