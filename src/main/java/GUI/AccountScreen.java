@@ -39,6 +39,9 @@ public class AccountScreen {
     @FXML
     ListView<Transaction> transactionList;
 
+    @FXML
+    ListView<Transaction> userTransactionList;
+
 
 
     @FXML
@@ -64,6 +67,7 @@ public class AccountScreen {
         App.myStage.sizeToScene();
     }
 
+
     @FXML
     private void initialize() throws SQLException {
         User loggedUser = Users.getLoggedUser();
@@ -72,10 +76,13 @@ public class AccountScreen {
         surnameInput.setText(loggedUser.getSurname());
         dateInput.setValue(loggedUser.getBirthDate());
         ObservableList<Offer> offers = Offers.getNextTenUserOffers(loggedUser.getLogin());
-        ObservableList<Transaction> transactions = Transactions.getUserTransactions(loggedUser.getLogin());
         userOfferList.setItems(offers);
         userOfferList.setCellFactory(offerListView -> new OfferListElement());
+        ObservableList<Transaction> transactions = Transactions.getTransactions(loggedUser.getLogin());
         transactionList.setItems(transactions);
         transactionList.setCellFactory(offerListView -> new TransactionListElement());
+        ObservableList<Transaction> userTransactions = Transactions.getUserTransactions(loggedUser.getLogin());
+        userTransactionList.setItems(userTransactions);
+        userTransactionList.setCellFactory(offerListView -> new UserTransactionListElement());
     }
 }

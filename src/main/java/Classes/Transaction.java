@@ -7,7 +7,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Transaction {
+    private int transactionID;
     private int sellersOfferID;
+    private String seller;
     private String sellersItem;
     private String buyer;
     private String buyersOffer;
@@ -23,8 +25,11 @@ public class Transaction {
         this.status = 0;
     }
 
-    public Transaction(int offerID, String buyer, String buyersOffer, int status, String sellersItem) {
+    public Transaction(int offerID, String buyer, String buyersOffer, int transactionID, String seller,
+                       String sellersItem, int status) {
+        this.transactionID = transactionID;
         this.sellersOfferID = offerID;
+        this.seller = seller;
         this.sellersItem = sellersItem;
         this.buyer = buyer;
         this.buyersOffer = buyersOffer;
@@ -57,6 +62,14 @@ public class Transaction {
 
     public String getSellersItem() {
         return sellersItem;
+    }
+
+    public String getSeller() {
+        return seller;
+    }
+
+    public int getTransactionID() {
+        return transactionID;
     }
 
     public int getStatus() {

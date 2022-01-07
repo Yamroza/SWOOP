@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class Categories {
 
-    static ObservableList<String> categoriesList = null;
+    private static ObservableList<String> categoriesList = null;
 
     public static ObservableList<String> getCategoriesList() throws SQLException {
         if (categoriesList == null){

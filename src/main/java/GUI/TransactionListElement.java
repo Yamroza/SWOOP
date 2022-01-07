@@ -2,6 +2,10 @@ package GUI;
 
 import Classes.Offer;
 import Classes.Transaction;
+import Database.Transactions;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,6 +14,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import static java.util.Collections.copy;
 
 public class TransactionListElement extends ListCell<Transaction> {
 
@@ -25,16 +32,20 @@ public class TransactionListElement extends ListCell<Transaction> {
     @FXML
     Text transactionBuyer;
 
+    @FXML
+    Button acceptButton;
+
+    @FXML
+    Button declineButton;
+
     private FXMLLoader loader;
 
     @FXML
-    private void acceptClicked(){
-        System.out.println("Tak");
-    }
-
-    @FXML
-    private void declineClicked(){
-        System.out.println("Nie");
+    private void declineClicked() throws SQLException {
+        Transactions.setTransactionDeclined(this.getItem());
+        getListView().getItems().remove(this.getItem());
+        ObservableList<Transaction> tmpList = getListView().getItems();
+        getListView().getItems().setAll(tmpList);
     }
 
     @Override
@@ -60,9 +71,25 @@ public class TransactionListElement extends ListCell<Transaction> {
             }
             transactionName.setText(transaction.getSellersItem());
             transactionOffer.setText(transaction.getBuyersOffer());
-            transactionBuyer.setText(transaction.getBuyer());
+            transactionBuyer.setText("Zgłoszenie od: " + transaction.getBuyer());
+            acceptButton.setOnAction(arg0 -> {
+                try {
+                    Transactions.setTransactionAccepted(getItem());
+                    int offerId = getItem().getSellersOfferID();
+                    getListView().getItems().removeIf(transaction1 -> transaction1.getSellersOfferID() == offerId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            declineButton.setOnAction(arg0 -> {
+                try {
+                    Transactions.setTransactionDeclined(getItem());
+                    getListView().getItems().remove(getItem());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
         }
-
 
         setText(null);
         setGraphic(transactionCell);
