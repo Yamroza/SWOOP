@@ -123,9 +123,10 @@ public class Offers {
         if(is_exchange == is_for_sale){
             query +=  " 1=1"; // anything
         }
-        else {
-            query += " for_exchange = " + is_exchange;
-            query += " and for_sale = " + is_for_sale;
+        else if (is_exchange == 1){
+            query += " for_exchange = 1";
+        } else if (is_for_sale == 1) {
+            query += " for_sale = 1";
         }
         if(!name.isEmpty()) {
             query += " and name like '" + name +"'";
