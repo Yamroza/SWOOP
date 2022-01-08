@@ -92,7 +92,7 @@ public class MainScreen {
         String text = searchTextField.getText();
         if(!text.isEmpty()) {
             offerList.getItems().clear();
-            offerList.setItems(Offers.getOffersByName(text));
+            offerList.setItems(Offers.getOffersBy("name", text));
         }
         else{
             offerList.setItems(Offers.getNextTenOffers());
@@ -109,7 +109,7 @@ public class MainScreen {
         SelectedCategories.forEach((category) -> {
             if(!category.isEmpty()) {
                 try {
-                    offerList.getItems().addAll(Offers.getOffersByCategory(category));
+                    offerList.getItems().addAll(Offers.getOffersBy("category", category));
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -120,7 +120,7 @@ public class MainScreen {
     @FXML
     private void initialize() throws SQLException, ParseException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        offerList.setItems(Offers.getNextTenOffers());
+        //offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
 
         rangeListen();

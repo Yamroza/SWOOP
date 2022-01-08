@@ -30,7 +30,7 @@
             <Font name="Segoe UI Light" size="10.0" />
          </font>
       </Text>
-      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" onAction="#SearchClicked" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
       <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
          <image>
             <Image url="@pudzian.jpg" />
