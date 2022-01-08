@@ -61,7 +61,7 @@
       </Text>
       <RangeSlider fx:id="range" layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="1000.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
       <Line endX="50.5999755859375" layoutX="115.0" layoutY="257.0" opacity="0.2" startX="-115.0" />
-      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:" text="0.00">
+      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:" text="0">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>

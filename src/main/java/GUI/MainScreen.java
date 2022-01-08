@@ -31,7 +31,7 @@ import java.util.Locale;
 
 public class MainScreen {
 
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private static final DecimalFormat df = new DecimalFormat("0");
 
     private NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
 
@@ -128,14 +128,14 @@ public class MainScreen {
         int price_from = -1;
         try {
             String t = fromTextField.getText();
-            price_from = Integer.parseInt(t.substring(0, t.length() - 3));
+            price_from = Integer.parseInt(t);
         }
         catch (NumberFormatException ignored){}
 
         int price_to = -1;
         try {
             String t = toTextField.getText();
-            price_to = Integer.parseInt(t.substring(0, t.length() - 3));
+            price_to = Integer.parseInt(t);
         }
         catch (NumberFormatException ignored){}
 
