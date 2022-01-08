@@ -150,6 +150,7 @@ public class MainScreen {
         categories.getItems().addAll(Categories.getCategoriesList());
         offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
+        range.setHighValue(1000);
 
         rangeListen();
 
