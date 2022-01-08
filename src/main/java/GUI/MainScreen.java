@@ -6,6 +6,7 @@ import Database.Categories;
 import Database.Offers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
@@ -25,6 +26,8 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -88,33 +91,15 @@ public class MainScreen {
     }
 
     @FXML
-    private void SearchClicked(ActionEvent e) throws SQLException {
-        String text = searchTextField.getText();
-        if(!text.isEmpty()) {
-            offerList.getItems().clear();
-            offerList.setItems(Offers.getOffersBy("name", text));
+    private void ViewListWithConditions() throws SQLException {
+        List<String> name =  new ArrayList<>();
+        if(!searchTextField.getText().isEmpty()) {
+            name.add(searchTextField.getText());
         }
-        else{
-            offerList.setItems(Offers.getNextTenOffers());
-        }
-    }
-
-    @FXML
-    private void CategoryApplyClicked(ActionEvent e) throws SQLException {
         ObservableList <String> SelectedCategories = categories.getCheckModel().getCheckedItems();
         offerList.getItems().clear();
-        if (SelectedCategories.size() == 0) {
-            offerList.setItems(Offers.getNextTenOffers());
-        }
-        SelectedCategories.forEach((category) -> {
-            if(!category.isEmpty()) {
-                try {
-                    offerList.getItems().addAll(Offers.getOffersBy("category", category));
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
+        offerList.getItems().addAll(Offers.getOffersBy2Cond("category", SelectedCategories.stream().toList(),
+                "name", name));
     }
 
     @FXML
@@ -128,14 +113,11 @@ public class MainScreen {
     }
 
     @FXML
-    private void rangeListen() throws ParseException {
+    private void rangeListen() {
 
-            range.lowValueProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                    String low = String.valueOf(df.format(range.getLowValue()));
-                    fromTextField.setText(low);
-                }
+            range.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+                String low = String.valueOf(df.format(range.getLowValue()));
+                fromTextField.setText(low);
             });
 
             range.highValueProperty().addListener(new ChangeListener<Number>() {

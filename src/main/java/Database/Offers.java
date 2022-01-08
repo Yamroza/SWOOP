@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import Classes.Offer;
 import Classes.Transaction;
@@ -125,6 +126,53 @@ public class Offers {
             stmt = conn.createStatement();
             try {
                 ResultSet rs = stmt.executeQuery("select * from offers where  " + column + " like '" + value + "' order by OFFER_ID desc");
+                while (rs.next()) {
+                    nextOffer = returnOffer(rs);
+                    offers.add(nextOffer);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return offers;
+    }
+
+    public static ObservableList<Offer> getOffersBy2Cond(String column1, List<String> values1, String column2, List<String> values2) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        Offer nextOffer;
+        ObservableList<Offer> offers = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs;
+                if(values1.isEmpty() && values2.isEmpty()) {
+                    rs = stmt.executeQuery("select * from offers order by OFFER_ID desc");
+                    }
+                else if(values1.isEmpty()) {
+                    rs = stmt.executeQuery("select * from offers where " + column2 + " in (" +
+                            "'" + String.join("','", values2) + "'" + ") order by OFFER_ID desc");
+
+                }
+                else if(values2.isEmpty()) {
+                    rs = stmt.executeQuery("select * from offers where " + column1 + " in (" +
+                            "'" + String.join("','", values1) + "'" + ") order by OFFER_ID desc");
+                }
+                else{
+                    rs = stmt.executeQuery("select * from offers where " + column1 + " in (" +
+                            "'" + String.join("','", values1) + "'" + ") and " + column2 + " in ("
+                            + "'" + String.join("','", values2) + "'" + ") order by OFFER_ID desc");
+                }
                 while (rs.next()) {
                     nextOffer = returnOffer(rs);
                     offers.add(nextOffer);

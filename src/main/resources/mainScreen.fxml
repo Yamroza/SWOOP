@@ -30,7 +30,7 @@
             <Font name="Segoe UI Light" size="10.0" />
          </font>
       </Text>
-      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" onAction="#SearchClicked" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
+      <Button fx:id="searchButton" layoutX="549.0" layoutY="33.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="32.0" prefWidth="74.0" text="Szukaj" />
       <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
          <image>
             <Image url="@pudzian.jpg" />
@@ -81,7 +81,7 @@
             <Font name="Segoe UI Light" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="37.0" layoutY="338.0" mnemonicParsing="false" onAction="#CategoryApplyClicked" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
+      <Button layoutX="37.0" layoutY="338.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="26.0" prefWidth="95.0" text="Zastosuj" />
       <Line endX="50.5999755859375" layoutX="114.0" layoutY="383.0" opacity="0.5" startX="-115.0" />
       <Text layoutX="-1.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie" textAlignment="CENTER" wrappingWidth="165.59999999999997">
          <font>
