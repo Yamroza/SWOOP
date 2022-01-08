@@ -40,10 +40,10 @@ public class Offers {
         offer.setSeller(rs.getString("seller"));
         int status = rs.getInt("offer_status");
         offer.setStatus(status);
-        if(status == 1)
-        {
-            offer.setBuyer(rs.getString("buyer"));
-        }
+//        if(status == 1)
+//        {
+//            offer.setBuyer(rs.getString("buyer"));
+//        }
         return offer;
     }
 
@@ -134,7 +134,7 @@ public class Offers {
             query += " and category in (" + "'" + String.join("','", categories) + "'" + ")";
         }
         if(price_from >= 0 && price_to >= 0) {
-            query += " and price between " + price_from + " and " + price_to;
+            query += " and price between " + price_from + ".00 and " + price_to + ".00";
         }
         switch (sorting) {
             case "alfabetycznie" -> query += " order by name";
