@@ -9,9 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +46,15 @@ public class MainScreen {
 
     @FXML
     TextField searchTextField;
+
+    @FXML
+    ToggleGroup sort;
+
+    @FXML
+    CheckBox isExchangeButton;
+
+    @FXML
+    CheckBox isSaleButton;
 
     public AnchorPane mainScreenPane;
     public TextField fromTextField;
@@ -92,14 +99,51 @@ public class MainScreen {
 
     @FXML
     private void ViewListWithConditions() throws SQLException {
-        List<String> name =  new ArrayList<>();
-        if(!searchTextField.getText().isEmpty()) {
-            name.add(searchTextField.getText());
-        }
+        // name
+        String name =  searchTextField.getText();
+
+        //category
         ObservableList <String> SelectedCategories = categories.getCheckModel().getCheckedItems();
+
+        // sorting
+        String sorting = "";
+        RadioButton rb = (RadioButton)sort.getSelectedToggle();
+        if(rb != null){
+            sorting = rb.getText();
+        }
+
+        // is_exchange
+        int is_exchange = 0;
+        if(isExchangeButton.isSelected()) {
+            is_exchange = 1;
+        }
+
+        // is_for_sell
+        int is_for_sale = 0;
+        if(isSaleButton.isSelected()) {
+            is_for_sale = 1;
+        }
+
+        // price range
+        int price_from = -1;
+        try {
+            String t = fromTextField.getText();
+            price_from = Integer.parseInt(t.substring(0, t.length() - 3));
+        }
+        catch (NumberFormatException ignored){}
+
+        int price_to = -1;
+        try {
+            String t = toTextField.getText();
+            price_to = Integer.parseInt(t.substring(0, t.length() - 3));
+        }
+        catch (NumberFormatException ignored){}
+
+        // city
+
         offerList.getItems().clear();
-        offerList.getItems().addAll(Offers.getOffersBy2Cond("category", SelectedCategories.stream().toList(),
-                "name", name));
+        offerList.getItems().addAll(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
+            price_from, price_to, "Warszawa", sorting));
     }
 
     @FXML

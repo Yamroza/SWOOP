@@ -115,38 +115,37 @@ public class Offers {
         return offers;
     }
 
-
-    public static ObservableList<Offer> getOffersBy(String column, String value) throws SQLException {
-        Connecting DB = new Connecting();
-        Connection conn = DB.getConn();
-        Offer nextOffer;
-        ObservableList<Offer> offers = FXCollections.observableArrayList();
-        if (conn != null) {
-            Statement stmt;
-            stmt = conn.createStatement();
-            try {
-                ResultSet rs = stmt.executeQuery("select * from offers where  " + column + " like '" + value + "' order by OFFER_ID desc");
-                while (rs.next()) {
-                    nextOffer = returnOffer(rs);
-                    offers.add(nextOffer);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+    public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
+                                                        int is_exchange, int is_for_sale,
+                                                       int price_from, int price_to, String city,
+                                                        String sorting) throws SQLException {
+        String query = "select * from offers where";
+        if(is_exchange == is_for_sale){
+            query +=  " 1=1"; // anything
         }
-        DB.close();
-        return offers;
+        else {
+            query += " for_exchange = " + is_exchange;
+            query += " and for_sale = " + is_for_sale;
+        }
+        if(!name.isEmpty()) {
+            query += " and name like '" + name +"'";
+        }
+        if(categories.size() > 0) {
+            query += " and category in (" + "'" + String.join("','", categories) + "'" + ")";
+        }
+        if(price_from >= 0 && price_to >= 0) {
+            query += " and price between " + price_from + " and " + price_to;
+        }
+        switch (sorting) {
+            case "alfabetycznie" -> query += " order by name";
+            case "według cen - rosnąco" -> query += " order by price asc";
+            case "według cen - malejąco" -> query += " order by price desc";
+            default -> query += " order by OFFER_ID desc";
+        }
+        return getOffersByQuery(query);
     }
 
-    public static ObservableList<Offer> getOffersBy2Cond(String column1, List<String> values1, String column2, List<String> values2) throws SQLException {
+    public static ObservableList<Offer> getOffersByQuery(String query) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
         Offer nextOffer;
@@ -155,24 +154,7 @@ public class Offers {
             Statement stmt;
             stmt = conn.createStatement();
             try {
-                ResultSet rs;
-                if(values1.isEmpty() && values2.isEmpty()) {
-                    rs = stmt.executeQuery("select * from offers order by OFFER_ID desc");
-                    }
-                else if(values1.isEmpty()) {
-                    rs = stmt.executeQuery("select * from offers where " + column2 + " in (" +
-                            "'" + String.join("','", values2) + "'" + ") order by OFFER_ID desc");
-
-                }
-                else if(values2.isEmpty()) {
-                    rs = stmt.executeQuery("select * from offers where " + column1 + " in (" +
-                            "'" + String.join("','", values1) + "'" + ") order by OFFER_ID desc");
-                }
-                else{
-                    rs = stmt.executeQuery("select * from offers where " + column1 + " in (" +
-                            "'" + String.join("','", values1) + "'" + ") and " + column2 + " in ("
-                            + "'" + String.join("','", values2) + "'" + ") order by OFFER_ID desc");
-                }
+                ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
                     nextOffer = returnOffer(rs);
                     offers.add(nextOffer);
@@ -194,38 +176,13 @@ public class Offers {
     }
 
     public static ObservableList<Offer> getNextTenUserOffers(String login) throws SQLException {
-        Connecting DB = new Connecting();
-        Connection conn = DB.getConn();
-        Offer nextOffer;
-        ObservableList<Offer> offers = FXCollections.observableArrayList();
-        if (conn != null) {
-            Statement stmt;
-            stmt = conn.createStatement();
-            try {
-                ResultSet rs = stmt.executeQuery(
-                        "select O.*, S.BUYER from offers O LEFT JOIN (" +
-                                " SELECT T.OFFER_ID, T.BUYER FROM TRANSACTIONS T" +
-                                " WHERE T.STATUS = 1 ) S on O.OFFER_ID = S.OFFER_ID" +
-                                " where O.SELLER like '" + login + "' AND O.OFFER_STATUS IN(0, 1)" +
-                                " order by O.OFFER_ID desc fetch first 10 rows only");
-                while (rs.next()) {
-                    nextOffer = returnOffer(rs);
-                    offers.add(nextOffer);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        DB.close();
-        return offers;
+        String q = "select O.*, S.BUYER from offers O LEFT JOIN (" +
+                " SELECT T.OFFER_ID, T.BUYER FROM TRANSACTIONS T" +
+                " WHERE T.STATUS = 1 ) S on O.OFFER_ID = S.OFFER_ID" +
+                " where O.SELLER like '" + login + "' AND O.OFFER_STATUS IN(0, 1)" +
+                " order by O.OFFER_ID desc fetch first 10 rows only";
+
+        return getOffersByQuery(q);
     }
 
     private static String generateStatusChange(int offerID, int s)
