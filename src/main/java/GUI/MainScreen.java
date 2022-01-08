@@ -140,16 +140,15 @@ public class MainScreen {
         catch (NumberFormatException ignored){}
 
         // city
-
-        offerList.getItems().clear();
-        offerList.getItems().addAll(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
+        offerList.setItems(null);
+        offerList.setItems(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
             price_from, price_to, "Warszawa", sorting));
     }
 
     @FXML
     private void initialize() throws SQLException, ParseException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        //offerList.setItems(Offers.getNextTenOffers());
+        offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
 
         rangeListen();

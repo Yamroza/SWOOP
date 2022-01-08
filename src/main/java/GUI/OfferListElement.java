@@ -25,8 +25,9 @@ public class OfferListElement extends ListCell<Offer> {
         super.updateItem(offer, empty);
         if (empty || offer == null)
         {
-            setText(null);
+            setText("");
             setGraphic(null);
+            super.getListView().getItems().remove(this);
         }
         else
         {
