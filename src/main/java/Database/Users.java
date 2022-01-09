@@ -1,6 +1,7 @@
 package Database;
 
 import Classes.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class Users {
     private static User returnUser(ResultSet rs) throws SQLException{
         User user = new User();
         user.setLogin(rs.getString("login"));
-        user.setPassword(rs.getString("password"));
+        user.setPasswordNoHash(rs.getString("password"));
         user.setName(rs.getString("name"));
         user.setSurname(rs.getString("surname"));
         String birthDate = rs.getString("birthdate");
@@ -74,6 +75,7 @@ public class Users {
 
 
     public static boolean loginCheck (String username, String password) throws SQLException {
+        password = DigestUtils.shaHex(password);
         boolean success = false;
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();

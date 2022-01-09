@@ -1,5 +1,7 @@
 package Classes;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.time.LocalDate;
 
 public class User {
@@ -14,7 +16,7 @@ public class User {
 
     public User(String login, String password) {
         this.login = login;
-        this.password = password;
+        this.setPassword(password);
         this.name = "";
         this.surname = "";
         this.birthDate = LocalDate.now();
@@ -27,7 +29,7 @@ public class User {
 
     public User(String login, String password, String name, String surname, LocalDate birthDate, LocalDate accountCreationDate) {
         this.login = login;
-        this.password = password;
+        this.setPassword(password);
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -52,8 +54,10 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = DigestUtils.shaHex(password);
     }
+
+    public void setPasswordNoHash(String password) { this.password = password; }
 
     public String getName() {
         return name;
