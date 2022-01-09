@@ -85,41 +85,15 @@ public class Offers {
     }
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
-        Connecting DB = new Connecting();
-        Connection conn = DB.getConn();
-        Offer nextOffer;
-        ObservableList<Offer> offers = FXCollections.observableArrayList();
-        if (conn != null) {
-            Statement stmt;
-            stmt = conn.createStatement();
-            try {
-                ResultSet rs = stmt.executeQuery("select * from offers where offer_status = 0 " +
-                        "order by OFFER_ID desc fetch first 10 rows only");
-                while (rs.next()) {
-                    nextOffer = returnOffer(rs);
-                    offers.add(nextOffer);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        DB.close();
-        return offers;
+        return getOffersByQuery("select * from offers where offer_status = 0 " +
+                "order by OFFER_ID desc fetch first 10 rows only");
     }
 
     public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
                                                         int is_exchange, int is_for_sale,
                                                        int price_from, int price_to, String city,
                                                         String sorting) throws SQLException {
-        String query = "select * from offers where";
+        String query = "select * from offers where offer_status = 0 and";
         if(is_exchange == is_for_sale){
             query +=  " 1=1"; // anything
         }
