@@ -12,10 +12,11 @@ public class Offer {
     String seller;
     String buyer;
     int status;
+    String localisation;
     // photo
 
     public Offer(String itemName, String itemDescription, String itemCategory,
-                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status) {
+                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status, String localisation) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;
@@ -24,6 +25,7 @@ public class Offer {
         this.price = price;
         this.seller = seller;
         this.status = status;
+        this.localisation = localisation;
     }
 
     public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
@@ -131,4 +133,8 @@ public class Offer {
     public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
+
+    public String getLocalisation() { return localisation; }
+
+    public void setLocalisation(String localisation) { this.localisation = localisation; }
 }
