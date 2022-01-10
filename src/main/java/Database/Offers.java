@@ -48,41 +48,13 @@ public class Offers {
     }
 
     private static String generateInsert(Offer offer){
-        int isForSale = offer.getIsForSale() ? 1 : 0;
-        int isForExchange = offer.getIsForExchange() ? 1 : 0;
-        return ("INSERT INTO OFFERS (offer_id, name, description, category, for_exchange, for_sale, price, seller) " +
-                "VALUES ('" + offer.getOfferId() + "' , '" + offer.getItemName()  + "' , '" + offer.getItemDescription()
-                + "' , '" + offer.getItemCategory() + "' , '" + isForExchange + "' , '" + isForSale + "' , '" +
-                offer.getPrice() + "' , '" + offer.getSeller() + "'" + offer.getStatus() + ")");
-    }
-
-    public static int getNewOfferId() throws SQLException {
-        Connecting DB = new Connecting();
-        Connection conn = DB.getConn();
-        int newID = -1;
-        if (conn != null) {
-            Statement stmt;
-            stmt = conn.createStatement();
-            try {
-                ResultSet rs = stmt.executeQuery("Select Max(OFFER_ID) as max from OFFERS");
-                while (rs.next()) {
-                    newID = rs.getInt("max");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        DB.close();
-        return newID + 1;
-    }
+          int isForSale = offer.getIsForSale() ? 1 : 0;
+          int isForExchange = offer.getIsForExchange() ? 1 : 0;
+          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status) " +
+              "VALUES ('" + offer.getItemName()  + "' , '" + offer.getItemDescription()
+              + "' , '" + offer.getItemCategory() + "' , " + isForExchange + " , " + isForSale + " , " +
+              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ")");
+  }
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
         return getOffersByQuery("select * from offers where offer_status = 0 " +
@@ -167,6 +139,7 @@ public class Offers {
 
     public static void addOfferToDatabase(Offer offer) throws SQLException {
         Connecting DB = new Connecting();
+        System.out.println(generateInsert(offer));
         DB.alterTable(generateInsert(offer));
         DB.close();
     }
