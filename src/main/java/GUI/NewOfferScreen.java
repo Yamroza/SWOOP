@@ -103,7 +103,7 @@ public class NewOfferScreen {
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
         voivodshipDrop.getSelectionModel().selectFirst();
-        cityDrop.setItems(Offers.getCitiesList("DOLNOŚLĄSKIE"));
+        cityDrop.setItems(Offers.getCitiesList("dolnośląskie"));
         cityDrop.getSelectionModel().selectFirst();
     }
 }

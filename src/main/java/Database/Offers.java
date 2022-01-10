@@ -76,7 +76,10 @@ public class Offers {
             query += " for_sale = 1";
         }
         if(!name.isEmpty()) {
-            query += " and name like '" + name +"'";
+            query += " and LOWER(name) like('%" + name.toLowerCase() +"%')";
+        }
+        if(!city.isEmpty()) {
+            query += " and localisation like('" + city +"')";
         }
         if(categories.size() > 0) {
             query += " and category in (" + "'" + String.join("','", categories) + "'" + ")";

@@ -56,6 +56,12 @@ public class MainScreen {
     @FXML
     CheckBox isSaleButton;
 
+    @FXML
+    ComboBox<String> voivodshipDrop;
+
+    @FXML
+    ComboBox<String> cityDrop;
+
     public AnchorPane mainScreenPane;
     public TextField fromTextField;
     public TextField toTextField;
@@ -88,6 +94,14 @@ public class MainScreen {
         App.setRoot("offerScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
+    }
+
+    private String chosen_voivod = "null";
+
+    @FXML
+    private void voivodshipDropClicked() throws SQLException {
+        this.chosen_voivod = voivodshipDrop.getValue();
+        cityDrop.setItems(Offers.getCitiesList(chosen_voivod));
     }
 
     @FXML
@@ -139,10 +153,13 @@ public class MainScreen {
         }
         catch (NumberFormatException ignored){}
 
-        // city
+        String city = cityDrop.getValue();
+        if (city == null) { city = "" ;}
+
+
         offerList.setItems(null);
         offerList.setItems(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
-            price_from, price_to, "Warszawa", sorting));
+            price_from, price_to, city, sorting));
     }
 
     @FXML
@@ -150,6 +167,7 @@ public class MainScreen {
         categories.getItems().addAll(Categories.getCategoriesList());
         offerList.setItems(Offers.getNextTenOffers());
         offerList.setCellFactory(offerListView -> new OfferListElement());
+        voivodshipDrop.setItems(Offers.getVoivodshipsList());
         range.setHighValue(1000);
 
         rangeListen();
