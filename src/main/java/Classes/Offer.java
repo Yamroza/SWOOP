@@ -1,9 +1,5 @@
 package Classes;
 
-import Database.Connecting;
-
-import java.sql.SQLException;
-
 public class Offer {
 
     int offer_id;
@@ -18,9 +14,8 @@ public class Offer {
     int status;
     // photo
 
-    public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
+    public Offer(String itemName, String itemDescription, String itemCategory,
                  Boolean isForExchange, Boolean isForSale, Float price, String seller, int status) {
-        this.offer_id = offer_id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;

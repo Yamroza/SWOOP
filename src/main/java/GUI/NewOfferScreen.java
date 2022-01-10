@@ -66,7 +66,7 @@ public class NewOfferScreen {
         {
             float itemPrice = Float.parseFloat(price.getText());
             Offer newOffer = new Offer(
-                    Offers.getNewOfferId(),
+                    //Offers.getNewOfferId(),
                     name,
                     offerDesc.getText(),
                     categoryDrop.getValue(),
