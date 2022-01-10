@@ -40,6 +40,7 @@ public class Offers {
         offer.setSeller(rs.getString("seller"));
         int status = rs.getInt("offer_status");
         offer.setStatus(status);
+        offer.setLocalisation(rs.getString("localisation"));
 //        if(status == 1)
 //        {
 //            offer.setBuyer(rs.getString("buyer"));
@@ -50,10 +51,10 @@ public class Offers {
     private static String generateInsert(Offer offer){
           int isForSale = offer.getIsForSale() ? 1 : 0;
           int isForExchange = offer.getIsForExchange() ? 1 : 0;
-          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status) " +
+          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation) " +
               "VALUES ('" + offer.getItemName()  + "' , '" + offer.getItemDescription()
               + "' , '" + offer.getItemCategory() + "' , " + isForExchange + " , " + isForSale + " , " +
-              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ")");
+              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "')");
   }
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
@@ -150,4 +151,75 @@ public class Offers {
         DB.alterTable(generateStatusChange(offerID, status));
         DB.close();
     }
+
+    private static ObservableList<String> getCities(String voivodship) throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        ObservableList<String> cities = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("SELECT c.NAME from CITIES c join VOIVODSHIPS v using(voivodship_id) WHERE v.name like('" + voivodship + "') order by c.name asc");
+                while (rs.next()) {
+                    cities.add(rs.getString("name"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return cities;
+    }
+
+    private static ObservableList<String> citiesList = null;
+
+    public static ObservableList<String> getCitiesList(String Voivodship) throws SQLException {
+        citiesList = getCities(Voivodship);
+        return citiesList;
+    }
+
+    private static ObservableList<String> getVoivodships() throws SQLException {
+        Connecting DB = new Connecting();
+        Connection conn = DB.getConn();
+        ObservableList<String> voivodships = FXCollections.observableArrayList();
+        if (conn != null) {
+            Statement stmt;
+            stmt = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("Select NAME from VOIVODSHIPS");
+                while (rs.next()) {
+                    voivodships.add(rs.getString("name"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        DB.close();
+        return voivodships;
+    }
+
+    private static ObservableList<String> voivodshipsList = null;
+
+    public static ObservableList<String> getVoivodshipsList() throws SQLException {
+        voivodshipsList = getVoivodships();
+        return voivodshipsList;
+    }
 }
+
