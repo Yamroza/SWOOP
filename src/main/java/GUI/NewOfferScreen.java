@@ -38,6 +38,12 @@ public class NewOfferScreen {
     ComboBox<String> categoryDrop;
 
     @FXML
+    ComboBox<String> voivodshipDrop;
+
+    @FXML
+    ComboBox<String> cityDrop;
+
+    @FXML
     Text errorMessage;
 
     @FXML
@@ -45,6 +51,13 @@ public class NewOfferScreen {
         App.setRoot("mainScreen");
         App.myStage.setScene(App.scene);
         App.myStage.sizeToScene();
+    }
+    private String chosen_voivod = "null";
+
+    @FXML
+    private void voivodshipDropClicked() throws SQLException {
+        this.chosen_voivod = voivodshipDrop.getValue();
+        cityDrop.setItems(Offers.getCitiesList(chosen_voivod));
     }
 
     @FXML
@@ -74,7 +87,8 @@ public class NewOfferScreen {
                     isForSale.isSelected(),
                     itemPrice,
                     loggedUser.getLogin(),
-                    0
+                    0,
+                    cityDrop.getValue()
             );
             Offers.addOfferToDatabase(newOffer);
             App.setRoot("mainScreen");
@@ -87,5 +101,9 @@ public class NewOfferScreen {
     private void initialize() throws SQLException {
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
+        voivodshipDrop.setItems(Offers.getVoivodshipsList());
+        voivodshipDrop.getSelectionModel().selectFirst();
+        cityDrop.setItems(Offers.getCitiesList("DOLNOŚLĄSKIE"));
+        cityDrop.getSelectionModel().selectFirst();
     }
 }
