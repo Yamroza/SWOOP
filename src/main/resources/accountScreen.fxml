@@ -89,7 +89,7 @@
          </font>
       </Text>
       <ListView fx:id="transactionList" prefHeight="240.0" prefWidth="323.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <ListView fx:id="userOfferList" prefHeight="80.0" prefWidth="270.0" GridPane.rowIndex="1" />
+      <ListView fx:id="userOfferList" onMouseClicked="#userOfferClicked" prefHeight="80.0" prefWidth="270.0" GridPane.rowIndex="1" />
       <ListView fx:id="userTransactionList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Moje zgłoszenia:" GridPane.columnIndex="4">
          <font>

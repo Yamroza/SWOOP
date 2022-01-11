@@ -3,10 +3,7 @@ package GUI;
 import Classes.Comment;
 import Classes.Offer;
 import Classes.Transaction;
-import Database.Comments;
-import Database.Offers;
-import Database.Transactions;
-import Database.Users;
+import Database.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -53,6 +50,27 @@ public class OfferScreen {
 
     @FXML
     TextField exchangeOffer;
+
+    @FXML
+    Button editButton;
+
+    @FXML
+    Button acceptChangesButton;
+
+    @FXML
+    TextField editNameField;
+
+    @FXML
+    Text editNameText;
+
+    @FXML
+    TextArea editDescriptionArea;
+
+    @FXML
+    ChoiceBox<String> editCategory;
+
+    @FXML
+    Button submitTransactionButton;
 
     ObservableList<Comment> comments;
 
@@ -102,6 +120,54 @@ public class OfferScreen {
     }
 
     @FXML
+    private void editClicked() throws SQLException {
+        itemName.setDisable(true);
+        itemName.setVisible(false);
+        editButton.setDisable(true);
+        editButton.setVisible(false);
+        acceptChangesButton.setVisible(true);
+        acceptChangesButton.setDisable(false);
+        editNameText.setVisible(true);
+        editNameText.setDisable(false);
+        editNameField.setVisible(true);
+        editNameField.setDisable(false);
+        editDescriptionArea.setVisible(true);
+        editDescriptionArea.setDisable(false);
+        editCategory.setItems(Categories.getCategoriesList());
+        editCategory.setDisable(false);
+        editCategory.setVisible(true);
+        editCategory.setValue(category.getText());
+        editNameField.setText(itemName.getText());
+        editDescriptionArea.setText(description.getText());
+    }
+
+    @FXML
+    private void acceptChangesClicked() throws SQLException {
+        itemName.setDisable(false);
+        itemName.setVisible(true);
+        editButton.setDisable(false);
+        editButton.setVisible(true);
+        acceptChangesButton.setVisible(false);
+        acceptChangesButton.setDisable(true);
+        editNameText.setVisible(false);
+        editNameText.setDisable(true);
+        editNameField.setVisible(false);
+        editNameField.setDisable(true);
+        editDescriptionArea.setVisible(false);
+        editDescriptionArea.setDisable(true);
+        editCategory.setDisable(true);
+        editCategory.setVisible(false);
+        Offer currentOffer = Offers.getSelectedOffer();
+        currentOffer.setItemName(editNameField.getText());
+        currentOffer.setItemDescription(editDescriptionArea.getText());
+        currentOffer.setItemCategory(editCategory.getSelectionModel().getSelectedItem());
+        Offers.updateOffer(currentOffer);
+        itemName.setText(currentOffer.getItemName());
+        description.setText(currentOffer.getItemDescription());
+        category.setText(currentOffer.getItemCategory());
+    }
+
+    @FXML
     private void initialize() throws SQLException {
         Offer currentOffer = Offers.getSelectedOffer();
         itemName.setText(currentOffer.getItemName());
@@ -123,6 +189,12 @@ public class OfferScreen {
             exchangeButton.setDisable(false);
             exchangeOffer.setEditable(true);
             exchangeButton.setSelected(true);
+        }
+        if(Objects.equals(currentOffer.getSeller(), Users.getLoggedUser().getLogin()))
+        {
+            editButton.setVisible(true);
+            editButton.setDisable(false);
+            submitTransactionButton.setDisable(true);
         }
     }
 }
