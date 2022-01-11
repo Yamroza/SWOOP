@@ -42,10 +42,10 @@ public class Offers {
         offer.setStatus(status);
         offer.setLocalisation(rs.getString("localisation"));
         offer.setPhoto(rs.getString("photo"));
-//        if(status == 1)
-//        {
-//            offer.setBuyer(rs.getString("buyer"));
-//        }
+        if(status == 1)
+        {
+            offer.setBuyer(rs.getString("buyer"));
+        }
         return offer;
     }
 
