@@ -34,7 +34,7 @@ public class OfferScreen {
     Text seller;
 
     @FXML
-    TextArea description;
+    Text description;
 
     @FXML
     ListView<Comment> commentList;
