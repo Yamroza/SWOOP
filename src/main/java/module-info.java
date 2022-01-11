@@ -5,6 +5,7 @@ module ItemExchangePortal {
     requires org.slf4j;
     requires org.controlsfx.controls;
     requires commons.codec;
+    requires java.desktop;
 
     opens GUI;
     exports GUI;

@@ -10,8 +10,11 @@ import Database.Users;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -53,6 +56,9 @@ public class OfferScreen {
 
     @FXML
     TextField exchangeOffer;
+
+    @FXML
+    ImageView offerPhoto;
 
     ObservableList<Comment> comments;
 
@@ -104,6 +110,9 @@ public class OfferScreen {
     @FXML
     private void initialize() throws SQLException {
         Offer currentOffer = Offers.getSelectedOffer();
+        File file = new File(currentOffer.getPhoto());
+        Image image = new Image(file.toURI().toString());
+        offerPhoto.setImage(image);
         itemName.setText(currentOffer.getItemName());
         itemPrice.setText(String.valueOf(currentOffer.getPrice()));
         isForExchange.setText(currentOffer.getIsForExchange() ? "Tak" : "Nie");

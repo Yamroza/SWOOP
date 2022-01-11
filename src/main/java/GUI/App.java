@@ -1,5 +1,5 @@
 package GUI;
-
+import Database.Imgur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,6 +46,14 @@ public class App extends Application {
         Connecting DB = new Connecting("z27", "9wdzsz");
         System.out.println("Closed magical database...");
         DB.close(); */
+       /* System.out.println("PRZED");
+        try{
+            Imgur TestImgur1 = new Imgur();
+            String c = TestImgur1.getImgurContent("...");
+            System.out.println(c);
+            System.out.println("UDALO SIE");
+        }catch (Exception e) { System.out.println("NIE UDAŁO SIE");}
+        System.out.println("KONIEC"); */
         launch();
     }
 

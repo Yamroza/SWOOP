@@ -13,7 +13,7 @@ public class Offer {
     String buyer;
     int status;
     String localisation;
-    // photo
+    String photo = "no_photo";
 
     public Offer(String itemName, String itemDescription, String itemCategory,
                  Boolean isForExchange, Boolean isForSale, Float price, String seller, int status, String localisation) {
@@ -26,6 +26,21 @@ public class Offer {
         this.seller = seller;
         this.status = status;
         this.localisation = localisation;
+        this.photo = "C://Users//oyamr//Documents//new_pap//brak_zdjecia.jpg";
+    }
+
+    public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
+                 Boolean isForSale, Float price, String seller, int status, String localisation, String photo) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.itemCategory = itemCategory;
+        this.isForExchange = isForExchange;
+        this.isForSale = isForSale;
+        this.price = price;
+        this.seller = seller;
+        this.status = status;
+        this.localisation = localisation;
+        this.photo = photo;
     }
 
     public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
@@ -137,4 +152,8 @@ public class Offer {
     public String getLocalisation() { return localisation; }
 
     public void setLocalisation(String localisation) { this.localisation = localisation; }
+
+    public String getPhoto() { return photo; }
+
+    public void setPhoto(String photo) { this.photo = photo; }
 }

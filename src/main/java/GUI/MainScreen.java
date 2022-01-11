@@ -9,7 +9,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +23,9 @@ import org.controlsfx.control.RangeSlider;
 import javafx.fxml.FXML;
 import org.controlsfx.control.CheckComboBox;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -84,7 +90,21 @@ public class MainScreen {
     @FXML
     private void NewOfferClicked(ActionEvent e) throws IOException{
         App.setRoot("newOfferScreen");
-        App.myStage.setScene(App.scene);
+        /*InputStream stream = new FileInputStream("C://Users//oyamr//Documents//new_pap//star.jpg");
+        Image image = new Image(stream);
+        //Creating the image view
+        ImageView imageView = new ImageView();
+        //Setting image to the image view
+        imageView.setImage(image);
+        //Setting the image view parameters
+        imageView.setX(10);
+        imageView.setY(10);
+        imageView.setFitWidth(575);
+        imageView.setPreserveRatio(true);
+        //Setting the Scene object
+        Group root = new Group(imageView);
+        Scene scene = new Scene(root, 595, 370);*/
+        App.myStage.setScene(App.scene); //App.scene);
         App.myStage.sizeToScene();
     }
 

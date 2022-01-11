@@ -11,8 +11,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -45,6 +48,9 @@ public class NewOfferScreen {
 
     @FXML
     Text errorMessage;
+
+    @FXML
+    ImageView imageView;
 
     @FXML
     private void CancelClicked() throws IOException {
@@ -99,6 +105,9 @@ public class NewOfferScreen {
 
     @FXML
     private void initialize() throws SQLException {
+        File file = new File("C://Users//oyamr//Documents//new_pap//star.jpg");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
