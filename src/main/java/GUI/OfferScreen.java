@@ -136,6 +136,8 @@ public class OfferScreen {
         editCategory.setItems(Categories.getCategoriesList());
         editCategory.setDisable(false);
         editCategory.setVisible(true);
+        category.setDisable(true);
+        category.setVisible(false);
         editCategory.setValue(category.getText());
         editNameField.setText(itemName.getText());
         editDescriptionArea.setText(description.getText());
@@ -157,6 +159,8 @@ public class OfferScreen {
         editDescriptionArea.setDisable(true);
         editCategory.setDisable(true);
         editCategory.setVisible(false);
+        category.setDisable(false);
+        category.setVisible(true);
         Offer currentOffer = Offers.getSelectedOffer();
         currentOffer.setItemName(editNameField.getText());
         currentOffer.setItemDescription(editDescriptionArea.getText());

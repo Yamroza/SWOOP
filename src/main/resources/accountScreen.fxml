@@ -69,10 +69,10 @@
    <GridPane alignment="CENTER" layoutX="25.0" layoutY="427.0" prefHeight="277.0" prefWidth="966.0">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.75034720925441" minWidth="10.0" prefWidth="38.96580115698646" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="305.2011663273503" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="50.86866538756874" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="296.22214300920257" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.75034720925441" minWidth="10.0" prefWidth="45.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="45.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
       </columnConstraints>
       <rowConstraints>
          <RowConstraints maxHeight="75.93428770701745" minHeight="0.0" prefHeight="34.99477675653905" vgrow="SOMETIMES" />
