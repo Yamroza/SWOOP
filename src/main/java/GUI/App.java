@@ -7,7 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
+import java.util.Collections;
+
+import org.apache.commons.io.FileUtils;
 
 public class App extends Application {
 
@@ -39,7 +47,18 @@ public class App extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get("output.txt");
+        Path path2 = Paths.get("output.jpg");
+
+        byte[] fileContent = FileUtils.readFileToByteArray(new File("C://Users//oyamr//Documents//new_pap//brak_zdjecia.jpg"));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        Files.write(path, Collections.singleton(encodedString));
+
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        FileUtils.writeByteArrayToFile(new File("output.jpg"), decodedBytes);
+
+
         // Connecting DB = new Connecting();
         // DB.close();
         /* System.out.println("Connecting to magical database...");
