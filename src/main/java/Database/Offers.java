@@ -41,10 +41,10 @@ public class Offers {
         int status = rs.getInt("offer_status");
         offer.setStatus(status);
         offer.setLocalisation(rs.getString("localisation"));
-//        if(status == 1)
-//        {
-//            offer.setBuyer(rs.getString("buyer"));
-//        }
+        if(status == 1)
+        {
+            offer.setBuyer(rs.getString("buyer"));
+        }
         return offer;
     }
 
