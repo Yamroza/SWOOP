@@ -4,6 +4,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
    <Line endX="600.0" endY="1.52587890625E-5" layoutX="100.0" layoutY="100.0" startX="-100.0" />
    <TextField fx:id="editNameField" disable="true" layoutX="134.0" layoutY="29.0" prefHeight="57.0" prefWidth="470.0" visible="false">
