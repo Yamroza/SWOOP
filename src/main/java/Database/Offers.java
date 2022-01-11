@@ -225,5 +225,19 @@ public class Offers {
         voivodshipsList = getVoivodships();
         return voivodshipsList;
     }
+
+    private static String generateUpdate(Offer offer)
+    {
+        return ("UPDATE OFFERS SET NAME = '" + offer.getItemName() +"', DESCRIPTION = '" +
+                offer.getItemDescription() + "', category = '" + offer.getItemCategory() + "' " +
+                "WHERE OFFER_ID = " + offer.getOfferId());
+    }
+
+    public static void updateOffer(Offer offer) throws SQLException {
+        Connecting DB = new Connecting();
+        DB.alterTable(generateUpdate(offer));
+        DB.close();
+
+    }
 }
 

@@ -67,6 +67,13 @@ public class AccountScreen {
         App.myStage.sizeToScene();
     }
 
+    @FXML
+    private void userOfferClicked() throws IOException {
+        Offers.setSelectedOffer(userOfferList.getSelectionModel().getSelectedItem());
+        App.setRoot("offerScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
+    }
 
     @FXML
     private void initialize() throws SQLException {

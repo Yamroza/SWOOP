@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
+<AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
    <Line endX="600.0" endY="1.52587890625E-5" layoutX="100.0" layoutY="100.0" startX="-100.0" />
-   <Text fx:id="itemName" layoutX="316.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAZWA" textAlignment="CENTER">
+   <TextField fx:id="editNameField" disable="true" layoutX="134.0" layoutY="29.0" prefHeight="57.0" prefWidth="470.0" visible="false">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </TextField>
+   <Text fx:id="itemName" layoutX="96.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAZWA" textAlignment="CENTER" wrappingWidth="507.663236618042">
       <font>
          <Font name="Segoe UI Light" size="30.0" />
       </font>
    </Text>
-   <TextArea fx:id="description" editable="false" layoutX="26.0" layoutY="121.0" prefHeight="215.0" prefWidth="438.0" />
-   <Text layoutX="479.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wystawiający:">
+   <Text layoutX="484.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wystawiający:">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
    </Text>
-   <Text layoutX="482.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czy do wymiany?">
+   <Text layoutX="484.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czy do wymiany?">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
@@ -29,22 +31,23 @@
          <Font name="Segoe UI" size="16.0" />
       </font>
    </Text>
-   <Text fx:id="category" layoutX="573.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="116.421875">
+   <Text fx:id="category" layoutX="573.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="116.421875">
       <font>
          <Font name="Segoe UI" size="16.0" />
       </font>
    </Text>
-   <Text layoutX="642.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLN">
+   <Text layoutX="642.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLN">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
    </Text>
-   <Text layoutX="482.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria:">
+   <Text layoutX="484.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria:">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
    </Text>
-   <Text layoutX="484.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENA:">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="168.0" layoutX="509.0" layoutY="285.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+   <Text layoutX="484.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENA:">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
@@ -59,7 +62,7 @@
          <Font name="Segoe UI Light" size="14.0" />
       </font>
    </Button>
-   <Text fx:id="seller" layoutX="600.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="97.74248330313185">
+   <Text fx:id="seller" layoutX="603.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="97.74248330313185">
       <font>
          <Font name="Segoe UI" size="16.0" />
       </font>
@@ -74,12 +77,8 @@
          <Font name="Segoe UI Light" size="16.0" />
       </font>
    </Text>
-   <Button fx:id="returnOButton" layoutX="646.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitClicked" text="Cofnij">
-      <font>
-         <Font name="Segoe UI Light" size="12.0" />
-      </font>
-   </Button>
-   <Text fx:id="itemPrice" layoutX="552.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text=",-" textAlignment="RIGHT" wrappingWidth="82.578125">
+   <Button fx:id="returnOButton" layoutX="613.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitClicked" prefHeight="25.0" prefWidth="73.0" text="Cofnij" />
+   <Text fx:id="itemPrice" layoutX="552.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text=",-" textAlignment="RIGHT" wrappingWidth="82.578125">
       <font>
          <Font name="Segoe UI" size="16.0" />
       </font>
@@ -99,10 +98,33 @@
          <Font size="16.0" />
       </font>
    </RadioButton>
-   <TextField fx:id="exchangeOffer" editable="false" layoutX="137.0" layoutY="367.0" prefHeight="25.0" prefWidth="230.0" />
    <ImageView fx:id="offerPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@pudzian.jpg" />
       </image>
    </ImageView>
+   <TextField fx:id="exchangeOffer" editable="false" layoutX="137.0" layoutY="367.0" prefHeight="25.0" prefWidth="230.0" />
+   <AnchorPane layoutX="24.0" layoutY="136.0" prefHeight="201.0" prefWidth="441.0">
+      <children>
+         <Text fx:id="description" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="441.83591942129965">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Text>
+         <TextArea fx:id="editDescriptionArea" disable="true" layoutY="1.0" prefHeight="200.0" prefWidth="442.0" visible="false" wrapText="true" />
+      </children>
+   </AnchorPane>
+   <Text fx:id="editNameText" disable="true" layoutX="24.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwa:" visible="false">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Text>
+   <Button fx:id="editButton" disable="true" layoutX="613.0" layoutY="44.0" mnemonicParsing="false" onAction="#editClicked" prefHeight="25.0" prefWidth="73.0" text="Edytuj" visible="false" />
+   <Button fx:id="acceptChangesButton" disable="true" layoutX="613.0" layoutY="44.0" mnemonicParsing="false" onAction="#acceptChangesClicked" prefHeight="25.0" prefWidth="72.0" text="Gotowe" visible="false" />
+   <Text layoutX="21.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPIS:">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <ChoiceBox fx:id="editCategory" disable="true" layoutX="573.0" layoutY="192.0" prefHeight="26.0" prefWidth="116.0" visible="false" />
 </AnchorPane>

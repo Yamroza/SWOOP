@@ -110,10 +110,14 @@ public class MainScreen {
 
     @FXML
     private void OfferClicked(MouseEvent e) throws IOException{
-        Offers.setSelectedOffer(offerList.getSelectionModel().getSelectedItem());
-        App.setRoot("offerScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
+        Offer selectedOffer = offerList.getSelectionModel().getSelectedItem();
+        if(selectedOffer != null)
+        {
+            Offers.setSelectedOffer(selectedOffer);
+            App.setRoot("offerScreen");
+            App.myStage.setScene(App.scene);
+            App.myStage.sizeToScene();
+        }
     }
 
     private String chosen_voivod = "null";

@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.controlsfx.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.CheckComboBox?>
+<?import org.controlsfx.control.RangeSlider?>
 
-<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
+<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
    <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
       <TextField fx:id="searchTextField" layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="202.0" promptText="Szukaj...">
          <font>
             <Font name="Segoe UI Light" size="12.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="voivodshipDrop" layoutX="375.0" layoutY="34.0" prefHeight="32.0" prefWidth="108.0" promptText="w... " onAction="#voivodshipDropClicked" />
+      <ComboBox fx:id="voivodshipDrop" layoutX="375.0" layoutY="34.0" onAction="#voivodshipDropClicked" prefHeight="32.0" prefWidth="108.0" promptText="w... " />
       <ComboBox fx:id="cityDrop" layoutX="490.0" layoutY="34.0" prefHeight="32.0" prefWidth="108.0" promptText="miasto... " />
-      <Button fx:id="addButton" layoutX="693.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
+      <Button fx:id="addButton" layoutX="711.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
          <font>
             <Font name="Segoe UI Light" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="accountButton" layoutX="816.0" layoutY="22.0" mnemonicParsing="false" onAction="#MyAccountClicked" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="accountButton" layoutX="831.0" layoutY="23.0" mnemonicParsing="false" onAction="#MyAccountClicked" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
       </Button>
-      <Text layoutX="691.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
+      <Text layoutX="701.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
          <font>
             <Font name="Segoe UI Light" size="10.0" />
          </font>
       </Text>
-      <Button fx:id="searchButton" layoutX="620.0" layoutY="33.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="32.0" prefWidth="60.0" text="Szukaj" />
+      <Button fx:id="searchButton" layoutX="616.0" layoutY="34.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="33.0" prefWidth="76.0" text="Szukaj" />
       <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
          <image>
             <Image url="@pudzian.jpg" />

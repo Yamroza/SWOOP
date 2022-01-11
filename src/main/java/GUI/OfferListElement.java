@@ -17,6 +17,12 @@ public class OfferListElement extends ListCell<Offer> {
     @FXML
     AnchorPane itemCell;
 
+    @FXML
+    Text itemPrice;
+
+    @FXML
+    Text itemExchange;
+
     private FXMLLoader loader;
 
     @Override
@@ -27,7 +33,11 @@ public class OfferListElement extends ListCell<Offer> {
         {
             setText("");
             setGraphic(null);
-            super.getListView().getItems().remove(this);
+            //super.getListView().getItems().remove(this);
+            if(this.itemCell != null) {
+                itemCell.setVisible(false);
+            }
+
         }
         else
         {
@@ -41,7 +51,19 @@ public class OfferListElement extends ListCell<Offer> {
                     e.printStackTrace();
                 }
             }
+            itemCell.setVisible(true);
             itemName.setText(offer.getItemName());
+            itemExchange.setVisible(false);
+            itemPrice.setVisible(false);
+            if(offer.getIsForExchange())
+            {
+                itemExchange.setVisible(true);
+            }
+            if(offer.getIsForSale())
+            {
+                itemPrice.setVisible(true);
+                itemPrice.setText(offer.getPrice() + "PLN");
+            }
         }
 
         setText(null);

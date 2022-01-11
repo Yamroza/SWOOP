@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="transactionCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-     <Pane prefHeight="125.0" prefWidth="270.0">
+<AnchorPane fx:id="transactionCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+     <Pane prefHeight="125.0" prefWidth="250.0">
          <Text fx:id="transactionName" layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
              <font>
                  <Font size="16.0" />
              </font>
          </Text>
-      <Button fx:id="declineButton" layoutX="220.0" layoutY="44.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="41.0" text="Nie" />
-      <Button fx:id="acceptButton" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" text="Tak" />
+      <Button fx:id="declineButton" layoutX="204.0" layoutY="42.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="41.0" text="Nie" />
+      <Button fx:id="acceptButton" layoutX="204.0" layoutY="12.0" mnemonicParsing="false" text="Tak" />
       <Text fx:id="transactionOffer" layoutX="6.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="16.0" />

@@ -41,14 +41,6 @@ public class TransactionListElement extends ListCell<Transaction> {
 
     private FXMLLoader loader;
 
-    @FXML
-    private void declineClicked() throws SQLException {
-        Transactions.setTransactionDeclined(this.getItem());
-        getListView().getItems().remove(this.getItem());
-        ObservableList<Transaction> tmpList = getListView().getItems();
-        getListView().getItems().setAll(tmpList);
-    }
-
     @Override
     protected void updateItem(Transaction transaction, boolean empty)
     {
@@ -57,6 +49,9 @@ public class TransactionListElement extends ListCell<Transaction> {
         {
             setText(null);
             setGraphic(null);
+            if(transactionCell != null) {
+                transactionCell.setVisible(false);
+            }
         }
         else
         {
@@ -70,6 +65,7 @@ public class TransactionListElement extends ListCell<Transaction> {
                     e.printStackTrace();
                 }
             }
+            transactionCell.setVisible(true);
             transactionName.setText(transaction.getSellersItem());
             transactionOffer.setText(transaction.getBuyersOffer());
             transactionBuyer.setText("Zgłoszenie od: " + transaction.getBuyer());
@@ -82,13 +78,7 @@ public class TransactionListElement extends ListCell<Transaction> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                try {
-                    App.setRoot("accountScreen");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                App.myStage.setScene(App.scene);
-                App.myStage.sizeToScene();
+                this.getListView().refresh();
             });
             declineButton.setOnAction(arg0 -> {
                 try {
@@ -97,13 +87,7 @@ public class TransactionListElement extends ListCell<Transaction> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                try {
-                    App.setRoot("accountScreen");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                App.myStage.setScene(App.scene);
-                App.myStage.sizeToScene();
+                this.getListView().refresh();
             });
         }
 
