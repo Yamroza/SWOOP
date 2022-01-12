@@ -41,6 +41,7 @@ public class Users {
         {
             user.setAccountCreationDate(parseStringToDate(accountCreationDate));
         }
+        user.setProfilePhoto(rs.getString("profile_photo"));
         return user;
     }
 
@@ -134,10 +135,10 @@ public class Users {
     }
 
     private static String generateInsert(User user){
-        return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate) VALUES " +
+        return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate, profile_photo) VALUES " +
                 "('" + user.getLogin() + "' , '" + user.getPassword()  + "' , '" + user.getName() + "' , '" +
                 user.getSurname() + "' , TO_DATE('" + parseDateToString(user.getBirthDate()) + "', 'YYYY-MM-DD'), " +
-                "TO_DATE('" + parseDateToString(user.getAccountCreationDate()) + "', 'YYYY-MM-DD') )");
+                "TO_DATE('" + parseDateToString(user.getAccountCreationDate()) + "', 'YYYY-MM-DD') ), '" + user.getProfilePhoto() + "')");
     }
 
     private static String generateUpdate(){
