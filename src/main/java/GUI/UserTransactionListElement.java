@@ -35,7 +35,8 @@ public class UserTransactionListElement extends ListCell<Transaction> {
             setText(null);
             setGraphic(null);
         } else {
-            if (loader == null) {
+            if (loader == null)
+            {
                 loader = new FXMLLoader(App.class.getResource("/userTransactionListCell.fxml"));
                 loader.setController(this);
                 try {
@@ -43,29 +44,43 @@ public class UserTransactionListElement extends ListCell<Transaction> {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                {
-                    userTransactionName.setText(transaction.getSellersItem());
-                    userTransactionOffer.setText(transaction.getBuyersOffer());
-                    userTransactionSeller.setText("Zgłoszenie do: " + transaction.getSeller());
-                    if (transaction.getStatus() == 1) {
-                        userTransactionName.setFill(Color.LIMEGREEN);
-                        userTransactionOffer.setFill(Color.LIMEGREEN);
-                        userTransactionSeller.setFill(Color.LIMEGREEN);
-                    } else if (transaction.getStatus() == -1) {
-                        userTransactionName.setStrikethrough(true);
-                        userTransactionOffer.setStrikethrough(true);
-                        userTransactionSeller.setStrikethrough(true);
-                        userTransactionName.setFill(Color.RED);
-                        userTransactionOffer.setFill(Color.RED);
-                        userTransactionSeller.setFill(Color.RED);
-                    }
-                }
-
-
-                setText(null);
-                setGraphic(userTransactionCell);
+            }
+            if (transaction.getStatus() == 0) {
+                userTransactionName.setText(transaction.getSellersItem());
+                userTransactionOffer.setText(transaction.getBuyersOffer());
+                userTransactionSeller.setText("Zgłoszenie do: " + transaction.getSeller());
+                userTransactionName.setStrikethrough(false);
+                userTransactionOffer.setStrikethrough(false);
+                userTransactionSeller.setStrikethrough(false);
+                userTransactionName.setFill(Color.BLACK);
+                userTransactionOffer.setFill(Color.BLACK);
+                userTransactionSeller.setFill(Color.BLACK);
+            }
+            else if (transaction.getStatus() == 1) {
+                userTransactionName.setText(transaction.getSellersItem());
+                userTransactionOffer.setText(transaction.getBuyersOffer());
+                userTransactionSeller.setText("Zgłoszenie do: " + transaction.getSeller());
+                userTransactionName.setStrikethrough(false);
+                userTransactionOffer.setStrikethrough(false);
+                userTransactionSeller.setStrikethrough(false);
+                userTransactionName.setFill(Color.LIMEGREEN);
+                userTransactionOffer.setFill(Color.LIMEGREEN);
+                userTransactionSeller.setFill(Color.LIMEGREEN);
+            } else if (transaction.getStatus() == -1) {
+                userTransactionName.setText(transaction.getSellersItem());
+                userTransactionOffer.setText(transaction.getBuyersOffer());
+                userTransactionSeller.setText("Zgłoszenie do: " + transaction.getSeller());
+                userTransactionName.setStrikethrough(true);
+                userTransactionOffer.setStrikethrough(true);
+                userTransactionSeller.setStrikethrough(true);
+                userTransactionName.setFill(Color.RED);
+                userTransactionOffer.setFill(Color.RED);
+                userTransactionSeller.setFill(Color.RED);
             }
 
         }
+
+        setText(null);
+        setGraphic(userTransactionCell);
     }
 }
