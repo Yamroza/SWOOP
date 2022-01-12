@@ -35,7 +35,7 @@ public class App extends Application {
         myStage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/swoop_logo.png"))));
         myStage.setTitle("Swoop");
         myStage.setScene(scene);
-        //myStage.setResizable(false);
+        myStage.setResizable(false);
         myStage.show();
     }
 
