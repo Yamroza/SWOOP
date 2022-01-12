@@ -1,18 +1,31 @@
 package GUI;
 
 import Classes.Comment;
+import Classes.Offer;
 import Database.Comments;
+import Database.Connecting;
 import Database.Users;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 
 public class CommentListElement extends ListCell<Comment> {
@@ -40,6 +53,9 @@ public class CommentListElement extends ListCell<Comment> {
 
     @FXML
     TextArea commentEditor;
+
+    @FXML
+    ImageView CommentProfPicture;
 
 
     private FXMLLoader loader;
@@ -125,6 +141,58 @@ public class CommentListElement extends ListCell<Comment> {
             }
             commenterName.setText(comment.getCommenterName());
             commentText.setText(comment.getCommentText());
+            String login = comment.getCommenterName();
+            String select = "SELECT * FROM users WHERE login LIKE('" + login + "')";
+            String photoUrl = "https://i.imgur.com/c9Bk75O.png";
+            Connecting DB = null;
+            try {
+                DB = new Connecting();
+                System.out.println("Connected to database");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            Connection conn = DB.getConn();
+            if (conn != null) {
+                Statement stmt = null;
+                try {
+                    stmt = conn.createStatement();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    ResultSet rs = stmt.executeQuery(select);
+                    while (rs.next()) {
+                        photoUrl = rs.getString("profile_photo");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (stmt != null) {
+                        try {
+                            stmt.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            DB.close();
+            URL url = null;
+            try {
+                url = new URL(photoUrl);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            File file = new File("work_image.jpg");
+            int connectionTimeout = 10 * 1000; // 10 sec
+            int readTimeout = 300 * 1000; // 3 min
+            try {
+                FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Image image = new Image(file.toURI().toString());
+            CommentProfPicture.setImage(image);
         }
 
         setText(null);
