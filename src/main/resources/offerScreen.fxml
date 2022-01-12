@@ -133,5 +133,5 @@
    <ChoiceBox fx:id="editCategory" disable="true" layoutX="573.0" layoutY="192.0" prefHeight="26.0" prefWidth="116.0" visible="false" />
    <TextField fx:id="editPrice" disable="true" layoutX="539.0" layoutY="121.0" prefHeight="25.0" prefWidth="97.0" visible="false" />
    <Text fx:id="editInfoText" layoutX="186.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Info" textAlignment="CENTER" visible="false" wrappingWidth="361.71533203125" />
-   <Button fx:id="editPhotoButton" disable="true" layoutX="543.0" layoutY="449.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" text="Zmień zdjęcie" visible="false" />
+   <Button fx:id="editPhotoButton" onAction="#changePhoto" disable="true" layoutX="543.0" layoutY="449.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" text="Zmień zdjęcie" visible="false" />
 </AnchorPane>

@@ -6,12 +6,14 @@ import Classes.Transaction;
 import Classes.User;
 import Database.*;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -263,6 +265,28 @@ public class OfferScreen {
             editButton.setVisible(true);
             editButton.setDisable(false);
             submitTransactionButton.setDisable(true);
+        }
+    }
+
+    final FileChooser fc = new FileChooser();
+    String photoLink;
+
+    public void changePhoto(ActionEvent actionEvent) throws Exception {
+        fc.setTitle("Wybierz nowe zdjęcie oferty");
+        fc.setInitialDirectory(new File(System.getProperty("user.home")));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
+        File chosen_file = fc.showOpenDialog(null);
+        if (chosen_file != null) {
+            String link = Imgur.putImgurContent(chosen_file);
+            this.photoLink = link.replaceAll("\\\\", "/");
+            Users.getLoggedUser().setProfilePhoto(this.photoLink);
+            Image image = Imgur.showImageFromLink(this.photoLink);
+            offerPhoto.setImage(image);
+            //System.out.println("New image link: " + this.photoLink);
+            String insert = "UPDATE offers SET profile_photo = '" + this.photoLink + "' WHERE name LIKE('" + Offers.getSelectedOffer().getItemName() + "')";
+            Connecting DB = new Connecting();
+            DB.alterTable(insert);
+            DB.close();
         }
     }
 }
