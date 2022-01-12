@@ -1,122 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import org.controlsfx.control.CheckComboBox?>
-<?import org.controlsfx.control.RangeSlider?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.*?>
 
-<AnchorPane fx:id="mainScreenPane" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
-   <AnchorPane fx:id="mainBar" prefHeight="100.0" prefWidth="940.0">
-      <TextField fx:id="searchTextField" layoutX="165.0" layoutY="34.0" prefHeight="32.0" prefWidth="202.0" promptText="Szukaj...">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-      </TextField>
-      <ComboBox fx:id="voivodshipDrop" layoutX="375.0" layoutY="34.0" onAction="#voivodshipDropClicked" prefHeight="32.0" prefWidth="108.0" promptText="w... " />
-      <ComboBox fx:id="cityDrop" layoutX="490.0" layoutY="34.0" prefHeight="32.0" prefWidth="108.0" promptText="miasto... " />
-      <Button fx:id="addButton" layoutX="711.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
-         <font>
-            <Font name="Segoe UI Light" size="23.0" />
-         </font>
-      </Button>
-      <Button fx:id="accountButton" layoutX="831.0" layoutY="23.0" mnemonicParsing="false" onAction="#MyAccountClicked" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font>
-      </Button>
-      <Text layoutX="701.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
-         <font>
-            <Font name="Segoe UI Light" size="10.0" />
-         </font>
-      </Text>
-      <Button fx:id="searchButton" layoutX="616.0" layoutY="34.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="33.0" prefWidth="76.0" text="Szukaj" />
-      <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
-         <image>
-            <Image url="https://i.imgur.com/SsMl4bG.jpg" />
-         </image>
-      </ImageView>
-   </AnchorPane>
-   <AnchorPane layoutY="100.0" prefHeight="603.0" prefWidth="164.0">
-      <Text layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
-         <font>
-            <Font name="Segoe UI Light" size="18.0" />
-         </font>
-      </Text>
-      <CheckBox fx:id="isExchangeButton" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="138.0" selected="true" text="wymiana">
-         <font>
-            <Font name="Segoe UI Light" size="16.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="isSaleButton" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="138.0" selected="true" text="sprzedaż">
-         <font>
-            <Font name="Segoe UI Light" size="16.0" />
-         </font>
-      </CheckBox>
-      <Line endX="50.5999755859375" layoutX="114.0" layoutY="123.0" opacity="0.2" startX="-115.0" />
-      <Text layoutX="-1.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zakres cen" textAlignment="CENTER" wrappingWidth="165.60000000000008">
-         <font>
-            <Font name="Segoe UI Light" size="18.0" />
-         </font>
-      </Text>
-      <RangeSlider fx:id="range" layoutX="13.0" layoutY="166.0" majorTickUnit="100.0" max="1000.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" />
-      <Line endX="50.5999755859375" layoutX="115.0" layoutY="257.0" opacity="0.2" startX="-115.0" />
-      <TextField fx:id="fromTextField" layoutX="13.0" layoutY="216.0" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:" text="0">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="toTextField" layoutX="92.0" layoutY="216.0" onKeyPressed="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="do:" text="1000">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-      </TextField>
-      <Text layoutX="79.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria" textAlignment="CENTER" wrappingWidth="165.59999999999997">
-         <font>
-            <Font name="Segoe UI Light" size="18.0" />
-         </font>
-      </Text>
-      <Line endX="50.5999755859375" layoutX="114.0" layoutY="383.0" opacity="0.5" startX="-115.0" />
-      <Text layoutX="-1.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie" textAlignment="CENTER" wrappingWidth="165.59999999999997">
-         <font>
-            <Font name="Segoe UI Light" size="18.0" />
-         </font>
-      </Text>
-      <RadioButton fx:id="alphabeticallyButton" layoutX="12.0" layoutY="421.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="140.0" text="alfabetycznie">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="sort" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="ascendingButton" layoutX="12.0" layoutY="441.0" mnemonicParsing="false" text="według cen - rosnąco" toggleGroup="$sort">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="descendingButton" layoutX="12.0" layoutY="461.0" mnemonicParsing="false" text="według cen - malejąco" toggleGroup="$sort">
-         <font>
-            <Font name="Segoe UI Light" size="12.0" />
-         </font>
-      </RadioButton>
-      <Button layoutX="14.0" layoutY="513.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="38.0" prefWidth="141.0" text="Zastosuj" />
-      <ListView fx:id="offerList" layoutX="166.0" layoutY="-1.0" onMouseClicked="#OfferClicked" prefHeight="602.0" prefWidth="781.0" />
-      <CheckComboBox fx:id="categories" layoutX="12.0" layoutY="323.0" prefHeight="25.0" prefWidth="141.0" />
-   </AnchorPane>
+<AnchorPane fx:id="mainScreenPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainScreen">
+   <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="1072.0" prefWrapLength="2000.0">
+            <children>
+               <ImageView fitHeight="91.0" fitWidth="98.0">
+                  <image>
+                     <Image url="https://i.imgur.com/SsMl4bG.jpg" />
+                  </image>
+               </ImageView>
+               <FlowPane prefHeight="129.0" prefWidth="47.0" />
+               <TextField fx:id="searchTextField" prefHeight="32.0" prefWidth="294.0" promptText="Szukaj...">
+                  <font>
+                     <Font name="Segoe UI Light" size="12.0" />
+                  </font>
+               </TextField>
+               <FlowPane prefHeight="56.0" prefWidth="16.0" />
+               <ComboBox fx:id="voivodshipDrop" onAction="#voivodshipDropClicked" prefHeight="32.0" prefWidth="108.0" promptText="w... " />
+               <FlowPane prefHeight="124.0" prefWidth="10.0" />
+               <ComboBox fx:id="cityDrop" prefHeight="32.0" prefWidth="108.0" promptText="miasto... " />
+               <FlowPane prefHeight="113.0" prefWidth="11.0" />
+               <Button fx:id="searchButton" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="33.0" prefWidth="76.0" text="Szukaj" />
+               <FlowPane alignment="CENTER" prefHeight="129.0" prefWidth="125.0">
+                  <children>
+                     <Button fx:id="addButton" mnemonicParsing="false" onAction="#NewOfferClicked" prefHeight="55.0" prefWidth="95.0" text="+">
+                        <font>
+                           <Font name="Segoe UI Light" size="23.0" />
+                        </font>
+                     </Button>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj nowe ogłoszenie">
+                        <font>
+                           <Font name="Segoe UI Light" size="10.0" />
+                        </font>
+                     </Text>
+                  </children>
+               </FlowPane>
+               <Button fx:id="accountButton" mnemonicParsing="false" onAction="#MyAccountClicked" prefHeight="55.0" prefWidth="95.0" text="Moje Konto" textAlignment="CENTER" wrapText="true">
+                  <font>
+                     <Font name="Segoe UI Light" size="15.0" />
+                  </font>
+               </Button>
+            </children>
+         </FlowPane>
+         <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="600.0" prefWidth="1071.0">
+            <children>
+               <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="1.7976931348623157E308" orientation="VERTICAL" prefHeight="675.0" prefWidth="206.0" prefWrapLength="10000.0">
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rodzaj transakcji:" textAlignment="CENTER" wrappingWidth="165.60000000000002">
+                        <font>
+                           <Font name="Segoe UI Light" size="18.0" />
+                        </font>
+                     </Text>
+                     <FlowPane prefHeight="25.0" prefWidth="185.0" />
+                     <CheckBox fx:id="isExchangeButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="138.0" selected="true" text="wymiana">
+                        <font>
+                           <Font name="Segoe UI Light" size="16.0" />
+                        </font>
+                     </CheckBox>
+                     <FlowPane prefHeight="11.0" prefWidth="125.0" />
+                     <CheckBox fx:id="isSaleButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="138.0" selected="true" text="sprzedaż">
+                        <font>
+                           <Font name="Segoe UI Light" size="16.0" />
+                        </font>
+                     </CheckBox>
+                     <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="37.0" prefWidth="185.0">
+                        <children>
+                           <Line endX="50.5999755859375" opacity="0.2" startX="-115.0" />
+                        </children>
+                     </FlowPane>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zakres cen" textAlignment="CENTER" wrappingWidth="165.60000000000008">
+                        <font>
+                           <Font name="Segoe UI Light" size="18.0" />
+                        </font>
+                     </Text>
+                     <RangeSlider fx:id="range" majorTickUnit="100.0" max="1000.0" minorTickCount="0" prefHeight="57.0" prefWidth="185.0" showTickLabels="true" showTickMarks="true" />
+                     <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="19.0" prefWidth="167.0">
+                        <children>
+                           <TextField fx:id="fromTextField" onKeyReleased="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="od:" text="0">
+                              <font>
+                                 <Font name="Segoe UI Light" size="12.0" />
+                              </font>
+                           </TextField>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </Text>
+                           <TextField fx:id="toTextField" onKeyPressed="#rangeEnter" prefHeight="26.0" prefWidth="60.0" promptText="do:" text="1000">
+                              <font>
+                                 <Font name="Segoe UI Light" size="12.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </FlowPane>
+                     <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="25.0" prefWidth="170.0">
+                        <children>
+                           <Line endX="50.5999755859375" opacity="0.2" startX="-115.0" />
+                        </children>
+                     </FlowPane>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+                        <font>
+                           <Font name="Segoe UI Light" size="18.0" />
+                        </font>
+                     </Text>
+                     <FlowPane prefHeight="24.0" prefWidth="130.0" />
+                     <CheckComboBox fx:id="categories" prefHeight="25.0" prefWidth="141.0" />
+                     <FlowPane alignment="CENTER" prefHeight="32.0" prefWidth="166.0">
+                        <children>
+                           <Line endX="50.5999755859375" opacity="0.2" startX="-115.0" />
+                        </children>
+                     </FlowPane>
+                     <FlowPane alignment="CENTER" prefHeight="89.0" prefWidth="167.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sortowanie" textAlignment="CENTER" wrappingWidth="165.59999999999997">
+                              <font>
+                                 <Font name="Segoe UI Light" size="18.0" />
+                              </font>
+                           </Text>
+                           <FlowPane prefHeight="19.0" prefWidth="166.0" />
+                           <RadioButton fx:id="descendingButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="22.0" prefWidth="140.0" text="według cen - malejąco" AnchorPane.leftAnchor="0.0">
+                              <font>
+                                 <Font name="Segoe UI Light" size="12.0" />
+                              </font>
+                              <toggleGroup>
+                                 <ToggleGroup fx:id="sort" />
+                              </toggleGroup>
+                           </RadioButton>
+                           <RadioButton fx:id="ascendingButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="140.0" text="według cen - rosnąco" toggleGroup="$sort">
+                              <font>
+                                 <Font name="Segoe UI Light" size="12.0" />
+                              </font>
+                           </RadioButton>
+                           <RadioButton fx:id="alphabeticallyButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="alfabetycznie" toggleGroup="$sort">
+                              <font>
+                                 <Font name="Segoe UI Light" size="12.0" />
+                              </font>
+                           </RadioButton>
+                        </children>
+                     </FlowPane>
+                     <FlowPane prefHeight="47.0" prefWidth="40.0" />
+                     <Button mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="38.0" prefWidth="141.0" text="Zastosuj" />
+                  </children>
+               </FlowPane>
+               <ListView fx:id="offerList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#OfferClicked" prefHeight="676.0" prefWidth="863.0" />
+            </children>
+         </FlowPane>
+      </children>
+   </FlowPane>
 </AnchorPane>
