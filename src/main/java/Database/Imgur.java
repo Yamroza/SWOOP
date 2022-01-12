@@ -1,23 +1,20 @@
 package Database;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 
 public class Imgur {
 
-    public static String putImgurContent(String path) throws Exception {
+    public static String putImgurContent(File photo_file) throws Exception {
 
-        byte[] fileContent = FileUtils.readFileToByteArray(new File(path));
+        byte[] fileContent = FileUtils.readFileToByteArray(photo_file);
         String encodedString = java.util.Base64.getEncoder().encodeToString(fileContent);
-        String data = URLEncoder.encode("image", "UTF-8") + "="
-                + URLEncoder.encode(encodedString, "UTF-8");
+        String data = URLEncoder.encode("image", StandardCharsets.UTF_8) + "="
+                + URLEncoder.encode(encodedString, StandardCharsets.UTF_8);
 
         String clientID = "da82141bf85ccad";
         URL url;
@@ -46,9 +43,13 @@ public class Imgur {
         wr.close();
         rd.close();
         String ret = stb.toString();
-        ret = ret.substring(436, 470);
-        System.out.println(ret);
-
-        return ret;
+        int index_s = ret.indexOf("http");
+        int index_f = ret.indexOf("success");
+        ret = ret.substring(index_s, index_f-4);
+        StringBuilder sb = new StringBuilder(ret);
+        sb.deleteCharAt(6);
+        sb.deleteCharAt(7);
+        sb.deleteCharAt(19);
+        return sb.toString();
     }
 }
