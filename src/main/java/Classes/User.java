@@ -10,8 +10,7 @@ public class User {
     private String name;
     private String surname;
     private LocalDate birthDate;
-    // profile pic
-    // ArrayList Item albo pointer/referencja/cokolwiek to tu jest na Item
+    private String profilePhoto;
     private LocalDate accountCreationDate;
 
     public User(String login, String password) {
@@ -21,18 +20,10 @@ public class User {
         this.surname = "";
         this.birthDate = LocalDate.now();
         this.accountCreationDate = LocalDate.now();
+        this.profilePhoto = "https://i.imgur.com/c9Bk75O.png";
     }
 
     public void setAccountCreationDate(LocalDate accountCreationDate) {
-        this.accountCreationDate = accountCreationDate;
-    }
-
-    public User(String login, String password, String name, String surname, LocalDate birthDate, LocalDate accountCreationDate) {
-        this.login = login;
-        this.setPassword(password);
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
         this.accountCreationDate = accountCreationDate;
     }
 
@@ -87,4 +78,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public String getProfilePhoto() { return profilePhoto; }
+
+    public void setProfilePhoto(String profilePhoto) { this.profilePhoto = profilePhoto; }
 }

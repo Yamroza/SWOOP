@@ -3,18 +3,24 @@ package GUI;
 import Classes.Offer;
 import Classes.Transaction;
 import Classes.User;
-import Database.Offers;
-import Database.Transactions;
-import Database.Users;
+import Database.*;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 
 public class AccountScreen {
@@ -42,6 +48,8 @@ public class AccountScreen {
     @FXML
     ListView<Transaction> userTransactionList;
 
+    @FXML
+    ImageView profilePicture;
 
 
     @FXML
@@ -76,8 +84,18 @@ public class AccountScreen {
     }
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() throws SQLException, IOException {
         User loggedUser = Users.getLoggedUser();
+
+        URL url = new URL(loggedUser.getProfilePhoto());
+        this.photoLink = loggedUser.getProfilePhoto();
+        File file = new File("work_image.png");
+        int connectionTimeout = 10 * 1000; // 10 sec
+        int readTimeout = 300 * 1000; // 3 min
+        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+        Image image = new Image(file.toURI().toString());
+        profilePicture.setImage(image);
+
         loginName.setText(loggedUser.getLogin());
         nameInput.setText(loggedUser.getName());
         surnameInput.setText(loggedUser.getSurname());
@@ -91,5 +109,35 @@ public class AccountScreen {
         ObservableList<Transaction> userTransactions = Transactions.getUserTransactions(loggedUser.getLogin());
         userTransactionList.setItems(userTransactions);
         userTransactionList.setCellFactory(offerListView -> new UserTransactionListElement());
+    }
+
+    final FileChooser fc = new FileChooser();
+    String photoLink;
+
+    public void ChangeProfileClicked() throws Exception {
+        fc.setTitle("Wybierz nowe zdjęcie");
+        fc.setInitialDirectory(new File(System.getProperty("user.home")));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
+        File chosen_file = fc.showOpenDialog(null);
+        if (chosen_file != null) {
+            Imgur photo_imgur = new Imgur();
+            String link = photo_imgur.putImgurContent(chosen_file);
+            this.photoLink = link.replaceAll("\\\\", "/");
+            Users.getLoggedUser().setProfilePhoto(this.photoLink);
+
+            URL url = new URL(this.photoLink);
+            File file = new File("work_image.jpg");
+            int connectionTimeout = 10 * 1000; // 10 sec
+            int readTimeout = 300 * 1000; // 3 min
+            FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+            Image image = new Image(file.toURI().toString());
+            profilePicture.setImage(image);
+            //System.out.println("New image link: " + this.photoLink);
+            String insert = "UPDATE users SET profile_photo = '" + this.photoLink + "' WHERE login LIKE('" + Users.getLoggedUser().getLogin() + "')";
+            Connecting DB = new Connecting();
+            DB.alterTable(insert);
+            DB.close();
+        }
+
     }
 }

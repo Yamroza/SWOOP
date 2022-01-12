@@ -16,9 +16,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -66,6 +69,13 @@ public class NewOfferScreen {
             Imgur photo_imgur = new Imgur();
             String link = photo_imgur.putImgurContent(chosen_file);
             this.photoLink = link.replaceAll("\\\\", "/");
+            URL url = new URL(this.photoLink);
+            File file = new File("work_image.jpg");
+            int connectionTimeout = 10 * 1000; // 10 sec
+            int readTimeout = 300 * 1000; // 3 min
+            FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
         }
     }
 
@@ -122,10 +132,15 @@ public class NewOfferScreen {
     }
 
     @FXML
-    private void initialize() throws SQLException {
-        File file = new File("C://Users//oyamr//Documents//new_pap//star.jpg");
+    private void initialize() throws SQLException, IOException {
+        URL url = new URL("https://i.imgur.com/Moe5dXk.jpg");
+        File file = new File("work_image.jpg");
+        int connectionTimeout = 10 * 1000; // 10 sec
+        int readTimeout = 300 * 1000; // 3 min
+        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
+
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
