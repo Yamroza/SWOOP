@@ -158,8 +158,10 @@ public class MainScreen {
 
 
         offerList.setItems(null);
-        offerList.setItems(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
-            price_from, price_to, city, sorting));
+        ObservableList<Offer> offers = Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
+                price_from, price_to, city, sorting);
+        offers.removeIf(offer1 -> Objects.equals(offer1.getSeller(), Users.getLoggedUser().getLogin()));
+        offerList.setItems(offers);
     }
 
     @FXML
