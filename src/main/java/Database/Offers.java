@@ -42,6 +42,8 @@ public class Offers {
         offer.setStatus(status);
         offer.setLocalisation(rs.getString("localisation"));
         offer.setPhoto(rs.getString("photo"));
+        offer.setVoivodship("voivodship");
+        offer.setLocalisation("localisation");
         if(status == 1)
         {
             offer.setBuyer(rs.getString("buyer"));
