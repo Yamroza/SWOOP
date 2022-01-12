@@ -230,7 +230,8 @@ public class Offers {
     {
         return ("UPDATE OFFERS SET NAME = '" + offer.getItemName() +"', DESCRIPTION = '" +
                 offer.getItemDescription() + "', category = '" + offer.getItemCategory() + "' " +
-                "WHERE OFFER_ID = " + offer.getOfferId());
+                ", price = " + offer.getPrice() +
+                " WHERE OFFER_ID = " + offer.getOfferId());
     }
 
     public static void updateOffer(Offer offer) throws SQLException {

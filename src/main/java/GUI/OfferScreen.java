@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.apache.commons.io.FileUtils;
 
@@ -80,6 +81,15 @@ public class OfferScreen {
 
     @FXML
     Button submitTransactionButton;
+
+    @FXML
+    TextField editPrice;
+
+    @FXML
+    Text editInfoText;
+
+    @FXML
+    Button editPhotoButton;
 
     ObservableList<Comment> comments;
 
@@ -156,6 +166,14 @@ public class OfferScreen {
         editCategory.setVisible(true);
         category.setDisable(true);
         category.setVisible(false);
+        editPhotoButton.setVisible(true);
+        editPhotoButton.setDisable(false);
+        if(Offers.getSelectedOffer().getIsForSale())
+        {
+            editPrice.setVisible(true);
+            editPrice.setDisable(false);
+            editPrice.setText(String.valueOf(Offers.getSelectedOffer().getPrice()));
+        }
         editCategory.setValue(category.getText());
         editNameField.setText(itemName.getText());
         editDescriptionArea.setText(description.getText());
@@ -163,6 +181,26 @@ public class OfferScreen {
 
     @FXML
     private void acceptChangesClicked() throws SQLException {
+        Offer currentOffer = Offers.getSelectedOffer();
+        try {
+            currentOffer.setPrice(Float.valueOf(editPrice.getText()));
+        }
+        catch(NumberFormatException e){
+            editInfoText.setVisible(true);
+            editInfoText.setText("Zła wartość ceny");
+            editInfoText.setFill(Color.RED);
+            return;
+        }
+        if(Objects.equals(editNameField.getText(), ""))
+        {
+            editInfoText.setVisible(true);
+            editInfoText.setText("Nazwa nie może być pusta");
+            editInfoText.setFill(Color.RED);
+            return;
+        }
+        currentOffer.setItemName(editNameField.getText());
+        currentOffer.setItemDescription(editDescriptionArea.getText());
+        currentOffer.setItemCategory(editCategory.getSelectionModel().getSelectedItem());
         itemName.setDisable(false);
         itemName.setVisible(true);
         editButton.setDisable(false);
@@ -179,14 +217,19 @@ public class OfferScreen {
         editCategory.setVisible(false);
         category.setDisable(false);
         category.setVisible(true);
-        Offer currentOffer = Offers.getSelectedOffer();
-        currentOffer.setItemName(editNameField.getText());
-        currentOffer.setItemDescription(editDescriptionArea.getText());
-        currentOffer.setItemCategory(editCategory.getSelectionModel().getSelectedItem());
+        editPrice.setVisible(false);
+        editPrice.setDisable(true);
+        editPhotoButton.setVisible(false);
+        editPhotoButton.setDisable(true);
         Offers.updateOffer(currentOffer);
         itemName.setText(currentOffer.getItemName());
         description.setText(currentOffer.getItemDescription());
         category.setText(currentOffer.getItemCategory());
+        itemPrice.setText(String.valueOf(currentOffer.getPrice()));
+        editInfoText.setVisible(true);
+        editInfoText.setText("Zapisano zmiany");
+        editInfoText.setFill(Color.LIMEGREEN);
+
     }
 
     @FXML
