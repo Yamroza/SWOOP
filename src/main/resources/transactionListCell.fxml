@@ -52,7 +52,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="transactionOffer" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                  <Text fx:id="transactionOffer" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="229.84697723388672">
                      <font>
                         <Font size="16.0" />
                      </font>

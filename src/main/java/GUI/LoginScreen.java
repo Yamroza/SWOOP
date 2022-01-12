@@ -44,7 +44,8 @@ public class LoginScreen {
             loadMain();
         }
         else {
-            errorMessage.setText("Login or password is incorrect.");
+            errorMessage.setVisible(true);
+            errorMessage.setText("Login lub hasło jest niepoprawne");
         }
     }
 

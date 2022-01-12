@@ -44,14 +44,17 @@ public class UserOfferListElement extends ListCell<Offer> {
                     e.printStackTrace();
                 }
             }
-            if(getItem().getStatus() == 0)
+            if(offer.getStatus() == 0)
             {
                 userOfferName.setText(offer.getItemName());
+                userOfferName.setFill(Color.BLACK);
+                userOfferBuyer.setVisible(false);
             }
-            else if(getItem().getStatus() == 1)
+            else if(offer.getStatus() == 1)
             {
                 userOfferName.setText(offer.getItemName());
                 userOfferName.setFill(Color.LIMEGREEN);
+                userOfferBuyer.setVisible(true);
                 userOfferBuyer.setText("Kupił: " + offer.getBuyer());
                 userOfferBuyer.setFill(Color.LIMEGREEN);
             }

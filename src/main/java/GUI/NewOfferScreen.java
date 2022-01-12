@@ -97,6 +97,7 @@ public class NewOfferScreen {
     @FXML
     private void isForSaleClicked()
     {
+        price.setDisable(!isForSale.isSelected());
         price.setEditable(isForSale.isSelected());
         price.setText("");
     }
@@ -107,11 +108,15 @@ public class NewOfferScreen {
         String name = offerName.getText();
         if(Objects.equals(name, ""))
         {
-            errorMessage.setText("Name can't be empty");
+            errorMessage.setText("Nazwa nie może być pusta");
+        }
+        else if(!isForExchange.isSelected() && !isForSale.isSelected())
+        {
+            errorMessage.setText("Wybierz rodzaj oferty");
         }
         else
         {
-            float itemPrice = Float.parseFloat(price.getText());
+            float itemPrice = !Objects.equals(price.getText(), "") ? Float.parseFloat(price.getText()) : 0;
             Offer newOffer = new Offer(
                     name,
                     offerDesc.getText(),
@@ -142,5 +147,6 @@ public class NewOfferScreen {
         voivodshipDrop.getSelectionModel().selectFirst();
         cityDrop.setItems(Offers.getCitiesList("dolnośląskie"));
         cityDrop.getSelectionModel().selectFirst();
+        price.setEditable(false);
     }
 }

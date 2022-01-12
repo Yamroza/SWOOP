@@ -1,19 +1,13 @@
 package GUI;
 
-import Classes.Comment;
 import Classes.Offer;
 import Database.Categories;
 import Database.Offers;
+import Database.Users;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,16 +17,12 @@ import org.controlsfx.control.RangeSlider;
 import javafx.fxml.FXML;
 import org.controlsfx.control.CheckComboBox;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 public class MainScreen {
@@ -168,17 +158,39 @@ public class MainScreen {
 
 
         offerList.setItems(null);
-        offerList.setItems(Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
-            price_from, price_to, city, sorting));
+        ObservableList<Offer> offers = Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
+                price_from, price_to, city, sorting);
+        offers.removeIf(offer1 -> Objects.equals(offer1.getSeller(), Users.getLoggedUser().getLogin()));
+        offerList.setItems(offers);
     }
 
     @FXML
     private void initialize() throws SQLException, ParseException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        offerList.setItems(Offers.getNextTenOffers());
+        ObservableList<Offer> offers = Offers.getNextTenOffers();
+        offers.removeIf(offer1 -> Objects.equals(offer1.getSeller(), Users.getLoggedUser().getLogin()));
+        offerList.setItems(offers);
         offerList.setCellFactory(offerListView -> new OfferListElement());
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
-        range.setHighValue(1000);
+        Float maxPrice = Collections.max(offers, (o1, o2) -> {
+            if(o1.getPrice() != null && o2.getPrice() != null) {
+                return Float.compare(o1.getPrice(), o2.getPrice());
+            }
+            else if (o1.getPrice() == null){
+                return Float.compare(0 , o2.getPrice());
+            }
+            else if (o2.getPrice() == null){
+                return Float.compare(o1.getPrice(), 0);
+            }
+            if(o1.getPrice() == null && o2.getPrice() == null) {
+                return 0;
+            }
+            return 0;
+        }).getPrice();
+        toTextField.setText(String.valueOf(maxPrice));
+        range.setMax(maxPrice);
+        range.setHighValue(maxPrice);
+        range.setMajorTickUnit(maxPrice / 10);
 
         rangeListen();
 

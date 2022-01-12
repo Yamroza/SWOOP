@@ -38,14 +38,22 @@ public class RegisterScreen {
         String password = passwordInput.getText();
         String repeatedPassword = repeatPasswordInput.getText();
         String login = loginInput.getText();
-        if (!Objects.equals(password, repeatedPassword) )
+        if (Objects.equals(login, ""))
         {
-            errorMessage.setText("Passwords don't match.");
+            errorMessage.setText("Login nie może być pusty");
+            errorMessage.setVisible(true);
+            return;
+        }
+        if (!Objects.equals(password, repeatedPassword)  || Objects.equals(password, ""))
+        {
+            errorMessage.setText("Hasła się nie zgadzają");
+            errorMessage.setVisible(true);
             return;
         }
         if (Users.isUserInDatabase(login))
         {
-            errorMessage.setText("Login already exists.");
+            errorMessage.setText("Ten login jest już zajęty");
+            errorMessage.setVisible(true);
             return;
         }
         User newUser = new User(login, password);

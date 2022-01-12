@@ -60,6 +60,15 @@ public class AccountScreen {
     }
 
     @FXML
+    private void logoutClicked() throws IOException {
+        Users.setLoggedUser(null);
+        App.setRoot("loginScreen");
+        App.myStage.setScene(App.scene);
+        App.myStage.sizeToScene();
+        App.myStage.centerOnScreen();
+    }
+
+    @FXML
     private void SaveChangesClicked() throws SQLException {
         User loggedUser = Users.getLoggedUser();
         loggedUser.setName(nameInput.getText());
@@ -90,6 +99,8 @@ public class AccountScreen {
 
     @FXML
     private void initialize() throws SQLException, IOException {
+        App.myStage.sizeToScene();
+        App.myStage.centerOnScreen();
         User loggedUser = Users.getLoggedUser();
 
         URL url = new URL(loggedUser.getProfilePhoto());
