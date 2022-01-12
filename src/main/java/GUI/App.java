@@ -48,31 +48,6 @@ public class App extends Application {
 
 
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("output.txt");
-        Path path2 = Paths.get("output.jpg");
-
-        byte[] fileContent = FileUtils.readFileToByteArray(new File("C://Users//oyamr//Documents//new_pap//brak_zdjecia.jpg"));
-        String encodedString = Base64.getEncoder().encodeToString(fileContent);
-        Files.write(path, Collections.singleton(encodedString));
-
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-        FileUtils.writeByteArrayToFile(new File("output.jpg"), decodedBytes);
-
-
-        // Connecting DB = new Connecting();
-        // DB.close();
-        /* System.out.println("Connecting to magical database...");
-        Connecting DB = new Connecting("z27", "9wdzsz");
-        System.out.println("Closed magical database...");
-        DB.close(); */
-       /* System.out.println("PRZED");
-        try{
-            Imgur TestImgur1 = new Imgur();
-            String c = TestImgur1.getImgurContent("...");
-            System.out.println(c);
-            System.out.println("UDALO SIE");
-        }catch (Exception e) { System.out.println("NIE UDAŁO SIE");}
-        System.out.println("KONIEC"); */
         launch();
     }
 
