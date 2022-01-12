@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.Collections;
+import java.util.Objects;
 
 import org.apache.commons.io.FileUtils;
 
@@ -29,9 +30,9 @@ public class App extends Application {
         scene = new Scene(loadFXML("loginScreen"));
 //        String css = this.getClass().getResource("app.css").toExternalForm();
 //        scene.getStylesheets().add(css);
-        scene.getStylesheets().add(getClass().getResource("/app.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/app.css")).toExternalForm());
         myStage = stage;
-        myStage.getIcons().add(new Image(App.class.getResourceAsStream("/pudzian.jpg")));
+        myStage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/pudzian.jpg"))));
         myStage.setTitle("Swoop");
         myStage.setScene(scene);
         myStage.show();
@@ -47,7 +48,7 @@ public class App extends Application {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         launch();
     }
 
