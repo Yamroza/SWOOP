@@ -3,6 +3,7 @@ package GUI;
 import Classes.Offer;
 import Database.Categories;
 import Database.Offers;
+import Database.Users;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -164,17 +165,17 @@ public class MainScreen {
     @FXML
     private void initialize() throws SQLException, ParseException {
         categories.getItems().addAll(Categories.getCategoriesList());
-        offerList.setItems(Offers.getNextTenOffers());
+        ObservableList<Offer> offers = Offers.getNextTenOffers();
+        offers.removeIf(offer1 -> Objects.equals(offer1.getSeller(), Users.getLoggedUser().getLogin()));
+        offerList.setItems(offers);
         offerList.setCellFactory(offerListView -> new OfferListElement());
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
-        Float maxPrice = Collections.max(offerList.getItems(), new Comparator<Offer>(){
-        public int compare(Offer o1, Offer o2) {
+        Float maxPrice = Collections.max(offers, (o1, o2) -> {
             if(o1.getPrice() != null && o2.getPrice() != null) {
                 return Float.compare(o1.getPrice(), o2.getPrice());
             }
             return 0;
-        }
-                }).getPrice();
+        }).getPrice();
         toTextField.setText(String.valueOf(maxPrice));
         range.setMax(maxPrice);
         range.setHighValue(maxPrice);

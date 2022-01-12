@@ -3,6 +3,7 @@ package GUI;
 import Classes.Comment;
 import Classes.Offer;
 import Classes.Transaction;
+import Classes.User;
 import Database.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -84,10 +85,19 @@ public class OfferScreen {
 
     @FXML
     private void ExitClicked() throws IOException {
-        Offers.setSelectedOffer(null);
-        App.setRoot("mainScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
+        if(!Objects.equals(Users.getLoggedUser().getLogin(), Offers.getSelectedOffer().getSeller())) {
+            Offers.setSelectedOffer(null);
+            App.setRoot("mainScreen");
+            App.myStage.setScene(App.scene);
+            App.myStage.sizeToScene();
+        }
+        else
+        {
+            Offers.setSelectedOffer(null);
+            App.setRoot("accountScreen");
+            App.myStage.setScene(App.scene);
+            App.myStage.sizeToScene();
+        }
     }
 
     @FXML
