@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
+<AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
    <Line endX="600.0" endY="1.52587890625E-5" layoutX="100.0" layoutY="100.0" startX="-100.0" />
    <TextField fx:id="editNameField" disable="true" layoutX="134.0" layoutY="29.0" prefHeight="57.0" prefWidth="470.0" visible="false">
       <font>
@@ -48,7 +47,6 @@
          <Font name="Segoe UI Light" size="16.0" />
       </font>
    </Text>
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="168.0" layoutX="509.0" layoutY="285.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
    <Text layoutX="484.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENA:">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
@@ -69,7 +67,7 @@
          <Font name="Segoe UI" size="16.0" />
       </font>
    </Text>
-   <Text layoutX="552.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZDJĘCIA">
+   <Text layoutX="552.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZDJĘCIA">
       <font>
          <Font name="Segoe UI Light" size="16.0" />
       </font>
@@ -100,7 +98,7 @@
          <Font size="16.0" />
       </font>
    </RadioButton>
-   <ImageView fx:id="offerPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="offerPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="496.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@pudzian.jpg" />
       </image>
