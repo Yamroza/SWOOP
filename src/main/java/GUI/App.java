@@ -32,7 +32,7 @@ public class App extends Application {
 //        scene.getStylesheets().add(css);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/app.css")).toExternalForm());
         myStage = stage;
-        myStage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/pudzian.jpg"))));
+        myStage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/swoop_logo.png"))));
         myStage.setTitle("Swoop");
         myStage.setScene(scene);
         //myStage.setResizable(false);

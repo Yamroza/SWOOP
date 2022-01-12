@@ -138,7 +138,7 @@ public class Users {
         return ("INSERT INTO USERS (login, password, name, surname, birthdate, accountcreationdate, profile_photo) VALUES " +
                 "('" + user.getLogin() + "' , '" + user.getPassword()  + "' , '" + user.getName() + "' , '" +
                 user.getSurname() + "' , TO_DATE('" + parseDateToString(user.getBirthDate()) + "', 'YYYY-MM-DD'), " +
-                "TO_DATE('" + parseDateToString(user.getAccountCreationDate()) + "', 'YYYY-MM-DD') ), '" + user.getProfilePhoto() + "')");
+                "TO_DATE('" + parseDateToString(user.getAccountCreationDate()) + "', 'YYYY-MM-DD'), '" + user.getProfilePhoto() + "')");
     }
 
     private static String generateUpdate(){

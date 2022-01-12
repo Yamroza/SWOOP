@@ -77,10 +77,15 @@ public class AccountScreen {
 
     @FXML
     private void userOfferClicked() throws IOException {
-        Offers.setSelectedOffer(userOfferList.getSelectionModel().getSelectedItem());
-        App.setRoot("offerScreen");
-        App.myStage.setScene(App.scene);
-        App.myStage.sizeToScene();
+        Offer selectedOffer = userOfferList.getSelectionModel().getSelectedItem();
+        if (selectedOffer != null) {
+            if(selectedOffer.getStatus() != 1) {
+                Offers.setSelectedOffer(selectedOffer);
+                App.setRoot("offerScreen");
+                App.myStage.setScene(App.scene);
+                App.myStage.sizeToScene();
+            }
+        }
     }
 
     @FXML

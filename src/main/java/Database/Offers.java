@@ -60,7 +60,7 @@ public class Offers {
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
         return getOffersByQuery("select * from offers where offer_status = 0 " +
-                "order by OFFER_ID desc fetch first 10 rows only");
+                "order by OFFER_ID desc");
     }
 
     public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
@@ -132,7 +132,7 @@ public class Offers {
                 " SELECT T.OFFER_ID, T.BUYER FROM TRANSACTIONS T" +
                 " WHERE T.STATUS = 1 ) S on O.OFFER_ID = S.OFFER_ID" +
                 " where O.SELLER like '" + login + "' AND O.OFFER_STATUS IN(0, 1)" +
-                " order by O.OFFER_ID desc fetch first 10 rows only";
+                " order by O.OFFER_ID desc";
 
         return getOffersByQuery(q);
     }
