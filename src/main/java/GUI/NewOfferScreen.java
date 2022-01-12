@@ -127,6 +127,7 @@ public class NewOfferScreen {
                     loggedUser.getLogin(),
                     0,
                     cityDrop.getValue(),
+                    voivodshipDrop.getValue(),
                     this.photoLink
             );
             Offers.addOfferToDatabase(newOffer);
@@ -135,6 +136,8 @@ public class NewOfferScreen {
             App.myStage.sizeToScene();
         }
     }
+
+
 
     @FXML
     private void initialize() throws SQLException, IOException {

@@ -155,11 +155,14 @@ public class MainScreen {
 
         String city = cityDrop.getValue();
         if (city == null) { city = "" ;}
-
+        if (city.equals("Bez miasta")) { city = "" ;}
+        String voivodship = voivodshipDrop.getValue();
+        if (voivodship == null) { voivodship = "" ;}
+        if (voivodship.equals("Bez województwa")) { voivodship = "" ;}
 
         offerList.setItems(null);
         ObservableList<Offer> offers = Offers.getOffersByCond(name, SelectedCategories, is_exchange, is_for_sale,
-                price_from, price_to, city, sorting);
+                price_from, price_to, voivodship, city, sorting);
         offers.removeIf(offer1 -> Objects.equals(offer1.getSeller(), Users.getLoggedUser().getLogin()));
         offerList.setItems(offers);
     }
@@ -195,6 +198,7 @@ public class MainScreen {
         rangeListen();
 
     }
+
 
     @FXML
     private void rangeListen() {

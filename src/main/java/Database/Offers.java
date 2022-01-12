@@ -65,7 +65,7 @@ public class Offers {
 
     public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
                                                         int is_exchange, int is_for_sale,
-                                                       int price_from, int price_to, String city,
+                                                        int price_from, int price_to, String voivodship, String city,
                                                         String sorting) throws SQLException {
         String query = "select * from offers where offer_status = 0 and";
         if(is_exchange == is_for_sale){
@@ -82,6 +82,9 @@ public class Offers {
         if(!city.isEmpty()) {
             query += " and localisation like('" + city +"')";
         }
+        if(!voivodship.isEmpty() && city.isEmpty()){
+            query += " and voivodship like ('" + voivodship + "')";
+        }
         if(categories.size() > 0) {
             query += " and category in (" + "'" + String.join("','", categories) + "'" + ")";
         }
@@ -96,6 +99,7 @@ public class Offers {
         }
         return getOffersByQuery(query);
     }
+
 
     public static ObservableList<Offer> getOffersByQuery(String query) throws SQLException {
         Connecting DB = new Connecting();
