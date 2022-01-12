@@ -10,9 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -178,11 +180,16 @@ public class OfferScreen {
     }
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() throws SQLException, IOException {
         Offer currentOffer = Offers.getSelectedOffer();
-        File file = new File(currentOffer.getPhoto());
+        URL url = new URL(currentOffer.getPhoto());
+        File file = new File("work_image.jpg");
+        int connectionTimeout = 10 * 1000; // 10 sec
+        int readTimeout = 300 * 1000; // 3 min
+        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
         Image image = new Image(file.toURI().toString());
         offerPhoto.setImage(image);
+
         itemName.setText(currentOffer.getItemName());
         itemPrice.setText(String.valueOf(currentOffer.getPrice()));
         isForExchange.setText(currentOffer.getIsForExchange() ? "Tak" : "Nie");
