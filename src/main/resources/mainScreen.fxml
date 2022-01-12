@@ -12,9 +12,9 @@
       <children>
          <FlowPane alignment="CENTER" columnHalignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="1072.0" prefWrapLength="2000.0">
             <children>
-               <ImageView fitHeight="91.0" fitWidth="98.0">
+               <ImageView fitHeight="121.0" fitWidth="120.0">
                   <image>
-                     <Image url="https://i.imgur.com/SsMl4bG.jpg" />
+                     <Image url="https://i.imgur.com/PAR4Khl.png" />
                   </image>
                </ImageView>
                <FlowPane prefHeight="129.0" prefWidth="47.0" />
