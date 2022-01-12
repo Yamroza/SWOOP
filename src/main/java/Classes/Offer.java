@@ -13,21 +13,7 @@ public class Offer {
     String buyer;
     int status;
     String localisation;
-    String photo = "no_photo";
-
-    public Offer(String itemName, String itemDescription, String itemCategory,
-                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status, String localisation) {
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
-        this.itemCategory = itemCategory;
-        this.isForExchange = isForExchange;
-        this.isForSale = isForSale;
-        this.price = price;
-        this.seller = seller;
-        this.status = status;
-        this.localisation = localisation;
-        this.photo = "C://Users//oyamr//Documents//new_pap//brak_zdjecia.jpg";
-    }
+    String photo;
 
     public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
                  Boolean isForSale, Float price, String seller, int status, String localisation, String photo) {
@@ -43,20 +29,6 @@ public class Offer {
         this.photo = photo;
     }
 
-    public Offer(int offer_id, String itemName, String itemDescription, String itemCategory,
-                 Boolean isForExchange, Boolean isForSale, Float price, String seller, int status,
-                 String buyer) {
-        this.offer_id = offer_id;
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
-        this.itemCategory = itemCategory;
-        this.isForExchange = isForExchange;
-        this.isForSale = isForSale;
-        this.price = price;
-        this.seller = seller;
-        this.status = status;
-        this.buyer = buyer;
-    }
     public Offer()
     {
         this.offer_id = -1;
@@ -67,6 +39,8 @@ public class Offer {
         this.isForSale = null;
         this.price = null;
         this.seller = null;
+        this.localisation = null;
+        this.photo = "https://i.imgur.com/Moe5dXk.jpg";
     }
 
     public int getOfferId() {
