@@ -97,7 +97,7 @@ public class NewOfferScreen {
     @FXML
     private void isForSaleClicked()
     {
-        price.setEditable(isForSale.isSelected());
+        price.setDisable(!isForSale.isSelected());
         price.setText("");
     }
 
@@ -107,7 +107,11 @@ public class NewOfferScreen {
         String name = offerName.getText();
         if(Objects.equals(name, ""))
         {
-            errorMessage.setText("Name can't be empty");
+            errorMessage.setText("Nazwa nie może być pusta");
+        }
+        else if(!isForExchange.isSelected() && !isForSale.isSelected())
+        {
+            errorMessage.setText("Wybierz rodzaj oferty");
         }
         else
         {
