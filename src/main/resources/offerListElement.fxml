@@ -10,12 +10,12 @@
          <Font size="32.0" />
       </font>
    </Text>
-   <Text fx:id="itemPrice" layoutX="468.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cena:" textAlignment="RIGHT" visible="false" wrappingWidth="257.2696533203125">
+   <Text fx:id="itemPrice" layoutX="575.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cena:" textAlignment="RIGHT" visible="false" wrappingWidth="257.2696533203125">
       <font>
          <Font size="32.0" />
       </font>
    </Text>
-   <Text fx:id="itemExchange" layoutX="575.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wymiana" textAlignment="RIGHT" visible="false">
+   <Text fx:id="itemExchange" layoutX="575.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wymiana możliwa" textAlignment="RIGHT" visible="false">
       <font>
          <Font size="32.0" />
       </font>

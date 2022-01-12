@@ -73,7 +73,7 @@ public class OfferListElement extends ListCell<Offer> {
             if(offer.getIsForSale())
             {
                 itemPrice.setVisible(true);
-                itemPrice.setText(offer.getPrice() + "PLN");
+                itemPrice.setText("Cena: " + offer.getPrice() + " pln");
             }
             Image image = null;
             try {
