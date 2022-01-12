@@ -43,7 +43,9 @@ public class LoginScreen {
         {
             loadMain();
         }
-        errorMessage.setText("Login or password is incorrect.");
+        else {
+            errorMessage.setText("Login or password is incorrect.");
+        }
     }
 
     @FXML
