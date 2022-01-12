@@ -98,6 +98,7 @@ public class NewOfferScreen {
     private void isForSaleClicked()
     {
         price.setDisable(!isForSale.isSelected());
+        price.setEditable(isForSale.isSelected());
         price.setText("");
     }
 
@@ -115,7 +116,7 @@ public class NewOfferScreen {
         }
         else
         {
-            float itemPrice = Float.parseFloat(price.getText());
+            float itemPrice = !Objects.equals(price.getText(), "") ? Float.parseFloat(price.getText()) : 0;
             Offer newOffer = new Offer(
                     name,
                     offerDesc.getText(),
@@ -146,5 +147,6 @@ public class NewOfferScreen {
         voivodshipDrop.getSelectionModel().selectFirst();
         cityDrop.setItems(Offers.getCitiesList("dolnośląskie"));
         cityDrop.getSelectionModel().selectFirst();
+        price.setEditable(false);
     }
 }

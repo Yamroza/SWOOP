@@ -176,6 +176,15 @@ public class MainScreen {
             if(o1.getPrice() != null && o2.getPrice() != null) {
                 return Float.compare(o1.getPrice(), o2.getPrice());
             }
+            else if (o1.getPrice() == null){
+                return Float.compare(0 , o2.getPrice());
+            }
+            else if (o2.getPrice() == null){
+                return Float.compare(o1.getPrice(), 0);
+            }
+            if(o1.getPrice() == null && o2.getPrice() == null) {
+                return 0;
+            }
             return 0;
         }).getPrice();
         toTextField.setText(String.valueOf(maxPrice));
