@@ -14,9 +14,10 @@ public class Offer {
     int status;
     String localisation;
     String photo;
+    String voivodship;
 
     public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
-                 Boolean isForSale, Float price, String seller, int status, String localisation, String photo) {
+                 Boolean isForSale, Float price, String seller, int status, String localisation, String voivodship, String photo) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemCategory = itemCategory;
@@ -26,6 +27,7 @@ public class Offer {
         this.seller = seller;
         this.status = status;
         this.localisation = localisation;
+        this.voivodship = voivodship;
         this.photo = photo;
     }
 
@@ -40,6 +42,7 @@ public class Offer {
         this.price = null;
         this.seller = null;
         this.localisation = null;
+        this.voivodship = null;
         this.photo = "https://i.imgur.com/Moe5dXk.jpg";
     }
 
@@ -130,4 +133,9 @@ public class Offer {
     public String getPhoto() { return photo; }
 
     public void setPhoto(String photo) { this.photo = photo; }
+
+    public String getVoivodship() { return voivodship; }
+
+    public void setVoivodship(String voivodship) { this.voivodship = voivodship; }
+
 }

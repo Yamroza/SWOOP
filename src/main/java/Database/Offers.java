@@ -42,6 +42,7 @@ public class Offers {
         offer.setStatus(status);
         offer.setLocalisation(rs.getString("localisation"));
         offer.setPhoto(rs.getString("photo"));
+        offer.setVoivodship(rs.getString("voivodship"));
         if(status == 1)
         {
             offer.setBuyer(rs.getString("buyer"));
@@ -52,10 +53,10 @@ public class Offers {
     private static String generateInsert(Offer offer){
           int isForSale = offer.getIsForSale() ? 1 : 0;
           int isForExchange = offer.getIsForExchange() ? 1 : 0;
-          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, photo) " +
+          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, voivodship, photo) " +
               "VALUES ('" + offer.getItemName()  + "' , '" + offer.getItemDescription()
               + "' , '" + offer.getItemCategory() + "' , " + isForExchange + " , " + isForSale + " , " +
-              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getPhoto() + "')");
+              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getVoivodship() + "', '" + offer.getPhoto() + "')");
   }
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
@@ -65,7 +66,7 @@ public class Offers {
 
     public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
                                                         int is_exchange, int is_for_sale,
-                                                       int price_from, int price_to, String city,
+                                                       int price_from, int price_to, String voivodship, String city,
                                                         String sorting) throws SQLException {
         String query = "select * from offers where offer_status = 0 and";
         if(is_exchange == is_for_sale){
@@ -81,6 +82,9 @@ public class Offers {
         }
         if(!city.isEmpty()) {
             query += " and localisation like('" + city +"')";
+        }
+        if(!voivodship.isEmpty() && city.isEmpty()){
+            query += " and voivodship like ('" + voivodship + "')";
         }
         if(categories.size() > 0) {
             query += " and category in (" + "'" + String.join("','", categories) + "'" + ")";
@@ -188,6 +192,7 @@ public class Offers {
 
     public static ObservableList<String> getCitiesList(String Voivodship) throws SQLException {
         citiesList = getCities(Voivodship);
+        citiesList.add("Bez miasta");
         return citiesList;
     }
 
@@ -223,6 +228,7 @@ public class Offers {
 
     public static ObservableList<String> getVoivodshipsList() throws SQLException {
         voivodshipsList = getVoivodships();
+        voivodshipsList.add("Bez województwa");
         return voivodshipsList;
     }
 
