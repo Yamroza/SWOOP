@@ -1,0 +1,151 @@
+.root{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#88afd3 70%, #639ccb 100%),
+            radial-gradient(center 50% -50%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 60%);
+}
+
+.button{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+.text-field{
+    -fx-background-color: white;
+    -fx-border-color: #bebebe;
+    -fx-background-radius: 10;
+    /*-fx-border-color: none;*/
+}
+
+.radio-button .radio{
+    -fx-border-width     : 1px;
+    -fx-background-color : white;
+}
+
+.combo-box{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%);
+            /*radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);*/
+    -fx-border-color: #bebebe;
+}
+
+
+/* mainScreen */
+
+#mainBar{
+    -fx-background-color: white
+}
+
+#fromTextField, #toTextField, #categories, #exchangeOffer, #price, #dateInput{
+    -fx-border-color: none;
+}
+
+#searchButton{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#addButton{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#accountButton{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#location{
+    -fx-background-color: white;
+
+}
+
+/* newOfferScreen */
+#addPhotoButton{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#cancelNOButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#ff7676 50%, #fd7474 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+/* accountScreen */
+
+/*#returnAButton{*/
+/*    -fx-background-color:*/
+/*            #c3c4c4,*/
+/*            linear-gradient(#ff7676 50%, #fd7474 100%),*/
+/*            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);*/
+/*    -fx-background-radius: 30;*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-text-fill: black;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );*/
+/*}*/
+
+#changePasswordButton{
+    -fx-background-color:
+            #e3e3e3,
+            linear-gradient(#e1e1e1 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ffffff 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+/* offerScreen */
+
+/*#returnOButton{*/
+/*    -fx-background-color:*/
+/*            #c3c4c4,*/
+/*            linear-gradient(#ff7676 50%, #fd7474 100%),*/
+/*            radial-gradient(center 50% -40%, radius 200%, #ffbebe 45%, rgba(230,230,230,0) 50%);*/
+/*    -fx-background-radius: 30;*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-text-fill: black;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );*/
+/*}*/
+
+#welcomeLabel{
+    -fx-font-family: "Segoe UI Light";
+    /*-fx-font-style: italic;*/
+}

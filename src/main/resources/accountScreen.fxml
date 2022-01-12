@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1011.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AccountScreen">
+   <Line endX="903.3013305664062" layoutX="101.0" layoutY="105.0" startX="-100.0" />
+   <Text layoutX="447.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moje konto">
+      <font>
+         <Font name="Segoe UI Light" size="32.0" />
+      </font>
+   </Text>
+   <Text layoutX="34.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imię:">
+      <font>
+         <Font name="Segoe UI Light" size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="34.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko:">
+      <font>
+         <Font name="Segoe UI Light" size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="34.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwa użytkownika:">
+      <font>
+         <Font name="Segoe UI Light" size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="34.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data urodzenia:">
+      <font>
+         <Font name="Segoe UI Light" size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="34.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień hasło:">
+      <font>
+         <Font name="Segoe UI Light" size="18.0" />
+      </font>
+   </Text>
+   <TextField fx:id="nameInput" layoutX="129.0" layoutY="146.0" prefHeight="26.0" prefWidth="238.0" />
+   <TextField fx:id="surnameInput" layoutX="131.0" layoutY="187.0" prefHeight="26.0" prefWidth="238.0" />
+   <Button fx:id="changePasswordButton" layoutX="177.0" layoutY="289.0" mnemonicParsing="false" onAction="#ChangePassClicked" prefHeight="26.0" prefWidth="102.0" text="zmień hasło" />
+   <Button fx:id="changeProfilePictureButton" layoutX="745.0" layoutY="395.0" mnemonicParsing="false" onAction="#ChangeProfileClicked" text="zmień profilowe" />
+   <Button layoutX="932.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitClicked" prefHeight="24.0" prefWidth="65.0" text="Wyjdź">
+      <font>
+         <Font name="Segoe UI Light" size="12.0" />
+      </font>
+   </Button>
+   <Button fx:id="saveChangesButton" layoutX="443.0" layoutY="393.0" mnemonicParsing="false" onAction="#SaveChangesClicked" text="Zapisz zmiany">
+      <font>
+         <Font name="Segoe UI Light" size="14.0" />
+      </font>
+   </Button>
+   <DatePicker fx:id="dateInput" layoutX="191.0" layoutY="341.0" prefHeight="26.0" prefWidth="191.0" />
+   <Text fx:id="loginName" layoutX="228.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <GridPane alignment="CENTER" layoutX="25.0" layoutY="427.0" prefHeight="277.0" prefWidth="966.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.75034720925441" minWidth="10.0" prefWidth="45.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="45.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="270.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="75.93428770701745" minHeight="0.0" prefHeight="34.99477675653905" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="240.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Moje ogłoszenia:">
+         <font>
+            <Font name="Segoe UI Light" size="18.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oczekujące zgłoszenia:" GridPane.columnIndex="2">
+         <font>
+            <Font name="Segoe UI Light" size="18.0" />
+         </font>
+      </Text>
+      <ListView fx:id="transactionList" prefHeight="240.0" prefWidth="270.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <ListView fx:id="userOfferList" onMouseClicked="#userOfferClicked" prefHeight="80.0" prefWidth="270.0" GridPane.rowIndex="1" />
+      <ListView fx:id="userTransactionList" prefHeight="200.0" prefWidth="270.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Moje zgłoszenia:" GridPane.columnIndex="4">
+         <font>
+            <Font name="Segoe UI Light" size="18.0" />
+         </font>
+      </Text>
+   </GridPane>
+   <ImageView fx:id="profilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="696.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" />
+   <Button layoutX="932.0" layoutY="45.0" mnemonicParsing="false" onAction="#logoutClicked" text="Wyloguj">
+      <font>
+         <Font name="Segoe UI Light" size="12.0" />
+      </font>
+   </Button>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginScreen">
+   <children>
+      <TextField layoutX="80.0" layoutY="130.0" prefHeight="26.0" prefWidth="190.0" promptText="Login" />
+      <TextField layoutX="80.0" layoutY="175.0" prefHeight="26.0" prefWidth="190.0" promptText="Password" />
+      <TextField layoutX="80.0" layoutY="220.0" prefHeight="26.0" prefWidth="190.0" promptText="Repeat password" />
+      <Text layoutX="80.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Swoop!" wrappingWidth="190.0">
+         <font>
+            <Font name="Segoe UI Light" size="22.0" />
+         </font>
+      </Text>
+      <Button layoutX="131.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Register" onAction="#RegisterClicked"/>
+      <Button layoutX="284.0" layoutY="310.0" mnemonicParsing="false" onAction="#CancelClicked" text="Cancel" />
+   </children>
+</AnchorPane>

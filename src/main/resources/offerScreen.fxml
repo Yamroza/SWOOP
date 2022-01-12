@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="835.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.OfferScreen">
+   <Line endX="600.0" endY="1.52587890625E-5" layoutX="100.0" layoutY="100.0" startX="-100.0" />
+   <TextField fx:id="editNameField" disable="true" layoutX="134.0" layoutY="29.0" prefHeight="57.0" prefWidth="470.0" visible="false">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </TextField>
+   <Text fx:id="itemName" layoutX="96.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAZWA" textAlignment="CENTER" wrappingWidth="507.663236618042">
+      <font>
+         <Font name="Segoe UI Light" size="30.0" />
+      </font>
+   </Text>
+   <Text layoutX="484.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wystawiający:">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="484.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czy do wymiany?">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Text fx:id="isForExchange" layoutX="631.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <font>
+         <Font name="Segoe UI" size="16.0" />
+      </font>
+   </Text>
+   <Text fx:id="category" layoutX="573.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="116.421875">
+      <font>
+         <Font name="Segoe UI" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="642.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLN">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="484.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategoria:">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="484.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENA:">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Button fx:id="submitTransactionButton" layoutX="22.0" layoutY="421.0" mnemonicParsing="false" onAction="#submitTransactionClicked" text="Wyślij">
+      <font>
+         <Font name="Segoe UI Light" size="12.0" />
+      </font>
+   </Button>
+   <Button fx:id="addCommentButton" layoutX="350.0" layoutY="450.0" mnemonicParsing="false" onAction="#addCommentClicked" text="Dodaj komentarz">
+      <font>
+         <Font name="Segoe UI Light" size="14.0" />
+      </font>
+   </Button>
+   <Text fx:id="seller" layoutX="603.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="97.74248330313185">
+      <font>
+         <Font name="Segoe UI" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="552.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZDJĘCIA">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="26.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zaproponuj:">
+      <font>
+         <Font name="Segoe UI Light" size="16.0" />
+      </font>
+   </Text>
+   <Button fx:id="returnOButton" layoutX="613.0" layoutY="14.0" mnemonicParsing="false" onAction="#ExitClicked" prefHeight="25.0" prefWidth="73.0" text="Cofnij" />
+   <Text fx:id="itemPrice" layoutX="552.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text=",-" textAlignment="RIGHT" wrappingWidth="82.578125">
+      <font>
+         <Font name="Segoe UI" size="16.0" />
+      </font>
+   </Text>
+   <ListView fx:id="commentList" layoutX="12.0" layoutY="491.0" prefHeight="330.0" prefWidth="680.0" />
+   <TextField fx:id="commentTextField" layoutX="14.0" layoutY="452.0" prefHeight="25.0" prefWidth="321.0" />
+   <RadioButton fx:id="exchangeButton" disable="true" layoutX="22.0" layoutY="369.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="114.0" text="Wymiana:">
+      <font>
+         <Font size="16.0" />
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="transactionType" />
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton fx:id="buyButton" disable="true" layoutX="22.0" layoutY="395.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="83.0" text="Kupno" toggleGroup="$transactionType">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </RadioButton>
+   <ImageView fx:id="offerPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="496.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@pudzian.jpg" />
+      </image>
+   </ImageView>
+   <TextField fx:id="exchangeOffer" editable="false" layoutX="137.0" layoutY="367.0" prefHeight="25.0" prefWidth="230.0" />
+   <AnchorPane layoutX="24.0" layoutY="136.0" prefHeight="201.0" prefWidth="441.0">
+      <children>
+         <Text fx:id="description" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="441.83591942129965">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Text>
+         <TextArea fx:id="editDescriptionArea" disable="true" layoutY="1.0" prefHeight="200.0" prefWidth="442.0" visible="false" wrapText="true" />
+      </children>
+   </AnchorPane>
+   <Text fx:id="editNameText" disable="true" layoutX="24.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwa:" visible="false">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Text>
+   <Button fx:id="editButton" disable="true" layoutX="613.0" layoutY="44.0" mnemonicParsing="false" onAction="#editClicked" prefHeight="25.0" prefWidth="73.0" text="Edytuj" visible="false" />
+   <Button fx:id="acceptChangesButton" disable="true" layoutX="613.0" layoutY="44.0" mnemonicParsing="false" onAction="#acceptChangesClicked" prefHeight="25.0" prefWidth="72.0" text="Gotowe" visible="false" />
+   <Text layoutX="21.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPIS:">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <ChoiceBox fx:id="editCategory" disable="true" layoutX="573.0" layoutY="192.0" prefHeight="26.0" prefWidth="116.0" visible="false" />
+</AnchorPane>
