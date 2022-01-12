@@ -43,7 +43,7 @@
       <Button fx:id="searchButton" layoutX="616.0" layoutY="34.0" mnemonicParsing="false" onAction="#ViewListWithConditions" prefHeight="33.0" prefWidth="76.0" text="Szukaj" />
       <ImageView fitHeight="91.0" fitWidth="98.0" layoutX="34.0" layoutY="5.0">
          <image>
-            <Image url="@pudzian.jpg" />
+            <Image url="https://i.imgur.com/SsMl4bG.jpg" />
          </image>
       </ImageView>
    </AnchorPane>
