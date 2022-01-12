@@ -120,17 +120,10 @@ public class AccountScreen {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
         File chosen_file = fc.showOpenDialog(null);
         if (chosen_file != null) {
-            Imgur photo_imgur = new Imgur();
-            String link = photo_imgur.putImgurContent(chosen_file);
+            String link = Imgur.putImgurContent(chosen_file);
             this.photoLink = link.replaceAll("\\\\", "/");
             Users.getLoggedUser().setProfilePhoto(this.photoLink);
-
-            URL url = new URL(this.photoLink);
-            File file = new File("work_image.jpg");
-            int connectionTimeout = 10 * 1000; // 10 sec
-            int readTimeout = 300 * 1000; // 3 min
-            FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
-            Image image = new Image(file.toURI().toString());
+            Image image = Imgur.showImageFromLink(this.photoLink);
             profilePicture.setImage(image);
             //System.out.println("New image link: " + this.photoLink);
             String insert = "UPDATE users SET profile_photo = '" + this.photoLink + "' WHERE login LIKE('" + Users.getLoggedUser().getLogin() + "')";

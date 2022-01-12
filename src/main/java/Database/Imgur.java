@@ -1,4 +1,5 @@
 package Database;
+import javafx.scene.image.Image;
 import org.apache.commons.io.FileUtils;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -51,5 +52,14 @@ public class Imgur {
         sb.deleteCharAt(7);
         sb.deleteCharAt(19);
         return sb.toString();
+    }
+
+    public static Image showImageFromLink(String link) throws IOException {
+        URL url = new URL(link);
+        File file = new File("work_image.jpg");
+        int connectionTimeout = 10 * 1000; // 10 sec
+        int readTimeout = 300 * 1000; // 3 min
+        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+        return new Image(file.toURI().toString());
     }
 }

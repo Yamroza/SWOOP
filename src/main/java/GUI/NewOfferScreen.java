@@ -133,12 +133,7 @@ public class NewOfferScreen {
 
     @FXML
     private void initialize() throws SQLException, IOException {
-        URL url = new URL("https://i.imgur.com/Moe5dXk.jpg");
-        File file = new File("work_image.jpg");
-        int connectionTimeout = 10 * 1000; // 10 sec
-        int readTimeout = 300 * 1000; // 3 min
-        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
-        Image image = new Image(file.toURI().toString());
+        Image image = Imgur.showImageFromLink("https://i.imgur.com/Moe5dXk.jpg");
         imageView.setImage(image);
 
         categoryDrop.setItems(Categories.getCategoriesList());

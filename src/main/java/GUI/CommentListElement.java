@@ -4,6 +4,7 @@ import Classes.Comment;
 import Classes.Offer;
 import Database.Comments;
 import Database.Connecting;
+import Database.Imgur;
 import Database.Users;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -177,21 +178,12 @@ public class CommentListElement extends ListCell<Comment> {
                 }
             }
             DB.close();
-            URL url = null;
+            Image image = null;
             try {
-                url = new URL(photoUrl);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            File file = new File("work_image.jpg");
-            int connectionTimeout = 10 * 1000; // 10 sec
-            int readTimeout = 300 * 1000; // 3 min
-            try {
-                FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+                image = Imgur.showImageFromLink(photoUrl);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Image image = new Image(file.toURI().toString());
             CommentProfPicture.setImage(image);
         }
 

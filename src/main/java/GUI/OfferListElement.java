@@ -1,6 +1,7 @@
 package GUI;
 
 import Classes.Offer;
+import Database.Imgur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
@@ -74,21 +75,12 @@ public class OfferListElement extends ListCell<Offer> {
                 itemPrice.setVisible(true);
                 itemPrice.setText(offer.getPrice() + "PLN");
             }
-            URL url = null;
+            Image image = null;
             try {
-                url = new URL(offer.getPhoto());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            File file = new File("work_image.jpg");
-            int connectionTimeout = 10 * 1000; // 10 sec
-            int readTimeout = 300 * 1000; // 3 min
-            try {
-                FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
+                image = Imgur.showImageFromLink(offer.getPhoto());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Image image = new Image(file.toURI().toString());
             itemPhoto.setImage(image);
         }
 

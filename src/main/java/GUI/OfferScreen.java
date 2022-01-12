@@ -182,12 +182,7 @@ public class OfferScreen {
     @FXML
     private void initialize() throws SQLException, IOException {
         Offer currentOffer = Offers.getSelectedOffer();
-        URL url = new URL(currentOffer.getPhoto());
-        File file = new File("work_image.jpg");
-        int connectionTimeout = 10 * 1000; // 10 sec
-        int readTimeout = 300 * 1000; // 3 min
-        FileUtils.copyURLToFile(url, file, connectionTimeout, readTimeout);
-        Image image = new Image(file.toURI().toString());
+        Image image = Imgur.showImageFromLink(currentOffer.getPhoto());
         offerPhoto.setImage(image);
 
         itemName.setText(currentOffer.getItemName());
