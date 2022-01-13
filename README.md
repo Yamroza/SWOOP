@@ -1,7 +1,5 @@
 # PAP21Z-Z27
 
-## **UWAGA** Działający prototyp do etapu 2 znajduje się na branchu *class_development*, a dokument do niego w folderze *docs*
-
 **Temat projektu:** *Portal do wymiany przedmiotów*  
 **Prowadzący:** dr inż. Piotr Andruszkiewicz  
 **Grupa:** 104, piątek 10:15-12:00  
