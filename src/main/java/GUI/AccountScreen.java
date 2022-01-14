@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class AccountScreen {
 
@@ -35,6 +37,9 @@ public class AccountScreen {
 
     @FXML
     TextField surnameInput;
+
+    @FXML
+    Text editInfoText;
 
     @FXML
     DatePicker dateInput;
@@ -74,6 +79,9 @@ public class AccountScreen {
         loggedUser.setName(nameInput.getText());
         loggedUser.setSurname(surnameInput.getText());
         loggedUser.setBirthDate(dateInput.getValue());
+        editInfoText.setVisible(true);
+        editInfoText.setText("Zapisano zmiany");
+        editInfoText.setFill(Color.LIMEGREEN);
         Users.updateUserInDatabase();
     }
 
