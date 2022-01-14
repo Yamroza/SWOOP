@@ -54,10 +54,10 @@ public class Offers {
     private static String generateInsert(Offer offer){
           int isForSale = offer.getIsForSale() ? 1 : 0;
           int isForExchange = offer.getIsForExchange() ? 1 : 0;
-          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, photo) " +
+          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, voivodship, photo) " +
               "VALUES ('" + offer.getItemName()  + "' , '" + offer.getItemDescription()
               + "' , '" + offer.getItemCategory() + "' , " + isForExchange + " , " + isForSale + " , " +
-              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getPhoto() + "')");
+              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getVoivodship() + "', '" + offer.getPhoto() + "')");
   }
 
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {

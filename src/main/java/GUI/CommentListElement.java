@@ -148,7 +148,6 @@ public class CommentListElement extends ListCell<Comment> {
             Connecting DB = null;
             try {
                 DB = new Connecting();
-                System.out.println("Connected to database");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

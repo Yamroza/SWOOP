@@ -282,7 +282,6 @@ public class OfferScreen {
             Users.getLoggedUser().setProfilePhoto(this.photoLink);
             Image image = Imgur.showImageFromLink(this.photoLink);
             offerPhoto.setImage(image);
-            //System.out.println("New image link: " + this.photoLink);
             String insert = "UPDATE offers SET photo = '" + this.photoLink + "' WHERE name LIKE('" + Offers.getSelectedOffer().getItemName() + "')";
             Connecting DB = new Connecting();
             DB.alterTable(insert);
