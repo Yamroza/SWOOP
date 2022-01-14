@@ -138,22 +138,27 @@
                      </Text>
                      <Pane prefHeight="20.0" prefWidth="325.0" />
                      <ComboBox fx:id="categoryDrop" prefHeight="30.0" prefWidth="328.0" />
+
                      <Pane prefHeight="31.0" prefWidth="325.0" />
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Miasto:">
-                        <font>
-                           <Font name="Segoe UI Light" size="18.0" />
-                        </font>
-                     </Text>
-                     <Pane prefHeight="17.0" prefWidth="325.0" />
-                     <ComboBox fx:id="cityDrop" prefHeight="28.0" prefWidth="329.0" />
-                     <Pane prefHeight="38.0" prefWidth="118.0" />
                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Województwo:">
                         <font>
                            <Font name="Segoe UI Light" size="18.0" />
                         </font>
                      </Text>
-                     <Pane prefHeight="13.0" prefWidth="222.0" />
+
+                     <Pane prefHeight="17.0" prefWidth="325.0" />
                      <ComboBox fx:id="voivodshipDrop" onAction="#voivodshipDropClicked" prefHeight="32.0" prefWidth="330.0" />
+
+                     <Pane prefHeight="38.0" prefWidth="118.0" />
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Miasto:">
+                        <font>
+                           <Font name="Segoe UI Light" size="18.0" />
+                        </font>
+                     </Text>
+
+                     <Pane prefHeight="13.0" prefWidth="222.0" />
+                     <ComboBox fx:id="cityDrop" prefHeight="28.0" prefWidth="329.0" />
+
                   </children>
                </FlowPane>
             </children>

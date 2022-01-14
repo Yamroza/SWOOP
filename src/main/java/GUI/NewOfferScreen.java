@@ -147,9 +147,9 @@ public class NewOfferScreen {
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
-        voivodshipDrop.getSelectionModel().selectFirst();
-        cityDrop.setItems(Offers.getCitiesList("dolnośląskie"));
-        cityDrop.getSelectionModel().selectFirst();
+        voivodshipDrop.getSelectionModel().select("mazowieckie");
+        cityDrop.setItems(Offers.getCitiesList("mazowieckie"));
+        cityDrop.getSelectionModel().select("Warszawa");
         price.setEditable(false);
     }
 }
