@@ -194,6 +194,7 @@ public class Offers {
 
     public static ObservableList<String> getCitiesList(String Voivodship) throws SQLException {
         citiesList = getCities(Voivodship);
+        citiesList.add("Bez miasta");
         return citiesList;
     }
 
@@ -229,6 +230,7 @@ public class Offers {
 
     public static ObservableList<String> getVoivodshipsList() throws SQLException {
         voivodshipsList = getVoivodships();
+        voivodshipsList.add("Bez województwa");
         return voivodshipsList;
     }
 
