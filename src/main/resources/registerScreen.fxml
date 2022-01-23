@@ -8,15 +8,15 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RegisterScreen">
-   <Text layoutX="80.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Swoop!" textAlignment="CENTER" wrappingWidth="190.0">
+   <Text layoutX="80.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Witaj w Swoop!" textAlignment="CENTER" wrappingWidth="190.0">
       <font>
          <Font name="Segoe UI Light" size="22.0" />
       </font>
    </Text>
    <TextField fx:id="loginInput" onKeyPressed="#EnterClicked" layoutX="80.0" layoutY="130.0" prefHeight="26.0" prefWidth="190.0" promptText="Login" />
-   <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" layoutX="80.0" layoutY="175.0" prefHeight="25.0" prefWidth="190.0" promptText="Password" />
-   <PasswordField fx:id="repeatPasswordInput" onKeyPressed="#EnterClicked" layoutX="80.0" layoutY="223.0" prefHeight="25.0" prefWidth="190.0" promptText="Repeat Password" />
-   <Button fx:id="registerButton" layoutX="131.0" layoutY="277.0" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="26.0" prefWidth="88.0" text="Register" />
-   <Button fx:id="cancelButton" layoutX="284.0" layoutY="310.0" mnemonicParsing="false" onAction="#CancelClicked" text="Cancel" />
+   <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" layoutX="80.0" layoutY="175.0" prefHeight="25.0" prefWidth="190.0" promptText="Hasło" />
+   <PasswordField fx:id="repeatPasswordInput" onKeyPressed="#EnterClicked" layoutX="80.0" layoutY="223.0" prefHeight="25.0" prefWidth="190.0" promptText="Powtórz hasło" />
+   <Button fx:id="registerButton" layoutX="131.0" layoutY="277.0" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="26.0" prefWidth="88.0" text="Zarejestruj" />
+   <Button fx:id="cancelButton" layoutX="284.0" layoutY="310.0" mnemonicParsing="false" onAction="#CancelClicked" text="Anuluj" />
    <Text fx:id="errorMessage" fill="RED" layoutX="79.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text" textAlignment="CENTER" visible="false" wrappingWidth="190.49810521324662" />
 </AnchorPane>
