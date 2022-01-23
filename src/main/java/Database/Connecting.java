@@ -1,38 +1,35 @@
 package Database;
-import Classes.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class Connecting {
+public class
+Connecting {
 
     private static final Logger log = LoggerFactory.getLogger(Connecting.class);
     private Connection conn;
     private static final String url = "jdbc:oracle:thin:@//ora4.ii.pw.edu.pl:1521/pdb1.ii.pw.edu.pl";
     private static String login = "z27";
     private static String password = "9wdzsz";
-    private String sql_instr = null;
-
-    public Connecting() throws SQLException {
-        log.info("Opening connection to najlepszyzespol database");
-        conn = DriverManager.getConnection(url, login, password);
-    }
-
-    public Connecting(String login, String password) throws SQLException {
-        Connecting.login = login;
-        Connecting.password = password;
-        log.info("Opening connection to najlepszyzespol database");
-        conn = DriverManager.getConnection(url, Connecting.login, Connecting.password);
-    }
 
     public Connection getConn() {
         return conn;
     }
 
+    // crating connection to database
+    public Connecting() throws SQLException {
+        try {
+            log.info("Opening connection to najlepszyzespol database");
+            conn = DriverManager.getConnection(url, login, password);
+        }
+        catch (SQLException ex) {
+            log.error("Unable to open connection", ex);
+        }
+    }
+
+    // closing connection to database
     public void close() {
         if (conn != null) {
             try {
@@ -45,6 +42,7 @@ public class Connecting {
         }
     }
 
+    // executing specified query on database
     public void alterTable(String sql_in) {
         Statement stmt = null;
         try {
@@ -62,88 +60,5 @@ public class Connecting {
             }
         }
     }
-
-    public List<Category> getCategories() {
-        List<Category>categories = new ArrayList<Category>();
-        if (conn != null) {
-            Statement stmt = null;
-            try {
-                stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM CATEGORIES");
-                while (rs.next()) {
-                    Category category = new Category();
-                    category.setCategory_id(rs.getInt("category_id"));
-                    category.setName(rs.getString("name"));
-                    categories.add(category);
-                }
-            } catch (SQLException e) {
-                log.error("Unable to get categories", e);
-            } finally {
-                if (stmt != null) {
-                    try { stmt.close();
-                    } catch (SQLException e) {
-                    }
-                }
-            }
-        }
-        return categories;
-    }
-
-    public List<User> getUsers() {
-        List<User>users = new ArrayList<User>();
-        if (conn != null) {
-            Statement stmt = null;
-            try {
-                stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM USERS");
-                while (rs.next()) {
-                    User user = new User();
-                    user.setLogin(rs.getString("login"));
-                    user.setPassword(rs.getString("password"));
-                    user.setName(rs.getString("name"));
-                    user.setSurname(rs.getString("surname"));
-                    if(rs.getDate("birthdate") != null){
-                        user.setBirthDate(rs.getDate("birthdate").toLocalDate());}
-                    if(rs.getDate("birthdate") != null){
-                        user.setAccountCreationDate(rs.getDate("accountcreationdate").toLocalDate());}
-                    users.add(user);
-                }
-            } catch (SQLException e) {
-                log.error("Unable to get categories", e);
-            } finally {
-                if (stmt != null) {
-                    try { stmt.close();
-                    } catch (SQLException e) {
-                    }
-                }
-            }
-        }
-        return users;
-    }
-
-   /* public List<Transaction> getTransactions() {
-        List<Transaction>transactions = new ArrayList<Transaction>();
-        if (conn != null) {
-            Statement stmt = null;
-            try {
-                stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM TRANSACTIONS");
-                while (rs.next()) {
-                    Transaction transaction = new Transaction();
-                    ....
-                    users.add(user);
-                }
-            } catch (SQLException e) {
-                log.error("Unable to get transactions", e);
-            } finally {
-                if (stmt != null) {
-                    try { stmt.close();
-                    } catch (SQLException e) {
-                    }
-                }
-            }
-        }
-        return transactions;
-    }*/
 }
 

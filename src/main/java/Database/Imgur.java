@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Imgur {
 
+    // uploading picture to Imgur - returns link to picture
     public static String putImgurContent(File photo_file) throws Exception {
 
         byte[] fileContent = FileUtils.readFileToByteArray(photo_file);
@@ -17,9 +18,11 @@ public class Imgur {
         String data = URLEncoder.encode("image", StandardCharsets.UTF_8) + "="
                 + URLEncoder.encode(encodedString, StandardCharsets.UTF_8);
 
+        // our passes:
         String clientID = "da82141bf85ccad";
         URL url;
         url = new URL("https://api.imgur.com/3/image");
+
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setDoOutput(true);
         conn.setDoInput(true);
@@ -34,7 +37,7 @@ public class Imgur {
         wr.write(data);
         wr.flush();
 
-        // Get the response
+        // Get the response - link
         BufferedReader rd = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
         String line;
@@ -54,6 +57,7 @@ public class Imgur {
         return sb.toString();
     }
 
+    // downloading photo from Imgur link
     public static Image showImageFromLink(String link) throws IOException {
         URL url = new URL(link);
         File file = new File("work_image.jpg");

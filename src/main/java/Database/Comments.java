@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 public class Comments {
 
+    // creating a comment object from result-set from database
     private static Comment returnComment(ResultSet rs) throws SQLException {
         int commentID = rs.getInt("comment_id");
         int offerID = rs.getInt("offer_id");
@@ -19,7 +20,7 @@ public class Comments {
         return new Comment(commentID, offerID, userLogin, commentText);
     }
 
-
+    // downloading all comments under specified offer
     public static ObservableList<Comment> getComments(int offerID) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -49,6 +50,7 @@ public class Comments {
         return comments;
     }
 
+    // generating database command for inserting a comment
     private static String generateComment(Comment comment)
     {
         int offerID = comment.getOfferID();
@@ -58,29 +60,34 @@ public class Comments {
                 "(" + offerID + ", '" + userLogin + "', '" + commentText + "')";
     }
 
+    // generating database command for altering a comment
     private static String generateCommentEdit(Comment comment, String newComment)
     {
         return ("UPDATE COMMENTS SET COMMENT_TEXT = '" + newComment +
                 "' WHERE COMMENT_ID = " + comment.getCommentID());
     }
 
+    // generating database command for deleting a comment
     private static String generateCommentDelete(Comment comment)
     {
         return ("DELETE FROM COMMENTS WHERE COMMENT_ID = " + comment.getCommentID());
     }
 
+    // inserting comment to database
     public static void insertComment(Comment comment) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateComment(comment));
         DB.close();
     }
 
+    // editing comment in database
     public static void editComment(Comment comment, String newComment) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateCommentEdit(comment, newComment));
         DB.close();
     }
 
+    // deleting comment in database
     public static void deleteComment(Comment comment) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateCommentDelete(comment));
