@@ -16,7 +16,7 @@ public class Offer {
     String photo;
     String voivodship;
 
-
+    // creating offer object with specified photo
     public Offer(String itemName, String itemDescription, String itemCategory, Boolean isForExchange,
                  Boolean isForSale, Float price, String seller, int status, String localisation, String voivodship, String photo) {
         this.itemName = itemName;
@@ -32,6 +32,7 @@ public class Offer {
         this.photo = photo;
     }
 
+    // creating offer object without specified photo
     public Offer()
     {
         this.offer_id = -1;

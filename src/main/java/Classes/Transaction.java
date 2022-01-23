@@ -1,23 +1,17 @@
 package Classes;
 
-import Database.Connecting;
-
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Transaction {
     private int transactionID;
-    private int sellersOfferID;
+    private final int sellersOfferID;
     private String seller;
     private String sellersItem;
-    private String buyer;
-    private String buyersOffer;
+    private final String buyer;
+    private final String buyersOffer;
     private final int status;
 
 
-
-
+    // creating transaction object without seller
     public Transaction(int offerID, String buyer, String buyersOffer, int status) {
         this.sellersOfferID = offerID;
         this.buyer = buyer;
@@ -25,6 +19,7 @@ public class Transaction {
         this.status = status;
     }
 
+    // creating transaction object with seller
     public Transaction(int offerID, String buyer, String buyersOffer, int status, int transactionID, String seller,
                        String sellersItem) {
         this.transactionID = transactionID;
@@ -40,24 +35,12 @@ public class Transaction {
         return sellersOfferID;
     }
 
-    public void setSellersOfferID(int sellersOffer) {
-        this.sellersOfferID = sellersOffer;
-    }
-
     public String getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(String buyer) {
-        this.buyer = buyer;
-    }
-
     public String getBuyersOffer() {
         return buyersOffer;
-    }
-
-    public void setBuyersOffer(String buyersOffer) {
-        this.buyersOffer = buyersOffer;
     }
 
     public String getSellersItem() {

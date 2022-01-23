@@ -13,6 +13,13 @@ public class User {
     private String profilePhoto;
     private LocalDate accountCreationDate;
 
+    // creating empty user object
+    public User() {
+        this.birthDate = LocalDate.now();
+        this.accountCreationDate = LocalDate.now();
+    }
+
+    // creating user from given data and filling with default values
     public User(String login, String password) {
         this.login = login;
         this.setPassword(password);
@@ -25,11 +32,6 @@ public class User {
 
     public void setAccountCreationDate(LocalDate accountCreationDate) {
         this.accountCreationDate = accountCreationDate;
-    }
-
-    public User() {
-        this.birthDate = LocalDate.now();
-        this.accountCreationDate = LocalDate.now();
     }
 
     public String getLogin() {
