@@ -136,13 +136,10 @@ public class NewOfferScreen {
         }
     }
 
-
-
     @FXML
     private void initialize() throws SQLException, IOException {
         Image image = Imgur.showImageFromLink("https://i.imgur.com/Moe5dXk.jpg");
         imageView.setImage(image);
-
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());

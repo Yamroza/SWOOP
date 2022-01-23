@@ -1,7 +1,6 @@
 package GUI;
 
 import Classes.Transaction;
-import Database.Transactions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
@@ -10,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class UserTransactionListElement extends ListCell<Transaction> {
 
@@ -77,9 +75,7 @@ public class UserTransactionListElement extends ListCell<Transaction> {
                 userTransactionOffer.setFill(Color.RED);
                 userTransactionSeller.setFill(Color.RED);
             }
-
         }
-
         setText(null);
         setGraphic(userTransactionCell);
     }

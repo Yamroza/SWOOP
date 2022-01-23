@@ -1,12 +1,8 @@
 package GUI;
 
-import Classes.Offer;
 import Classes.Transaction;
 import Database.Offers;
 import Database.Transactions;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -16,8 +12,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-import static java.util.Collections.copy;
 
 public class TransactionListElement extends ListCell<Transaction> {
 
@@ -90,9 +84,7 @@ public class TransactionListElement extends ListCell<Transaction> {
                 this.getListView().refresh();
             });
         }
-
         setText(null);
         setGraphic(transactionCell);
     }
-
 }

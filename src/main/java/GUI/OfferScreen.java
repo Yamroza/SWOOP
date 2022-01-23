@@ -3,7 +3,6 @@ package GUI;
 import Classes.Comment;
 import Classes.Offer;
 import Classes.Transaction;
-import Classes.User;
 import Database.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 
