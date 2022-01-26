@@ -8,3 +8,15 @@
 - Aleksandra Majewska, 310832
 - Gabriela Topczewska, 310961
 - Radosław Kostrzewski, 310757
+
+
+
+## Instrukcja uruchomienia
+
+Aby uruchomić aplikację potrzebujemy narzędzia 
+[maven](https://maven.apache.org/install.html).
+Po sklonowaniu repozytorium należy wejść do katalogu głównego (znajduje się w nim plik pom.xml) i wpisać w terminalu:
+- mvn compile
+- mvn javafx:run
+
+Po tych operacjach aplikacja powinna się uruchomić.

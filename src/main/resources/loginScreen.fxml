@@ -9,42 +9,45 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.MaskerPane?>
 
-<AnchorPane fx:id="loginPane" prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginScreen">
+<AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginScreen">
    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-         <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="330.0" prefWidth="333.0" BorderPane.alignment="CENTER">
-            <children>
-               <Text fx:id="welcomeLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Witaj w Swoop!" textAlignment="CENTER" wrappingWidth="190.4000000000001">
-                  <font>
-                     <Font name="Century Gothic" size="19.0" />
-                  </font>
-               </Text>
-               <FlowPane prefHeight="70.0" prefWidth="200.0" />
-               <TextField fx:id="loginInput" prefHeight="26.0" prefWidth="190.0" promptText="Login" />
-               <FlowPane prefHeight="30.0" prefWidth="200.0" />
-               <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" prefHeight="26.0" prefWidth="190.0" promptText="Hasło" />
-               <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="79.0" prefWidth="231.0">
-                  <children>
-                     <FlowPane alignment="CENTER" prefHeight="39.0" prefWidth="232.0">
-                        <children>
-                           <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                        </children></FlowPane>
-                     <Button fx:id="loginButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#LoginClicked" prefHeight="30.0" prefWidth="100.0" text="Logowanie" textAlignment="CENTER">
-                        <font>
-                           <Font name="Century Gothic" size="14.0" />
-                        </font>
-                     </Button>
-                     <Pane prefHeight="33.0" prefWidth="26.0" />
-                     <Button fx:id="registerButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="30.0" prefWidth="100.0" text="Rejestracja" textAlignment="CENTER">
-                        <font>
-                           <Font name="Century Gothic" size="14.0" />
-                        </font>
-                     </Button>
-                  </children>
+         <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="330.0"
+                   prefWidth="333.0" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Witaj w Swoop!" textAlignment="CENTER"
+                  wrappingWidth="190.4000000000001">
+               <font>
+                  <Font name="Century Gothic" size="19.0"/>
+               </font>
+            </Text>
+            <FlowPane alignment="CENTER" prefHeight="70.0" prefWidth="200.0"/>
+            <TextField fx:id="loginInput" prefHeight="26.0" prefWidth="190.0" promptText="Login"/>
+            <FlowPane prefHeight="30.0" prefWidth="200.0"/>
+            <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" prefHeight="26.0" prefWidth="190.0"
+                           promptText="Hasło"/>
+            <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="79.0" prefWidth="231.0">
+               <FlowPane alignment="CENTER" prefHeight="39.0" prefWidth="232.0">
+                  <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"
+                        visible="false"/>
                </FlowPane>
-            </children>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#LoginClicked" prefHeight="30.0"
+                       prefWidth="100.0" text="Logowanie" textAlignment="CENTER">
+                  <font>
+                     <Font name="Century Gothic" size="14.0"/>
+                  </font>
+               </Button>
+               <Pane prefHeight="33.0" prefWidth="26.0"/>
+               <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="30.0"
+                       prefWidth="100.0" text="Rejestracja" textAlignment="CENTER">
+                  <font>
+                     <Font name="Century Gothic" size="14.0"/>
+                  </font>
+               </Button>
+            </FlowPane>
          </FlowPane>
       </center>
    </BorderPane>
+   <MaskerPane fx:id="waiting" prefHeight="350.0" prefWidth="350.0" text="Proszę czekać..." visible="false" />
 </AnchorPane>
