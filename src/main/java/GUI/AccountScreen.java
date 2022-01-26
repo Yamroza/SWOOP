@@ -5,7 +5,6 @@ import Classes.Transaction;
 import Classes.User;
 import Database.*;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,13 +12,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 
@@ -35,6 +34,9 @@ public class AccountScreen {
 
     @FXML
     TextField surnameInput;
+
+    @FXML
+    Text editInfoText;
 
     @FXML
     DatePicker dateInput;
@@ -74,6 +76,9 @@ public class AccountScreen {
         loggedUser.setName(nameInput.getText());
         loggedUser.setSurname(surnameInput.getText());
         loggedUser.setBirthDate(dateInput.getValue());
+        editInfoText.setVisible(true);
+        editInfoText.setText("Zapisano zmiany");
+        editInfoText.setFill(Color.LIMEGREEN);
         Users.updateUserInDatabase();
     }
 
@@ -94,6 +99,27 @@ public class AccountScreen {
                 App.myStage.setScene(App.scene);
                 App.myStage.sizeToScene();
             }
+        }
+    }
+
+    final FileChooser fc = new FileChooser();
+    String photoLink;
+
+    public void ChangeProfileClicked() throws Exception {
+        fc.setTitle("Wybierz nowe zdjęcie");
+        fc.setInitialDirectory(new File(System.getProperty("user.home")));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
+        File chosen_file = fc.showOpenDialog(null);
+        if (chosen_file != null) {
+            String link = Imgur.putImgurContent(chosen_file);
+            this.photoLink = link.replaceAll("\\\\", "/");
+            Users.getLoggedUser().setProfilePhoto(this.photoLink);
+            Image image = Imgur.showImageFromLink(this.photoLink);
+            profilePicture.setImage(image);
+            String insert = "UPDATE users SET profile_photo = '" + this.photoLink + "' WHERE login LIKE('" + Users.getLoggedUser().getLogin() + "')";
+            Connecting DB = new Connecting();
+            DB.alterTable(insert);
+            DB.close();
         }
     }
 
@@ -125,28 +151,5 @@ public class AccountScreen {
         ObservableList<Transaction> userTransactions = Transactions.getUserTransactions(loggedUser.getLogin());
         userTransactionList.setItems(userTransactions);
         userTransactionList.setCellFactory(offerListView -> new UserTransactionListElement());
-    }
-
-    final FileChooser fc = new FileChooser();
-    String photoLink;
-
-    public void ChangeProfileClicked() throws Exception {
-        fc.setTitle("Wybierz nowe zdjęcie");
-        fc.setInitialDirectory(new File(System.getProperty("user.home")));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
-        File chosen_file = fc.showOpenDialog(null);
-        if (chosen_file != null) {
-            String link = Imgur.putImgurContent(chosen_file);
-            this.photoLink = link.replaceAll("\\\\", "/");
-            Users.getLoggedUser().setProfilePhoto(this.photoLink);
-            Image image = Imgur.showImageFromLink(this.photoLink);
-            profilePicture.setImage(image);
-            //System.out.println("New image link: " + this.photoLink);
-            String insert = "UPDATE users SET profile_photo = '" + this.photoLink + "' WHERE login LIKE('" + Users.getLoggedUser().getLogin() + "')";
-            Connecting DB = new Connecting();
-            DB.alterTable(insert);
-            DB.close();
-        }
-
     }
 }

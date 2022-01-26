@@ -12,6 +12,7 @@ public class Categories {
 
     private static ObservableList<String> categoriesList = null;
 
+    // returns list of categories
     public static ObservableList<String> getCategoriesList() throws SQLException {
         if (categoriesList == null){
             categoriesList = getCategories();
@@ -19,6 +20,7 @@ public class Categories {
         return categoriesList;
     }
 
+    // downloading list of categories from database
     private static ObservableList<String> getCategories() throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();

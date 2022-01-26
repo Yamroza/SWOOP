@@ -4,7 +4,7 @@ public class Comment {
     private int commentID;
     private final int offerID;
     private final String commenterName;
-    private String commentText;
+    private final String commentText;
 
     public Comment(int commentID, int offerID, String commenterName, String commentText) {
         this.commentID = commentID;
@@ -35,7 +35,4 @@ public class Comment {
         return commentText;
     }
 
-    public void setCommentText(String commentText) {
-        this.commentText = commentText;
-    }
 }

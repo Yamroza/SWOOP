@@ -2,7 +2,6 @@ package Database;
 
 import Classes.Transaction;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
@@ -12,6 +11,7 @@ import java.sql.Statement;
 
 public class Transactions {
 
+    // creating a transaction object from result-set from database
     private static Transaction returnTransaction(ResultSet rs) throws SQLException {
         int offerID = rs.getInt("offer_id");
         String buyer = rs.getString("buyer");
@@ -23,6 +23,7 @@ public class Transactions {
         return new Transaction(offerID, buyer, buyersOffer, status, transactionID, seller, sellersItem);
     }
 
+    // downloading list of transactions of specified user where he is a seller
     public static ObservableList<Transaction> getTransactions(String userLogin) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -56,6 +57,7 @@ public class Transactions {
         return transactions;
     }
 
+    // downloading list of transactions of specified user where he is a buyer
     public static ObservableList<Transaction> getUserTransactions(String userLogin) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -88,12 +90,15 @@ public class Transactions {
         DB.close();
         return transactions;
     }
+
+    // generating sql insert command for database
     private static String generate_insert(Transaction t){
         return ("INSERT INTO TRANSACTIONS (offer_id, buyer, buyers_offer, status) " +
                 "VALUES ('" + t.getSellersOfferID()+ "' , '" + t.getBuyer()+
                 "' , '" + t.getBuyersOffer() + "' , '" + t.getStatus() + "'" + ")");
     }
 
+    // generating sql update command for accepting transaction status in database
     private static String generateAccept(Transaction t)
     {
         return("UPDATE TRANSACTIONS SET STATUS = " +
@@ -102,23 +107,27 @@ public class Transactions {
                 "ELSE -1 END WHERE OFFER_ID = " + t.getSellersOfferID());
     }
 
+    // generating sql update command for declining transaction status in database
     private static String generateDecline(Transaction t)
     {
         return ("UPDATE TRANSACTIONS SET STATUS = -1 WHERE TRANSACTION_ID = " + t.getTransactionID());
     }
 
+    // adding transaction to database
     public static void addTransactionToDatabase(Transaction transaction) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generate_insert(transaction));
         DB.close();
     }
 
+    // setting transaction status as declined in database
     public static void setTransactionDeclined(Transaction transaction) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateDecline(transaction));
         DB.close();
     }
 
+    // setting transaction status as accepted in database
     public static void setTransactionAccepted(Transaction transaction) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateAccept(transaction));

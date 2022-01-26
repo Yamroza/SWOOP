@@ -9,12 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class OfferListElement extends ListCell<Offer> {
 
@@ -43,7 +39,6 @@ public class OfferListElement extends ListCell<Offer> {
         {
             setText("");
             setGraphic(null);
-            //super.getListView().getItems().remove(this);
             if(this.itemCell != null) {
                 itemCell.setVisible(false);
             }
@@ -83,9 +78,7 @@ public class OfferListElement extends ListCell<Offer> {
             }
             itemPhoto.setImage(image);
         }
-
         setText(null);
         setGraphic(itemCell);
     }
-
 }

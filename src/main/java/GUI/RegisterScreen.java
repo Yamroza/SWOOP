@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -34,7 +36,14 @@ public class RegisterScreen {
     }
 
     @FXML
-    private void RegisterClicked(ActionEvent e) throws IOException, SQLException {
+    private void EnterClicked(KeyEvent e) throws IOException, SQLException{
+        if(e.getCode() == KeyCode.ENTER) {
+            RegisterClicked();
+        }
+    }
+
+    @FXML
+    private void RegisterClicked() throws IOException, SQLException {
         String password = passwordInput.getText();
         String repeatedPassword = repeatPasswordInput.getText();
         String login = loginInput.getText();

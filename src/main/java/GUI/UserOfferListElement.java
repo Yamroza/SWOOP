@@ -32,10 +32,8 @@ public class UserOfferListElement extends ListCell<Offer> {
             setText(null);
             setGraphic(null);
         }
-        else
-        {
-            if(loader == null)
-            {
+        else {
+            if (loader == null) {
                 loader = new FXMLLoader(App.class.getResource("/userOfferListCell.fxml"));
                 loader.setController(this);
                 try {
@@ -44,14 +42,11 @@ public class UserOfferListElement extends ListCell<Offer> {
                     e.printStackTrace();
                 }
             }
-            if(offer.getStatus() == 0)
-            {
+            if (offer.getStatus() == 0) {
                 userOfferName.setText(offer.getItemName());
                 userOfferName.setFill(Color.BLACK);
                 userOfferBuyer.setVisible(false);
-            }
-            else if(offer.getStatus() == 1)
-            {
+            } else if (offer.getStatus() == 1) {
                 userOfferName.setText(offer.getItemName());
                 userOfferName.setFill(Color.LIMEGREEN);
                 userOfferBuyer.setVisible(true);
@@ -59,9 +54,7 @@ public class UserOfferListElement extends ListCell<Offer> {
                 userOfferBuyer.setFill(Color.LIMEGREEN);
             }
         }
-
         setText(null);
         setGraphic(userOfferCell);
     }
-
 }

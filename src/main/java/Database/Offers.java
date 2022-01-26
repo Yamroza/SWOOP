@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.List;
 
 import Classes.Offer;
-import Classes.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,6 +22,7 @@ public class Offers {
         Offers.selectedOffer = selectedOffer;
     }
 
+    // creating an offer object from result-set from database
     private static Offer returnOffer(ResultSet rs) throws SQLException {
         Offer offer = new Offer();
         offer.setOfferId(rs.getInt("offer_id"));
@@ -51,20 +51,23 @@ public class Offers {
         return offer;
     }
 
+    // generating database command for inserting an offer
     private static String generateInsert(Offer offer){
           int isForSale = offer.getIsForSale() ? 1 : 0;
           int isForExchange = offer.getIsForExchange() ? 1 : 0;
-          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, photo) " +
+          return ("INSERT INTO OFFERS (name, description, category, for_exchange, for_sale, price, seller, offer_status, localisation, voivodship, photo) " +
               "VALUES ('" + offer.getItemName()  + "' , '" + offer.getItemDescription()
               + "' , '" + offer.getItemCategory() + "' , " + isForExchange + " , " + isForSale + " , " +
-              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getPhoto() + "')");
+              offer.getPrice() + " , '" + offer.getSeller() + "'," + offer.getStatus() + ",'" + offer.getLocalisation() + "', '" + offer.getVoivodship() + "', '" + offer.getPhoto() + "')");
   }
 
+    // selecting offers by offer id (the newest offers are first)
     public static ObservableList<Offer> getNextTenOffers() throws SQLException {
         return getOffersByQuery("select * from offers where offer_status = 0 " +
                 "order by OFFER_ID desc");
     }
 
+    // selecting offers with specified requirements
     public static ObservableList<Offer> getOffersByCond(String name, List<String> categories,
                                                         int is_exchange, int is_for_sale,
                                                         int price_from, int price_to, String voivodship, String city,
@@ -102,7 +105,7 @@ public class Offers {
         return getOffersByQuery(query);
     }
 
-
+    // downloading list of offers from database basing on query
     public static ObservableList<Offer> getOffersByQuery(String query) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -133,6 +136,7 @@ public class Offers {
         return offers;
     }
 
+    // downloading a list of the newest 10 offers from specified user
     public static ObservableList<Offer> getNextTenUserOffers(String login) throws SQLException {
         String q = "select O.*, S.BUYER from offers O LEFT JOIN (" +
                 " SELECT T.OFFER_ID, T.BUYER FROM TRANSACTIONS T" +
@@ -143,11 +147,13 @@ public class Offers {
         return getOffersByQuery(q);
     }
 
+    // generating sql command to change offer status
     private static String generateStatusChange(int offerID, int s)
     {
         return ("UPDATE OFFERS SET OFFER_STATUS = " + s  + " WHERE OFFER_ID = " + offerID);
     }
 
+    // adding offer to database
     public static void addOfferToDatabase(Offer offer) throws SQLException {
         Connecting DB = new Connecting();
         System.out.println(generateInsert(offer));
@@ -155,13 +161,14 @@ public class Offers {
         DB.close();
     }
 
-
+    // changing offer status in database
     public static void setOfferStatus(int offerID, int status) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateStatusChange(offerID, status));
         DB.close();
     }
 
+    // downloading list of cities in specified voivodeship
     private static ObservableList<String> getCities(String voivodship) throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -192,11 +199,14 @@ public class Offers {
 
     private static ObservableList<String> citiesList = null;
 
+    // preparing cities list for drop in gui
     public static ObservableList<String> getCitiesList(String Voivodship) throws SQLException {
         citiesList = getCities(Voivodship);
+        citiesList.add("Bez miasta");
         return citiesList;
     }
 
+    //downloading list of voivodeships available in database
     private static ObservableList<String> getVoivodships() throws SQLException {
         Connecting DB = new Connecting();
         Connection conn = DB.getConn();
@@ -227,11 +237,14 @@ public class Offers {
 
     private static ObservableList<String> voivodshipsList = null;
 
+    // preparing voivodeships list for gui
     public static ObservableList<String> getVoivodshipsList() throws SQLException {
         voivodshipsList = getVoivodships();
+        voivodshipsList.add("Bez województwa");
         return voivodshipsList;
     }
 
+    // generating sql offer update command for database
     private static String generateUpdate(Offer offer)
     {
         return ("UPDATE OFFERS SET NAME = '" + offer.getItemName() +"', DESCRIPTION = '" +
@@ -240,11 +253,11 @@ public class Offers {
                 " WHERE OFFER_ID = " + offer.getOfferId());
     }
 
+    // updating offer in database
     public static void updateOffer(Offer offer) throws SQLException {
         Connecting DB = new Connecting();
         DB.alterTable(generateUpdate(offer));
         DB.close();
-
     }
 }
 

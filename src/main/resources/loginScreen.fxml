@@ -15,7 +15,7 @@
       <center>
          <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="330.0" prefWidth="333.0" BorderPane.alignment="CENTER">
             <children>
-               <Text fx:id="welcomeLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Swoop!" textAlignment="CENTER" wrappingWidth="190.4000000000001">
+               <Text fx:id="welcomeLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Witaj w Swoop!" textAlignment="CENTER" wrappingWidth="190.4000000000001">
                   <font>
                      <Font name="Century Gothic" size="19.0" />
                   </font>
@@ -23,20 +23,20 @@
                <FlowPane prefHeight="70.0" prefWidth="200.0" />
                <TextField fx:id="loginInput" prefHeight="26.0" prefWidth="190.0" promptText="Login" />
                <FlowPane prefHeight="30.0" prefWidth="200.0" />
-               <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" prefHeight="26.0" prefWidth="190.0" promptText="Password" />
+               <PasswordField fx:id="passwordInput" onKeyPressed="#EnterClicked" prefHeight="26.0" prefWidth="190.0" promptText="Hasło" />
                <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="79.0" prefWidth="231.0">
                   <children>
                      <FlowPane alignment="CENTER" prefHeight="39.0" prefWidth="232.0">
                         <children>
                            <Text fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                         </children></FlowPane>
-                     <Button fx:id="loginButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#LoginClicked" prefHeight="30.0" prefWidth="100.0" text="Login" textAlignment="CENTER">
+                     <Button fx:id="loginButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#LoginClicked" prefHeight="30.0" prefWidth="100.0" text="Logowanie" textAlignment="CENTER">
                         <font>
                            <Font name="Century Gothic" size="14.0" />
                         </font>
                      </Button>
                      <Pane prefHeight="33.0" prefWidth="26.0" />
-                     <Button fx:id="registerButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="30.0" prefWidth="100.0" text="Register" textAlignment="CENTER">
+                     <Button fx:id="registerButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#RegisterClicked" prefHeight="30.0" prefWidth="100.0" text="Rejestracja" textAlignment="CENTER">
                         <font>
                            <Font name="Century Gothic" size="14.0" />
                         </font>

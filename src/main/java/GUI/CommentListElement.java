@@ -1,13 +1,10 @@
 package GUI;
 
 import Classes.Comment;
-import Classes.Offer;
 import Database.Comments;
 import Database.Connecting;
 import Database.Imgur;
 import Database.Users;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -17,12 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -148,7 +141,6 @@ public class CommentListElement extends ListCell<Comment> {
             Connecting DB = null;
             try {
                 DB = new Connecting();
-                System.out.println("Connected to database");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -186,9 +178,7 @@ public class CommentListElement extends ListCell<Comment> {
             }
             CommentProfPicture.setImage(image);
         }
-
         setText(null);
         setGraphic(commentCell);
     }
-
 }

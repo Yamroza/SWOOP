@@ -66,8 +66,7 @@ public class NewOfferScreen {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.jpg","*.png", "*.bmp" ));
         File chosen_file = fc.showOpenDialog(null);
         if (chosen_file != null) {
-            Imgur photo_imgur = new Imgur();
-            String link = photo_imgur.putImgurContent(chosen_file);
+            String link = Imgur.putImgurContent(chosen_file);
             this.photoLink = link.replaceAll("\\\\", "/");
             URL url = new URL(this.photoLink);
             File file = new File("work_image.jpg");
@@ -137,19 +136,17 @@ public class NewOfferScreen {
         }
     }
 
-
-
     @FXML
     private void initialize() throws SQLException, IOException {
         Image image = Imgur.showImageFromLink("https://i.imgur.com/Moe5dXk.jpg");
         imageView.setImage(image);
-
         categoryDrop.setItems(Categories.getCategoriesList());
         categoryDrop.getSelectionModel().selectFirst();
         voivodshipDrop.setItems(Offers.getVoivodshipsList());
-        voivodshipDrop.getSelectionModel().selectFirst();
-        cityDrop.setItems(Offers.getCitiesList("dolnośląskie"));
-        cityDrop.getSelectionModel().selectFirst();
+        voivodshipDrop.getSelectionModel().select("mazowieckie");
+        cityDrop.setItems(Offers.getCitiesList("mazowieckie"));
+        cityDrop.getSelectionModel().select("Warszawa");
         price.setEditable(false);
+        price.setDisable(true);
     }
 }
