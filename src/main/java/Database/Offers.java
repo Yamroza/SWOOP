@@ -22,6 +22,10 @@ public class Offers {
         Offers.selectedOffer = selectedOffer;
     }
 
+    public static int getNumOfOffers() throws SQLException { return getOffersByQuery("select * from offers").size(); }
+
+    public static int getNumOfActiveOffers() throws SQLException { return getOffersByQuery("select * from offers where offer_status = 0").size(); }
+
     // creating an offer object from result-set from database
     private static Offer returnOffer(ResultSet rs) throws SQLException {
         Offer offer = new Offer();
@@ -46,7 +50,7 @@ public class Offers {
         offer.setLocalisation("localisation");
         if(status == 1)
         {
-            offer.setBuyer(rs.getString("buyer"));
+            //offer.setBuyer(rs.getString("buyer"));
         }
         return offer;
     }
@@ -156,8 +160,19 @@ public class Offers {
     // adding offer to database
     public static void addOfferToDatabase(Offer offer) throws SQLException {
         Connecting DB = new Connecting();
-        System.out.println(generateInsert(offer));
-        DB.alterTable(generateInsert(offer));
+        String query = generateInsert(offer);
+        System.out.println(query);
+        DB.alterTable(query);
+        DB.close();
+    }
+
+    // delete offer from database by name
+    public static void deleteOfferFromDatabase(String name) throws SQLException {
+        Connecting DB = new Connecting();
+        String query = "DELETE FROM OFFERS WHERE NAME like('" + name + "')";
+        System.out.println(query);
+        DB.alterTable(query);
+        DB.alterTable("COMMIT");
         DB.close();
     }
 

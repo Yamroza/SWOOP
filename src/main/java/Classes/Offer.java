@@ -140,4 +140,11 @@ public class Offer {
 
     public void setVoivodship(String voivodship) { this.voivodship = voivodship; }
 
+    public boolean isForExchange() {
+        return this.isForExchange;
+    }
+
+    public boolean isForSale() {
+        return this.isForSale;
+    }
 }
